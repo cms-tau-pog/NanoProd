@@ -71,6 +71,6 @@ run_cmd cmsDriver.py nano --fileout file:$cmsDriver_out --eventcontent NANOAODSI
   --step NANO --nThreads $n_threads -n $n_evt $PARAMS \
   --customise_commands "process.MessageLogger.cerr.FwkReport.reportEvery=$n_report"
 
-run_cmd python3 $CMSSW_BASE/src/NanoProd/scripts/run_skim.py $cmsDriver_out $final_out
+run_cmd python3 $CMSSW_BASE/src/NanoProd/NanoProd/scripts/run_skim.py $cmsDriver_out $final_out
 
 make_job_report 0 "All done"

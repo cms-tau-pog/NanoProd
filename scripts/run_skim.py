@@ -33,7 +33,7 @@ def sh_call(cmd, shell=False, catch_stdout=False, decode=True, split=None, expec
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
-base_path = os.path.join(os.environ['CMSSW_BASE'], 'src', 'NanoProd')
+base_path = os.path.join(os.environ['CMSSW_BASE'], 'src', 'NanoProd', 'NanoProd')
 skim_cfg_path = os.path.join(base_path, 'data', 'skim.yaml')
 with open(skim_cfg_path, 'r') as f:
     skim_config = yaml.safe_load(f)
