@@ -3,13 +3,11 @@
 import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
 
-
 options = VarParsing('analysis')
 options.register('sampleType', '', VarParsing.multiplicity.singleton, VarParsing.varType.string,
                  "Indicates the sample type: data or mc")
 options.register('era', '', VarParsing.multiplicity.singleton, VarParsing.varType.string,
                  "Indicates era: Run2_2016_HIPM, Run2_2016, Run2_2017, Run2_2018")
-
 options.parseArguments()
 
 cond_mc = {
