@@ -36,10 +36,15 @@ output_file = sys.argv[2]
 skim_cfg_path = os.path.join(os.environ['CMSSW_BASE'], 'src', 'NanoProd', 'NanoProd', 'data', 'skim.yaml')
 with open(skim_cfg_path, 'r') as f:
     skim_config = yaml.safe_load(f)
-exclude_columns = ','.join(skim_config['exclude_columns'])
-selection = skim_config['selection']
 
+selection = skim_config['selection']
 skim_tree_path = os.path.join(os.environ['CMSSW_BASE'], 'python', 'NanoProd', 'NanoProd', 'skim_tree.py')
-sh_call(['python3', skim_tree_path, '--input', input_file, '--output', output_file, '--input-tree', 'Events',
-         '--other-trees', 'LuminosityBlocks,Runs', '--exclude-columns', exclude_columns, '--sel', selection,
-         '--verbose', '1'], verbose=1)
+cmd_line = ['python3', skim_tree_path, '--input', input_file, '--output', output_file, '--input-tree', 'Events',
+         '--other-trees', 'LuminosityBlocks,Runs', '--include-all', '--sel', selection, '--verbose', '1']
+
+for cond in ['exclude', 'include']:
+    if cond + '_columns' in skim_config:
+        columns = ','.join(skim_config[cond + '_columns'])
+        cmd_line.extend([f'--{cond}-columns', columns])
+
+sh_call(cmd_line, verbose=1)
