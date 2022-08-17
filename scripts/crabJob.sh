@@ -56,20 +56,21 @@ params = [
   f"--{p.exParams.sampleType.value()}",
   f"--conditions {p.exParams.cond.value()}",
   f"--era {p.exParams.era.value()},run2_nanoAOD_106Xv2",
+  f"-n {p.maxEvents.input.value()}",
 ]
 print(" ".join(params))
 ')
 
 cmsDriver_out="nanoOrig.root"
 final_out="nano.root"
-n_threads=2
-n_evt=200
+n_threads=1
 n_report=100
 
 run_cmd cmsDriver.py nano --fileout file:$cmsDriver_out --eventcontent NANOAODSIM --datatier NANOAODSIM \
-  --step NANO --nThreads $n_threads -n $n_evt $PARAMS \
+  --step NANO --nThreads $n_threads $PARAMS \
   --customise_commands "process.MessageLogger.cerr.FwkReport.reportEvery=$n_report"
 
-run_cmd python3 $CMSSW_BASE/src/NanoProd/NanoProd/scripts/run_skim.py $cmsDriver_out $final_out
+
+run_cmd python3 $CMSSW_BASE/python/NanoProd/NanoProd/run_skim.py $cmsDriver_out $final_out
 
 make_job_report 0 "All done"

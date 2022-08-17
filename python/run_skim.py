@@ -33,14 +33,13 @@ def sh_call(cmd, shell=False, catch_stdout=False, decode=True, split=None, expec
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
-base_path = os.path.join(os.environ['CMSSW_BASE'], 'src', 'NanoProd', 'NanoProd')
-skim_cfg_path = os.path.join(base_path, 'data', 'skim.yaml')
+skim_cfg_path = os.path.join(os.environ['CMSSW_BASE'], 'src', 'NanoProd', 'NanoProd', 'data', 'skim.yaml')
 with open(skim_cfg_path, 'r') as f:
     skim_config = yaml.safe_load(f)
 exclude_columns = ','.join(skim_config['exclude_columns'])
 selection = skim_config['selection']
 
-skim_tree_path = os.path.join(base_path, 'python', 'skim_tree.py')
+skim_tree_path = os.path.join(os.environ['CMSSW_BASE'], 'python', 'NanoProd', 'NanoProd', 'skim_tree.py')
 sh_call(['python3', skim_tree_path, '--input', input_file, '--output', output_file, '--input-tree', 'Events',
          '--other-trees', 'LuminosityBlocks,Runs', '--exclude-columns', exclude_columns, '--sel', selection,
          '--verbose', '1'], verbose=1)

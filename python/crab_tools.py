@@ -21,11 +21,20 @@ class Job:
     def __init__(self, line, jobNameSuffix = ''):
         items = list(filter(lambda s: len(s) != 0, re.split(" |\t", line)))
         n_items = len(items)
-        if n_items < 2 or n_items > 3:
+        if n_items < 1 or n_items > 3:
             raise RuntimeError("invalid job description = '{}'.".format(line))
-        self.jobName = items[0]
+        if n_items == 1:
+            self.inputDataset = items[0]
+            ds_name_items = self.inputDataset.split('/')
+            if not(len(ds_name_items) == 4 and len(ds_name_items[0]) == 0 \
+                    and min([len(s) for s in ds_name_items[1:]]) > 0):
+                raise RuntimeError("invalid dataset name = '{}'.".format(self.inputDataset))
+            self.jobName = ds_name_items[1]
+        else:
+            self.jobName = items[0]
+            self.inputDataset = items[1]
         self.requestName = self.jobName + jobNameSuffix
-        self.inputDataset = items[1]
+
         if n_items > 2:
             self.lumiMask = items[2]
         else:

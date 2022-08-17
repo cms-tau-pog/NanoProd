@@ -26,10 +26,11 @@ else:
     raise RuntimeError(f"Unknown sample type {options.sampleType}")
 
 process = cms.Process('NanoProd')
-
 process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring(options.inputFiles))
-process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(-1))
 process.options = cms.untracked.PSet(wantSummary = cms.untracked.bool(False))
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(-1))
+if options.maxEvents > 0:
+    process.maxEvents.input = options.maxEvents
 process.exParams = cms.untracked.PSet(
     sampleType = cms.untracked.string(options.sampleType),
     era = cms.untracked.string(options.era),

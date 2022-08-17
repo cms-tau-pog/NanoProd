@@ -11,7 +11,11 @@ parser = argparse.ArgumentParser(description='Submit jobs on CRAB.',
                   formatter_class = lambda prog: argparse.HelpFormatter(prog,width=90))
 parser.add_argument('--workArea', required=True, type=str, help="Working area")
 parser.add_argument('--cfg', required=True, type=str, help="CMSSW configuration file")
-parser.add_argument('--scriptExe', required=False, default="", help="Custom script to execute")
+parser.add_argument('--scriptExe', required=False, default=None, help="Custom script to execute")
+parser.add_argument('--inputFiles', required=False, default=None,
+                    help="Comma separated list of input files that should be added to the sandbox")
+parser.add_argument('--outputFiles', required=False, default=None,
+                    help="Comma separated list of output files that should be transfered")
 parser.add_argument('--site', required=True, type=str, help="Site for stage out.")
 parser.add_argument('--dryrun', action="store_true", help="Submission dryrun.")
 parser.add_argument('--output', required=True, type=str, help="output path after /store/user/USERNAME")
@@ -29,8 +33,8 @@ parser.add_argument('--inputDBS', required=False, default="global", help="DBS in
 parser.add_argument('--splitting', required=False, default="Automatic",
 					help="suffix that will be added to each job name")
 parser.add_argument('--unitsPerJob', required=False, type=int, default=1000, help="number of units per job")
-parser.add_argument('--maxMemory', required=False, type=int, default=2000,
-					help="maximum amount of memory (in MB) a job is allowed to use (default: 2000 MB )")
+parser.add_argument('--maxMemory', required=False, type=int, default=2500,
+					help="maximum amount of memory (in MB) a job is allowed to use (default: 2500 MB )")
 parser.add_argument('--numCores', required=False, type=int, default=1, help="number of cores per job (default: 1)")
 parser.add_argument('--allowNonValid', action="store_true", help="Allow nonvalid dataset as an input.")
 parser.add_argument('--vomsGroup',required=False, type=str, default="", help="custom VOMS group of used proxy")
@@ -47,17 +51,28 @@ HTTPException=httplib.HTTPException if sys.version_info.major<3 else httplib.cli
 config = config()
 
 config.General.workArea = args.workArea
+config.section_("Debug")
+config.Debug.extraJDL = ["+CMS_ALLOW_OVERFLOW=False"]
 
 config.JobType.pluginName = 'Analysis'
 config.JobType.psetName = args.cfg
 config.JobType.maxMemoryMB = args.maxMemory
 config.JobType.numCores = args.numCores
+config.JobType.sendPythonFolder = True
+
+if args.scriptExe is not None:
+    config.JobType.scriptExe = args.scriptExe
+if args.inputFiles is not None:
+    config.JobType.inputFiles = args.inputFiles.split(',')
+if args.outputFiles is not None:
+    config.JobType.outputFiles = args.outputFiles.split(',')
 
 config.Data.inputDBS = args.inputDBS
 config.Data.allowNonValidInputDataset = args.allowNonValid
 config.General.transferOutputs = True
 config.General.transferLogs = False
 config.Data.publication = False
+
 
 config.Site.storageSite = args.site
 
