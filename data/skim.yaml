@@ -96,6 +96,17 @@ exclude_columns:
   - ^HLT_BTag.*$
   - ^HLT_Calo.*$
   - ^HLT_L2.*$
+  - ^HLT_Di.*$
+  - ^HLT_DoubleMu.*$
+  - ^HLT_L1.*$
+  - ^HLT_SinglePhoton.*$
+  - ^HLT_PFHT.*$
+  - ^HLT_Ele.*Calo.*$
+  - ^HLT_DoublePFJets.*$
+  - ^HLT_Ecal.*$
+  - ^HLT_Hcal.*$
+  - ^HLT_CDC.*$
+  - ^HLT_Mono$
   - ^(n|)FsrPhoton(_.*|)$
   - ^(n|)GenDressedLepton(_.*|)$
   - ^(n|)GenIsolatedPhoton(_.*|)$
