@@ -11,6 +11,7 @@ parser.add_argument('--input-tree', required=True, type=str, help="input tree na
 parser.add_argument('--output-tree', required=False, type=str, default=None, help="output tree")
 parser.add_argument('--other-trees', required=False, default=None, help="other trees to copy")
 parser.add_argument('--sel', required=False, type=str, default=None, help="selection")
+parser.add_argument('--include-all', action="store_true", help="Include all columns by default.")
 parser.add_argument('--include-columns', required=False, default=None, type=str, help="columns to be included")
 parser.add_argument('--exclude-columns', required=False, default=None, type=str, help="columns to be excluded")
 parser.add_argument('--input-prefix', required=False, type=str, default='',
@@ -24,6 +25,7 @@ parser.add_argument('--input-range', required=False, type=str, default=None,
                     help="read only entries in range begin:end (before any selection)")
 parser.add_argument('--output-range', required=False, type=str, default=None,
                     help="write only entries in range begin:end (after all selections)")
+
 parser.add_argument('--update-output', action="store_true", help="Update output file instead of overriding it.")
 parser.add_argument('--verbose', required=False, type=int, default=3, help="number of threads")
 args = parser.parse_args()
@@ -81,28 +83,39 @@ if args.processing_module is not None:
     fn = getattr(module, module_desc[1])
     df = fn(df)
 
+used_patterns = set()
+
 def name_match(column, column_patterns):
     for pattern in column_patterns:
         if pattern[0] == '^':
             if re.match(pattern, column) is not None:
+                used_patterns.add(pattern)
                 return True
         else:
             if column == pattern:
+                used_patterns.add(pattern)
                 return True
     return False
 
 branches = ROOT.vector('string')()
 for column in df.GetColumnNames():
     column = str(column)
-    include_column = False
-    if len(columns_to_include) == 0 or name_match(column, columns_to_include):
-        include_column = True
-    if name_match(column, columns_to_exclude):
+    include_column = args.include_all
+    if include_column and name_match(column, columns_to_exclude):
         include_column = False
+    if not include_column and name_match(column, columns_to_include):
+        include_column = True
     if include_column:
         branches.push_back(column)
         if args.verbose > 2:
             print("Adding column '{}'...".format(column))
+
+unused_patterns = []
+for pattern in columns_to_include + columns_to_exclude:
+    if pattern not in used_patterns:
+        unused_patterns.append(pattern)
+if len(unused_patterns) > 0:
+    print("Unused include/exclude column patterns: " + " ".join(unused_patterns))
 
 if args.sel is not None:
     df = df.Filter(args.sel)

@@ -101,6 +101,9 @@ exclude_columns:
   - ^(n|)GenDressedLepton(_.*|)$
   - ^(n|)GenIsolatedPhoton(_.*|)$
   - ^(n|)CorrT1METJet(_.*|)$
+  - ^HLT_.*$
+include_columns:
+  - ^HLT_.*Tau.*$
 selection: "
   auto ele_sel = Electron_pt > 20 && abs(Electron_eta) < 2.1 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045 && (Electron_mvaIso_WP90 || (Electron_mvaNoIso_WP90 && Electron_pfRelIso03_all < 0.5));
   auto muon_sel = Muon_pt > 18 && abs(Muon_eta) < 2.3 && abs(Muon_dz) < 0.2 && abs(Muon_dxy) < 0.045 && ( ((Muon_tightId || Muon_mediumId) && Muon_pfRelIso04_all < 0.5) || (Muon_highPtId && Muon_tkRelIso < 0.5) );
