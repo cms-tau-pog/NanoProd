@@ -6,7 +6,6 @@ exclude_columns:
   - Jet_neEmEF
   - Jet_neHEF
   - Jet_chFPV0EF
-  - Jet_chFPV1EF
   - Jet_chFPV2EF
   - Jet_chFPV3EF
   - Jet_chHEF
@@ -52,7 +51,6 @@ exclude_columns:
   - Electron_cutBased_HEEP
   - Electron_seedGain
   - Electron_photonIdx
-  - ^Electron_mvaFall17V1.*$
   - Muon_cleanmask
   - Muon_miniPFRelIso_all
   - Muon_miniPFRelIso_chg
@@ -71,40 +69,41 @@ exclude_columns:
   - Muon_jetNDauCharged
   - Muon_fsrPhotonIdx
   - Tau_cleanmask
-  - Tau_idAntiEle
-  - Tau_idAntiEle2018
   - Tau_idAntiEleDeadECal
-  - Tau_idMVAnewDM2017v2
-  - Tau_idMVAoldDM
-  - Tau_idMVAoldDM2017v1
-  - Tau_idMVAoldDM2017v2
-  - Tau_idMVAoldDMdR032017v2
   - Tau_leadTkDeltaEta
   - Tau_leadTkDeltaPhi
   - Tau_leadTkPtOverTauPt
   - Tau_photonsOutsideSignalCone
   - Tau_puCorr
-  - Tau_rawAntiEle
-  - Tau_rawAntiEle2018
-  - Tau_rawAntiEleCat
-  - Tau_rawAntiEleCat2018
   - Tau_chargedIso
   - Tau_neutralIso
-  - Tau_rawMVAnewDM2017v2
-  - Tau_rawMVAoldDM
-  - Tau_rawMVAoldDM2017v1
-  - Tau_rawMVAoldDM2017v2
-  - Tau_rawMVAoldDMdR032017v2
   - ^(n|)SV(_.*|)$
   - ^(n|)Photon(_.*|)$
   - ^(n|)LowPtElectron(_.*|)$
   - ^(n|)SoftActivityJet(.*|)$
   - ^HTXS_.*$
+  - ^HLT_Mu*$
+  - ^HLT_Quad*$
+  - ^HLT_Triple*$
+  - ^HLT_Photon*$
+  - ^HLT_Rsq*$
+  - ^HLT_AK8*$
+  - ^HLT_AK4*$
+  - ^HLT_ZeroBias*$
+  - ^HLT_PFJetFwd*$
+  - ^HLT_Physic*$
+  - ^HLT_HT*$
+  - ^HLT_BTag*$
+  - ^HLT_Calo*$
+  - ^HLT_L2*$
   - ^(n|)FsrPhoton(_.*|)$
   - ^(n|)GenDressedLepton(_.*|)$
   - ^(n|)GenIsolatedPhoton(_.*|)$
   - ^(n|)CorrT1METJet(_.*|)$
   - ^(n|)LHEPart(_.*|)$
+  - ^(n|)FatJet(_.*|)$
+  - ^(n|)SubJet(_.*|)$
+  - ^(n|)boostedTau(_.*|)$
   - ^(n|)GenProton(_.*|)$
   - ^(n|)L1(_.*|)$
 selection: "
