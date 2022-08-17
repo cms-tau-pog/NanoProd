@@ -99,23 +99,21 @@ exclude_columns:
   - ^(n|)Photon(_.*|)$
   - ^(n|)LowPtElectron(_.*|)$
   - ^(n|)SoftActivityJet(.*|)$
-  - ^(n|)IsoTrack(_.*|)$
   - ^HTXS_.*$
   - ^(n|)FsrPhoton(_.*|)$
   - ^(n|)GenDressedLepton(_.*|)$
   - ^(n|)GenIsolatedPhoton(_.*|)$
   - ^(n|)CorrT1METJet(_.*|)$
   - ^(n|)LHEPart(_.*|)$
-  - ^(n|)SubJet(_.*|)$
-  - ^(n|)FatJet(_.*|)$
   - ^(n|)GenProton(_.*|)$
   - ^(n|)L1(_.*|)$
 selection: "
-  auto ele_sel = Electron_pt > 20 && abs(Electron_eta) < 2.1 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045 && (Electron_mvaIso_WP90 || (Electron_mvaNoIso_WP90 && Electron_pfRelIso03_all < 0.5));
-  auto muon_sel = Muon_pt > 18 && abs(Muon_eta) < 2.1 && abs(Muon_dz) < 0.2 && abs(Muon_dxy) < 0.045 && ( ((Muon_tightId || Muon_mediumId) && Muon_pfRelIso04_all < 0.5) || (Muon_highPtId && Muon_tkRelIso < 0.5) );
+  auto ele_sel = Electron_pt > 20 && abs(Electron_eta) < 2.1 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045 && (Electron_mvaIso_WP90 || (Electron_mvaNoIso_WP90 && Electron_pfRelIso03_all < 0.2));
+  auto muon_sel = Muon_pt > 18 && abs(Muon_eta) < 2.1 && abs(Muon_dz) < 0.2 && abs(Muon_dxy) < 0.045 &&  ((Muon_tightId || Muon_mediumId) && Muon_pfRelIso04_all < 0.5 && (Muon_pfRelIso04_all < 0.2 || Muon_pt > 50) || (Muon_highPtId && Muon_tkRelIso < 0.5 && (Muon_tkRelIso < 0.2 || Muon_pt > 50)) );
   auto jet_sel = Jet_pt > 80 && abs(Jet_eta) < 4.7 && Jet_jetId >=1 ;
   size_t n_ele = Electron_pt[ele_sel].size();
   size_t n_muon = Muon_pt[muon_sel].size();
   size_t n_jet = Jet_pt[jet_sel].size();
-  return n_ele > 0 || n_muon > 0 || n_jet > 1 ;
+  auto met_sel = MET_pt > 80 || DeepMETResolutionTune_pt > 80 || DeepMETResponseTune_pt > 80 || PuppiMET_pt > 80;
+  return n_ele > 0 || n_muon > 0 || n_jet > 1 || met_sel > 0;
   "
