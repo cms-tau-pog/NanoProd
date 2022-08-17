@@ -82,20 +82,20 @@ exclude_columns:
   - ^(n|)LowPtElectron(_.*|)$
   - ^(n|)SoftActivityJet(.*|)$
   - ^HTXS_.*$
-  - ^HLT_Mu*$
-  - ^HLT_Quad*$
-  - ^HLT_Triple*$
-  - ^HLT_Photon*$
-  - ^HLT_Rsq*$
-  - ^HLT_AK8*$
-  - ^HLT_AK4*$
-  - ^HLT_ZeroBias*$
-  - ^HLT_PFJetFwd*$
-  - ^HLT_Physic*$
-  - ^HLT_HT*$
-  - ^HLT_BTag*$
-  - ^HLT_Calo*$
-  - ^HLT_L2*$
+  - ^HLT_Mu.*$
+  - ^HLT_Quad.*$
+  - ^HLT_Triple.*$
+  - ^HLT_Photon.*$
+  - ^HLT_Rsq.*$
+  - ^HLT_AK8.*$
+  - ^HLT_AK4.*$
+  - ^HLT_ZeroBias.*$
+  - ^HLT_PFJetFwd.*$
+  - ^HLT_Physic.*$
+  - ^HLT_HT.*$
+  - ^HLT_BTag.*$
+  - ^HLT_Calo.*$
+  - ^HLT_L2.*$
   - ^(n|)FsrPhoton(_.*|)$
   - ^(n|)GenDressedLepton(_.*|)$
   - ^(n|)GenIsolatedPhoton(_.*|)$
