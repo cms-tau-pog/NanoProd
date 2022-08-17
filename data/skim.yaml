@@ -6,8 +6,6 @@ exclude_columns:
   - Jet_neEmEF
   - Jet_neHEF
   - Jet_chFPV0EF
-  - Jet_chFPV2EF
-  - Jet_chFPV3EF
   - Jet_chHEF
   - Jet_hfsigmaEtaEta
   - Jet_hfsigmaPhiPhi
@@ -86,6 +84,11 @@ exclude_columns:
   - ^(n|)GenDressedLepton(_.*|)$
   - ^(n|)GenIsolatedPhoton(_.*|)$
   - ^(n|)CorrT1METJet(_.*|)$
+  - ^(n|)LHEPart(_.*|)$
+  - ^(n|)SubJet(_.*|)$
+  - ^(n|)FatJet(_.*|)$
+  - ^(n|)GenProton(_.*|)$
+  - ^(n|)L1(_.*|)$
   - ^HLT_.*$
 include_columns:
   - ^HLT_.*Tau.*$
@@ -93,8 +96,7 @@ include_columns:
   - ^HLT_Ele.*WPTight.*$
   - ^HLT_IsoMu.*$
   - ^HLT_PFMETNoMu.*$
-  - ^HLT_PFMETNoMu.*$
-  - ^HLT_PFJet.*$
+  - ^HLT_PFJet[0-9]+$
   - ^HLT_IsoTrack.*$
 selection: "
   auto ele_sel = Electron_pt > 20 && abs(Electron_eta) < 2.1 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045 && (Electron_mvaIso_WP90 || (Electron_mvaNoIso_WP90 && Electron_pfRelIso03_all < 0.2));
