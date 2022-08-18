@@ -1,3 +1,4 @@
+
 exclude_columns:
   - Jet_cleanmask
   - Jet_btagDeepCvB
@@ -19,6 +20,21 @@ exclude_columns:
   - Jet_nElectrons
   - Jet_electronIdx1
   - Jet_electronIdx2
+  - Jet_cRegRes
+  - Jet_cRegCorr
+  - Jet_bRegRes
+  - Jet_bRegCorr
+  - Jet_btagDeepB
+  - Jet_btagCSVV2
+  - Jet_btagDeepFlavCvB
+  - Jet_btagDeepFlavCvL
+  - Jet_btagDeepFlavQG
+  - Jet_muonSubtrFactor
+  - Jet_puIdDisc
+  - Electron_fsrPhotonIdx
+  - Electron_mvaIso
+  - Electron_mvaNoIso
+  - Electron_mvaHZZIso
   - Electron_cleanmask
   - Electron_miniPFRelIso_all
   - Electron_miniPFRelIso_chg
@@ -66,6 +82,14 @@ exclude_columns:
   - Muon_nStations
   - Muon_jetNDauCharged
   - Muon_fsrPhotonIdx
+  - Muon_mvaLowPt
+  - Muon_softMva
+  - Muon_isStandalone
+  - Muon_isTracker
+  - Muon_miniIsoId
+  - Muon_multiIsoId
+  - Muon_puppiIsoId
+  - Muon_inTimeMuon
   - Tau_cleanmask
   - Tau_idAntiEleDeadECal
   - Tau_leadTkDeltaEta
@@ -87,6 +111,7 @@ exclude_columns:
   - ^(n|)LHEPart(_.*|)$
   - ^(n|)SubJet(_.*|)$
   - ^(n|)FatJet(_.*|)$
+  - ^(n|)GenJetAK8(_.*|)$
   - ^(n|)GenProton(_.*|)$
   - ^(n|)L1(_.*|)$
   - ^HLT_.*$
