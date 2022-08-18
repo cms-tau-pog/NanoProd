@@ -1,13 +1,12 @@
+
 exclude_columns:
+  - Jet_cleanmask
   - Jet_btagDeepCvB
   - Jet_btagDeepCvL
   - Jet_qgl
   - Jet_neEmEF
   - Jet_neHEF
   - Jet_chFPV0EF
-  - Jet_chFPV1EF
-  - Jet_chFPV2EF
-  - Jet_chFPV3EF
   - Jet_chHEF
   - Jet_hfsigmaEtaEta
   - Jet_hfsigmaPhiPhi
@@ -21,6 +20,22 @@ exclude_columns:
   - Jet_nElectrons
   - Jet_electronIdx1
   - Jet_electronIdx2
+  - Jet_cRegRes
+  - Jet_cRegCorr
+  - Jet_bRegRes
+  - Jet_bRegCorr
+  - Jet_btagDeepB
+  - Jet_btagCSVV2
+  - Jet_btagDeepFlavCvB
+  - Jet_btagDeepFlavCvL
+  - Jet_btagDeepFlavQG
+  - Jet_muonSubtrFactor
+  - Jet_puIdDisc
+  - Electron_fsrPhotonIdx
+  - Electron_mvaIso
+  - Electron_mvaNoIso
+  - Electron_mvaHZZIso
+  - Electron_cleanmask
   - Electron_miniPFRelIso_all
   - Electron_miniPFRelIso_chg
   - Electron_eInvMinusPInv
@@ -50,7 +65,7 @@ exclude_columns:
   - Electron_cutBased_HEEP
   - Electron_seedGain
   - Electron_photonIdx
-  - ^Electron_mvaFall17V1.*$
+  - Muon_cleanmask
   - Muon_miniPFRelIso_all
   - Muon_miniPFRelIso_chg
   - Muon_dxybs
@@ -67,47 +82,64 @@ exclude_columns:
   - Muon_nStations
   - Muon_jetNDauCharged
   - Muon_fsrPhotonIdx
-  - Tau_idAntiEle
-  - Tau_idAntiEle2018
+  - Muon_mvaLowPt
+  - Muon_softMva
+  - Muon_mediumPromptId
+  - Muon_mvaLowPtId
+  - Muon_softId
+  - Muon_softMvaId
+  - Muon_mediumPromptId
+  - Muon_pdgId
+  - Muon_pfIsoId
+  - Muon_isStandalone
+  - Muon_isTracker
+  - Muon_miniIsoId
+  - Muon_multiIsoId
+  - Muon_puppiIsoId
+  - Muon_inTimeMuon
+  - Tau_cleanmask
   - Tau_idAntiEleDeadECal
-  - Tau_idMVAnewDM2017v2
-  - Tau_idMVAoldDM
-  - Tau_idMVAoldDM2017v1
-  - Tau_idMVAoldDM2017v2
-  - Tau_idMVAoldDMdR032017v2
   - Tau_leadTkDeltaEta
   - Tau_leadTkDeltaPhi
   - Tau_leadTkPtOverTauPt
   - Tau_photonsOutsideSignalCone
   - Tau_puCorr
-  - Tau_rawAntiEle
-  - Tau_rawAntiEle2018
-  - Tau_rawAntiEleCat
-  - Tau_rawAntiEleCat2018
   - Tau_chargedIso
   - Tau_neutralIso
-  - Tau_rawMVAnewDM2017v2
-  - Tau_rawMVAoldDM
-  - Tau_rawMVAoldDM2017v1
-  - Tau_rawMVAoldDM2017v2
-  - Tau_rawMVAoldDMdR032017v2
+  - genTtbarId
   - ^(n|)SV(_.*|)$
   - ^(n|)Photon(_.*|)$
   - ^(n|)LowPtElectron(_.*|)$
   - ^(n|)SoftActivityJet(.*|)$
-  - ^(n|)IsoTrack(_.*|)$
   - ^HTXS_.*$
   - ^(n|)FsrPhoton(_.*|)$
   - ^(n|)GenDressedLepton(_.*|)$
   - ^(n|)GenIsolatedPhoton(_.*|)$
   - ^(n|)CorrT1METJet(_.*|)$
+  - ^(n|)LHEPart(_.*|)$
+  - ^(n|)SubJet(_.*|)$
+  - ^(n|)FatJet(_.*|)$
+  - ^(n|)GenJetAK8(_.*|)$
+  - ^(n|)SubGenJetAK8(_.*|)$
+  - ^(n|)boostedTau(_.*|)$
+  - ^(n|)GenProton(_.*|)$
+  - ^(n|)L1(_.*|)$
   - ^HLT_.*$
 include_columns:
   - ^HLT_.*Tau.*$
+  - ^HLT_Mu.*Ele.*$
+  - ^HLT_Ele.*WPTight.*$
+  - ^HLT_IsoMu.*$
+  - ^HLT_PFMETNoMu.*$
+  - ^HLT_PFJet[0-9]+$
+  - ^HLT_IsoTrack.*$
 selection: "
-  auto ele_sel = Electron_pt > 20 && abs(Electron_eta) < 2.1 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045 && (Electron_mvaIso_WP90 || (Electron_mvaNoIso_WP90 && Electron_pfRelIso03_all < 0.5));
-  auto muon_sel = Muon_pt > 18 && abs(Muon_eta) < 2.3 && abs(Muon_dz) < 0.2 && abs(Muon_dxy) < 0.045 && ( ((Muon_tightId || Muon_mediumId) && Muon_pfRelIso04_all < 0.5) || (Muon_highPtId && Muon_tkRelIso < 0.5) );
+  auto ele_sel = Electron_pt > 20 && abs(Electron_eta) < 2.1 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045 && (Electron_mvaIso_WP90 || (Electron_mvaNoIso_WP90 && Electron_pfRelIso03_all < 0.2));
+  auto muon_sel = Muon_pt > 18 && abs(Muon_eta) < 2.1 && abs(Muon_dz) < 0.2 && abs(Muon_dxy) < 0.045 &&  ((Muon_tightId || Muon_mediumId) && Muon_pfRelIso04_all < 0.5 && (Muon_pfRelIso04_all < 0.2 || Muon_pt > 50) || (Muon_highPtId && Muon_tkRelIso < 0.5 && (Muon_tkRelIso < 0.2 || Muon_pt > 50)) );
+  auto jet_sel = Jet_pt > 80 && abs(Jet_eta) < 4.7 && Jet_jetId >=1 ;
   size_t n_ele = Electron_pt[ele_sel].size();
   size_t n_muon = Muon_pt[muon_sel].size();
-  return n_ele > 0 || n_muon > 0;
+  size_t n_jet = Jet_pt[jet_sel].size();
+  auto met_sel = MET_pt > 80 || DeepMETResolutionTune_pt > 80 || DeepMETResponseTune_pt > 80 || PuppiMET_pt > 80;
+  return n_ele > 0 || n_muon > 0 || n_jet > 1 || met_sel > 0;
   "
