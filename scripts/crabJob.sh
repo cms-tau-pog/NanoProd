@@ -64,11 +64,9 @@ print(" ".join(params))
 cmsDriver_out="nanoOrig.root"
 final_out="nano.root"
 n_threads=1
-n_report=100
 
 run_cmd cmsDriver.py nano --fileout file:$cmsDriver_out --eventcontent NANOAODSIM --datatier NANOAODSIM \
-  --step NANO --nThreads $n_threads $PARAMS \
-  --customise_commands "process.MessageLogger.cerr.FwkReport.reportEvery=$n_report"
+  --step NANO --nThreads $n_threads $PARAMS --customise "NanoProd/NanoProd/customize.customize"
 
 
 run_cmd python3 $CMSSW_BASE/python/NanoProd/NanoProd/run_skim.py $cmsDriver_out $final_out
