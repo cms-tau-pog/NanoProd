@@ -84,6 +84,13 @@ exclude_columns:
   - Muon_fsrPhotonIdx
   - Muon_mvaLowPt
   - Muon_softMva
+  - Muon_mediumPromptId
+  - Muon_mvaLowPtId
+  - Muon_softId
+  - Muon_softMvaId
+  - Muon_mediumPromptId
+  - Muon_pdgId
+  - Muon_pfIsoId
   - Muon_isStandalone
   - Muon_isTracker
   - Muon_miniIsoId
@@ -99,6 +106,7 @@ exclude_columns:
   - Tau_puCorr
   - Tau_chargedIso
   - Tau_neutralIso
+  - genTtbarId
   - ^(n|)SV(_.*|)$
   - ^(n|)Photon(_.*|)$
   - ^(n|)LowPtElectron(_.*|)$
@@ -112,6 +120,8 @@ exclude_columns:
   - ^(n|)SubJet(_.*|)$
   - ^(n|)FatJet(_.*|)$
   - ^(n|)GenJetAK8(_.*|)$
+  - ^(n|)SubGenJetAK8(_.*|)$
+  - ^(n|)boostedTau(_.*|)$
   - ^(n|)GenProton(_.*|)$
   - ^(n|)L1(_.*|)$
   - ^HLT_.*$
