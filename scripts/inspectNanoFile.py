@@ -245,15 +245,15 @@ def writeSizeReport(fileData, trees, stream):
         treetotal = trees[treename]['allsize']
         treerunningtotal = 0
         for s in survey:
+            treerunningtotal += s['tot']
+            runningtotal += s['tot']
             stream.write("<tr><th title=\"%s\"><a href='#%s'>%s</a></th><td style='text-align : left;'>%s</td><td>%d</td>" % (s['doc'],s['name'],s['name'],s['kind'].lower(),len(s['subs'])))
             stream.write("<td>%.2f</td><td>%.3f</td><td>%.1f</td>" % (s['entries']/events, s['tot']/events, s['tot']/s['entries']*1024 if s['entries'] else 0))
             stream.write("<td class=\"img\"><img src='http://gpetrucc.web.cern.ch/gpetrucc/micro/blue-dot.gif' width='%d' height='%d' /></td>" % (s['tot']/treetotal*200,10))
             stream.write("<td>%.1f%%</td>" % ( s['tot']/treetotal * 100.0))
-            stream.write("<td>%.1f%%</td>" % ( (runningtotal+s['tot'])/treetotal * 100.0))
-            stream.write("<td>%.1f%%</td>" % ( (treetotal-runningtotal)/treetotal * 100.0))
+            stream.write("<td>%.1f%%</td>" % ( float(treerunningtotal)/treetotal * 100.0))
+            stream.write("<td>%.1f%%</td>" % ( float(runningtotal)/filesize * 100.0))
             stream.write("</tr>\n")
-            treerunningtotal += s['tot']
-        runningtotal += treerunningtotal
 
         # all known data
         stream.write("<tr><th>All %s data</th>" % treename)
