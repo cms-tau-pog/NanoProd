@@ -8,6 +8,9 @@ options.register('sampleType', '', VarParsing.multiplicity.singleton, VarParsing
                  "Indicates the sample type: data or mc")
 options.register('era', '', VarParsing.multiplicity.singleton, VarParsing.varType.string,
                  "Indicates era: Run2_2016_HIPM, Run2_2016, Run2_2017, Run2_2018")
+options.register('storeFailed', False, VarParsing.multiplicity.singleton, VarParsing.varType.bool,
+                 "Store minimal information about events that failed selection.")
+
 options.parseArguments()
 
 cond_mc = {
@@ -35,6 +38,7 @@ process.exParams = cms.untracked.PSet(
     sampleType = cms.untracked.string(options.sampleType),
     era = cms.untracked.string(options.era),
     cond = cms.untracked.string(cond),
+    storeFailed = cms.untracked.bool(options.storeFailed),
 )
 
 with open('PSet.py', 'w') as f:

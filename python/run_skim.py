@@ -32,6 +32,7 @@ def sh_call(cmd, shell=False, catch_stdout=False, decode=True, split=None, expec
 
 input_file = sys.argv[1]
 output_file = sys.argv[2]
+store_failed = sys.argv[3] == 'True'
 
 skim_cfg_path = os.path.join(os.environ['CMSSW_BASE'], 'src', 'NanoProd', 'NanoProd', 'data', 'skim.yaml')
 with open(skim_cfg_path, 'r') as f:
@@ -40,11 +41,27 @@ with open(skim_cfg_path, 'r') as f:
 selection = skim_config['selection']
 skim_tree_path = os.path.join(os.environ['CMSSW_BASE'], 'python', 'NanoProd', 'NanoProd', 'skim_tree.py')
 cmd_line = ['python3', skim_tree_path, '--input', input_file, '--output', output_file, '--input-tree', 'Events',
-         '--other-trees', 'LuminosityBlocks,Runs', '--include-all', '--sel', selection, '--verbose', '1']
+            '--other-trees', 'LuminosityBlocks,Runs', '--verbose', '1']
 
-for cond in ['exclude', 'include']:
-    if cond + '_columns' in skim_config:
-        columns = ','.join(skim_config[cond + '_columns'])
-        cmd_line.extend([f'--{cond}-columns', columns])
+if 'selection' in skim_config:
+    selection = skim_config['selection']
+    cmd_line.extend(['--sel', selection])
+
+if 'column_filters' in skim_config:
+    columns = ','.join(skim_config['column_filters'])
+    cmd_line.extend([f'--column-filters', columns])
 
 sh_call(cmd_line, verbose=1)
+
+if store_failed:
+    if 'selection' not in skim_config:
+        raise RuntimeError('store_failed=True, but selection is not specified.')
+    cmd_line = ['python3', skim_tree_path, '--input', input_file, '--output', output_file, '--input-tree', 'Events',
+                '--output-tree', 'EventsNotSelected', '--update-output', '--sel', selection, '--invert-sel',
+                '--verbose', '1']
+
+    if 'column_filters_for_failed' in skim_config:
+        columns = ','.join(skim_config['column_filters_for_failed'])
+        cmd_line.extend([f'--column-filters', columns])
+
+    sh_call(cmd_line, verbose=1)
