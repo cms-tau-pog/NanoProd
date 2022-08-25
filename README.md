@@ -4,8 +4,8 @@
 
 ```sh
 export SCRAM_ARCH=el8_amd64_gcc10
-cmsrel CMSSW_12_4_6
-cd CMSSW_12_4_6/src
+cmsrel CMSSW_12_4_8
+cd CMSSW_12_4_8/src
 cmsenv
 git clone https://github.com/kandrosov/NanoProd.git NanoProd/NanoProd
 scram b
