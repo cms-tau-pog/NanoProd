@@ -119,6 +119,8 @@ column_filters:
   - drop ^(n|)SubGenJetAK8(_.*|)$
   - drop ^(n|)boostedTau(_.*|)$
   - drop ^(n|)GenProton(_.*|)$
+  - drop ^(n|)Proton(_.*|)$
+  - drop ^(n|)PPSLocalTrack(_.*|)$
   - drop ^(n|)L1(_.*|)$
   - drop ^HLT_.*$
   - keep ^HLT_.*Tau.*$
