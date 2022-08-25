@@ -190,12 +190,12 @@ def writeSizeReport(fileData, trees, stream):
     <html>
     <head>
         <title>{title}</title>
-        <link rel="stylesheet" type="text/css" href="http://gpetrucc.web.cern.ch/gpetrucc/micro/patsize.css" />
-        <script type="text/javascript" src="http://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.core.js"></script>
-        <script type="text/javascript" src="http://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.pie.js"></script>
-        <script type="text/javascript" src="http://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.dynamic.js"></script>
-        <script type="text/javascript" src="http://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.tooltips.js"></script>
-        <script type="text/javascript" src="http://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.key.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://gpetrucc.web.cern.ch/gpetrucc/micro/patsize.css" />
+        <script type="text/javascript" src="https://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.core.js"></script>
+        <script type="text/javascript" src="https://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.pie.js"></script>
+        <script type="text/javascript" src="https://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.dynamic.js"></script>
+        <script type="text/javascript" src="https://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.tooltips.js"></script>
+        <script type="text/javascript" src="https://gpetrucc.web.cern.ch/gpetrucc/rgraph/RGraph.common.key.js"></script>
     </head>
     <body>
     <a name="top" id="top"><h1>{title}</h1></a>
