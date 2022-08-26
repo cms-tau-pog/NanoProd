@@ -1,0 +1,24 @@
+cmsswPython: NanoProd/RunKit/nanoProdWrapper.py
+params:
+  - customise=NanoProd/NanoProd/customize.customize
+  - skimCfg=NanoProd/NanoProd/data/skim.yaml
+  - maxEvents=-1
+splitting: FileBased
+unitsPerJob: 4
+scriptExe: NanoProd/RunKit/nanoProdCrabJob.sh
+outputFiles:
+  - nano.root
+filesToTransfer:
+  - NanoProd/RunKit/nanoProdCrabJob.sh
+  - NanoProd/RunKit/nanoProdCrabJob.py
+  - NanoProd/RunKit/skim_tree.py
+  - NanoProd/RunKit/sh_tools.py
+site: T2_CH_CERN
+crabOutput: /store/group/phys_tau/kandroso/DeepTau_v2p5_UL18_prod
+finalOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL18
+localOutputPrefix: /eos/cms
+maxMemory: 2500
+numCores: 1
+inputDBS: global
+allowNonValid: False
+dryrun: False
