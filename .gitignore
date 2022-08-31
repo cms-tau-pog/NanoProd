@@ -3,3 +3,7 @@ __pycache__
 __init__.py
 /nano_NANO.py
 *.root
+/.law
+/.crabOverseer
+/data
+/soft
