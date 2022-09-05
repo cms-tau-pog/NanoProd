@@ -17,19 +17,20 @@ filesToTransfer:
 site: T2_CH_CERN
 crabOutput: /store/group/phys_tau/kandroso/DeepTau_v2p5_UL18_prod
 finalOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL18
-localOutputPrefix: /eos/cms
+localCrabOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL18_prod
 maxMemory: 2500
 numCores: 1
 inputDBS: global
 allowNonValid: False
 dryrun: False
-maxResubmitCount: 4
+maxResubmitCount: 2
 maxRecoveryCount: 2
 updateInterval: 60
 postProcessing:
   lawTask: CrabNanoProdTaskPostProcess
   workflow: htcondor
   bootstrap: bootstrap.sh
+postProcessingDoneFlag: post_processing_done.txt
 #  requirements: ( (OpSysAndVer =?= "CentOS7") || (OpSysAndVer =?= "CentOS8") )
 targetOutputFileSize: 2048
 
