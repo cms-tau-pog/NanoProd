@@ -33,4 +33,5 @@ postProcessing:
 postProcessingDoneFlag: post_processing_done.txt
 #  requirements: ( (OpSysAndVer =?= "CentOS7") || (OpSysAndVer =?= "CentOS8") )
 targetOutputFileSize: 2048
+renewKerberosTicket: True
 
