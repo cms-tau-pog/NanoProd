@@ -22,6 +22,7 @@ action() {
     export ANALYSIS_DATA_PATH="$ANALYSIS_PATH/data"
     export X509_USER_PROXY="$ANALYSIS_DATA_PATH/voms.proxy"
 
+    run_cmd mkdir -p "$ANALYSIS_DATA_PATH"
     # source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_101 x86_64-centos7-gcc8-opt
     # conda activate bbtt
 
