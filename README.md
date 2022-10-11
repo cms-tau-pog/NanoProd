@@ -1,57 +1,73 @@
 # NanoProd
 
 ## How to install
-
 ```sh
-export SCRAM_ARCH=el8_amd64_gcc10
-cmsrel CMSSW_12_4_8
-cd CMSSW_12_4_8/src
-cmsenv
-git clone https://github.com/kandrosov/NanoProd.git NanoProd/NanoProd
-scram b
+git clone --recursive -b run_kit https://github.com/kandrosov/NanoProd.git
 ```
 
-## How to run locally
+## Loading environment
+Following command activates the framework environment:
+```sh
+source env.sh
+```
+## How to run miniAOD->nanoAOD skims production
 
-1. Creating PSet.py - this step will be done automatically be crab when submitting the job
-   ```sh
-   python3 NanoProd/NanoProd/python/Prod.py sampleType=TYPE inputFiles=FILE1,FILE2,... era=ERA maxEvents=N
-   ```
-   where `sampleType` = **data** or **mc**,
-   `inputFiles` - comma separated list of input files,
-   `era` = **Run2_2016_HIPM**, **Run2_2016**, **Run2_2017** or **Run2_2018**,
-   `maxEvents` - number of events to process (default=-1, i.e. all events)
+Production should be run on the server that have the crab stageout area mounted to the file system.
 
-   Example:
+1. Load environment on CentOS8 machine
    ```sh
-   python3 NanoProd/NanoProd/python/Prod.py sampleType=mc inputFiles=file:/eos/cms/store/group/phys_tau/acardini/miniAODskim/TTToSemiLeptonic_UL18_006455CD-9CDB-B843-B50D-5721C39F30CE.root era=Run2_2018 maxEvents=100
-   ```
-
-1. Produce nanoAOD and run skim. The result will be stored in `nano.root` file.
-   ```sh
-   ./NanoProd/NanoProd/scripts/crabJob.sh
+   source $PWD/env.sh
+   source /cvmfs/cms.cern.ch/common/crab-setup.sh
+   voms-proxy-init -voms cms -rfc -valid 192:00
    ```
 
-## Working with CRAB
+1. Check that all datasets are present and valid:
+   ```sh
+   cat NanoProd/crab/Run2_2018/*.yaml | grep -v -E '^( +| *#)' | grep -E ' /' | sed -E 's/.*: (.*)/\1/' | xargs python3 RunKit/checkDatasetExistance.py
+   ```
+   If all ok, there should be no output.
+1. Modify output and other site-specific settings in `NanoProd/crab/overseer_cfg.yaml`. In particular:
+   - site
+   - crabOutput
+   - localCrabOutput
+   - finalOutput
+   - renewKerberosTicket
 
-1. Submitting tasks on crab
+1. Test that the code works locally (take one of the miniAOD files as an input). E.g.
    ```sh
-   python3 NanoProd/NanoProd/scripts/crab_submit.py --workArea WORK_AREA --cfg NanoProd/NanoProd/python/Prod.py --site SITE --output OUTPUT_PATH --splitting FileBased --unitsPerJob N --scriptExe NanoProd/NanoProd/scripts/crabJob.sh --outputFiles nano.root TASK_FILE1 TASK_FILE2 ...
+   python3 RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize skimCfg=NanoProd/data/skim.yaml maxEvents=100 sampleType=mc storeFailed=True era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root
+   ./RunKit/nanoProdCrabJob.sh
    ```
-   where `workArea` - local working area where tasks descriptions and monitoring logs will be stored,
-   `site` and `output` - name of the site and the path where job results should be transferred,
-   `splitting` and `unitsPerJob` - the job splitting algorithm and number of units per a single job (e.g. number of files for **FileBased** splitting),
-   `TASK_FILE1` `TASK_FILE2` ... - list of .txt files with tasks definitions to submit.
+   - check that output file `nano.root` is created correctly
 
-   Example how to submit production for the Run2 2018:
+1. Test a dryrun crab submission
    ```sh
-   python3 NanoProd/NanoProd/scripts/crab_submit.py --workArea work_area --cfg NanoProd/NanoProd/python/Prod.py --site T2_CH_CERN --output /store/group/phys_tau/kandroso/DeepTau_v2p5_prod --splitting FileBased --unitsPerJob 10 --scriptExe NanoProd/NanoProd/scripts/crabJob.sh --outputFiles nano.root NanoProd/NanoProd/crab/Run2_2018/*.txt
+   python3 RunKit/crabOverseer.py --work-area crab_test --cfg NanoProd/crab/overseer_cfg.yaml --no-loop NanoProd/crab/crab_test.yaml
    ```
-2. Monitoring status of all tasks
+   - If successful, the last line output to the terminal should be
+     ```
+     Tasks: 1 Total, 1 Submitted
+     ```
+   - NB. Crab estimates of processing time will not be accurate, ignore them.
+   - After the test, remove `crab_test` directory:
+     ```sh
+     rm -r crab_test
+     ```
+
+1. Test that post-processing task is known to law:
    ```sh
-   crab_cmd.py --workArea work_area --cmd status
+   law index
+   law run CrabNanoProdTaskPostProcess --help
    ```
-3. Resubmitting failed jobs for a given task
+
+1. Submit tasks using `RunKit/crabOverseer.py` and monitor the process.
+   It is recommended to run `crabOverseer` in screen.
    ```sh
-   crab resubmit -d work_area/crab_MY_TASK
+   python3 RunKit/crabOverseer.py --cfg NanoProd/crab/overseer_cfg.yaml NanoProd/crab/Run2_2018/FILE1.yaml NanoProd/crab/Run2_2018/FILE2.yaml ...
    ```
+   - Use `NanoProd/crab/Run2_2018/*.yaml` to submit all the tasks
+   - For more information about available command line arguments run `python3 RunKit/crabOverseer.py --help`
+   - For consecutive runs, if there are no modifications in the configs, it is enough to run `crabOverseer` without any arguments:
+     ```sh
+     python3 RunKit/crabOverseer.py
+     ```
