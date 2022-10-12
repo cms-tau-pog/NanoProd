@@ -72,13 +72,13 @@ Production should be run on the server that have the crab stageout area mounted 
      python3 RunKit/crabOverseer.py
      ```
 
-##Resubmission of failed tasks
+## Resubmission of failed tasks
 
 The job handler will automatically create recovery tasks for jobs that failed multiple times.
 As of recovery #1 the jobs created will run on a single miniAOD file each, while for the latest available iteration (default is recovery #2) the job will only run on specified sites which are whitelisted in the crab overseer config: [NanoProd/crab/overseer_cfg.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/overseer_cfg.yaml).
 Note: if the file has no available Rucio replica on any of those sites, the job is bound to fail.
 
-###Handling failed jobs after last recovery task
+### Handling failed jobs after last recovery task
 
 General guidelines:
 
@@ -106,7 +106,7 @@ General guidelines:
 	     sampleType: mc
     	     era: Run2_2018
     	     storeFailed: True
-      	   ```   
+      	 ```   
       1. If the job fails due to a file which is corrupted or unavailable it needs to be skipped in the nanoAOD production, this can be done by editing the `yaml` file as follows:
       	 ```py
       	 DYJetsToLL_M-50-madgraphMLM_ext1: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
