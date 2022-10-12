@@ -99,24 +99,24 @@ General guidelines:
 1. After identifying the problem and taking action to solve it either with CMSSW, requesting Rucio transfer or adding a specific storage center to the whitelist execute the following steps.
    1. Edit the `yaml` file corresponding to the dataset (e.g. [NanoProd/crab/Run2_2018/DY.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/Run2_2018/DY.yaml):
       1. Increase the maximum number of retries by adding the entry `maxRecoveryCount` to `config` in the `yaml` file: 
-      	 ```py
-      	 config:
-	   maxRecoveryCount: 3
-	   params:
-	     sampleType: mc
-    	     era: Run2_2018
-    	     storeFailed: True
+      	 ```python
+		 config:
+		 	maxRecoveryCount: 3
+				params:
+					sampleType: mc
+					era: Run2_2018
+					storeFailed: True
       	 ```   
       1. If the job fails due to a file which is corrupted or unavailable it needs to be skipped in the nanoAOD production, this can be done by editing the `yaml` file as follows:
-      	 ```py
+      	 ```python
       	 DYJetsToLL_M-50-madgraphMLM_ext1: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
       	 ```
       	 ->
-      	 ```py
+      	 ```python
       	 DYJetsToLL_M-50-madgraphMLM_ext1: 
-      	   inputDataset: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
-  	   ignoreFiles:
-	     - /store/mc/RunIISummer20UL18MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1_ext1-v1/40000/1D821371-03FD-B148-9E83-119185898E4F.root
+		 	inputDataset: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
+				ignoreFiles:
+				- /store/mc/RunIISummer20UL18MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1_ext1-v1/40000/1D821371-03FD-B148-9E83-119185898E4F.root
       	 ```
    1. Change the status.json file so the job is marked as `WaitingForRecovery` instead of `Failed`
    ```sh
