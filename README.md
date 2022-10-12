@@ -2,7 +2,7 @@
 
 ## How to install
 ```sh
-git clone --recursive -b run_kit https://github.com/kandrosov/NanoProd.git
+git clone --recursive https://github.com/cms-tau-pog/NanoProd.git
 ```
 
 ## Loading environment
@@ -71,3 +71,60 @@ Production should be run on the server that have the crab stageout area mounted 
      ```sh
      python3 RunKit/crabOverseer.py
      ```
+
+##Resubmission of failed tasks
+
+The job handler will automatically create recovery tasks for jobs that failed multiple times.
+As of recovery #1 the jobs created will run on a single miniAOD file each, while for the latest available iteration (default is recovery #2) the job will only run on specified sites which are whitelisted in the crab overseer config: [NanoProd/crab/overseer_cfg.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/overseer_cfg.yaml).
+Note: if the file has no available Rucio replica on any of those sites, the job is bound to fail.
+
+###Handling failed jobs after last recovery task
+
+General guidelines:
+
+1. Check job output via Grafana [monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view](https://monit-grafana.cern.ch/d/15468761344/personal-tasks-monitoring-globalview?from=now-90d&to=now&orgId=11&var-user=All&var-site=All&var-current_url=%2Fd%2FcmsTMDetail%2Fcms_task_monitoring&var-task=All)
+   During the resubmission step a link is also printed to screen with the direct link to the ongoing CRAB task.
+
+1. Identify exit code, see [JobExitCodes](https://twiki.cern.ch/twiki/bin/view/CMSPublic/JobExitCodes)
+   1. `>50000` most likely associated to I/O issue with the site or the dataset. Increase the number of max retries and resend the job.
+
+   1. Special exit code defined in the tool: 666 - it is used to label errors which are neither related to CMSSW compilation, bash or crab job handling. Check the specific job output from the CRAB Monitor tool, copy the jobID from Grafana.
+   It includes cases where the dataset is corrupted, unaccessible on any tier or with no existing replica.
+   To check if the file has any available replica on the sites run
+   ```sh
+   dasgoclient --query 'site file=FILENAME'
+   ```
+   In case there is no available Rucio replica the file cannot be processed, please write an issue on CMS-talk (e.g. [Issue for Tau UL2018 file](https://cms-talk.web.cern.ch/t/cant-access-one-file-from-tau-run2018d-ul2018-miniaodv2-v1-miniaod/14522/2) and remove the file from the studied inputs, see below.
+
+1. After identifying the problem and taking action to solve it either with CMSSW, requesting Rucio transfer or adding a specific storage center to the whitelist execute the following steps.
+   1. Edit the `yaml` file corresponding to the dataset (e.g. [NanoProd/crab/Run2_2018/DY.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/Run2_2018/DY.yaml):
+      1. Increase the maximum number of retries by adding the entry `maxRecoveryCount` to `config` in the `yaml` file: 
+      	 ```py
+      	 config:
+	   maxRecoveryCount: 3
+	   params:
+	     sampleType: mc
+    	     era: Run2_2018
+    	     storeFailed: True
+      	   ```   
+      1. If the job fails due to a file which is corrupted or unavailable it needs to be skipped in the nanoAOD production, this can be done by editing the `yaml` file as follows:
+      	 ```py
+      	 DYJetsToLL_M-50-madgraphMLM_ext1: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
+      	 ```
+      	 ->
+      	 ```py
+      	 DYJetsToLL_M-50-madgraphMLM_ext1: 
+      	   inputDataset: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
+  	   ignoreFiles:
+	     - /store/mc/RunIISummer20UL18MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1_ext1-v1/40000/1D821371-03FD-B148-9E83-119185898E4F.root
+      	 ```
+   1. Change the status.json file so the job is marked as `WaitingForRecovery` instead of `Failed`
+   ```sh
+   sed -i 's/Failed/WaitingForRecovery/g' .crabOverseer/DATASET_GROUP_NAME/status.json
+   ```
+   where `DATASET_GROUP_NAME` is the dataset nickname provided in the `yaml` file, e.g. `DYJetsToLL_M-50-madgraphMLM_ext1`
+
+
+	 
+
+
