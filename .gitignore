@@ -4,6 +4,7 @@ __init__.py
 /nano_NANO.py
 *.root
 /.law
-/.crabOverseer
+/.crabOverseer*
 /data
 /soft
+/FrameworkJobReport.xml
