@@ -1,0 +1,34 @@
+config:
+  params:
+    sampleType: data
+    era: Run2_2016
+    storeFailed: False
+  #lumiMask: /afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
+
+SingleElectron_Run2016F: /SingleElectron/Run2016F-UL2016_MiniAODv2-v2/MINIAOD
+SingleElectron_Run2016G: /SingleElectron/Run2016G-UL2016_MiniAODv2-v2/MINIAOD
+SingleElectron_Run2016H: /SingleElectron/Run2016H-UL2016_MiniAODv2-v2/MINIAOD
+
+SingleMuon_Run2016F: /SingleMuon/Run2016F-UL2016_MiniAODv2-v2/MINIAOD
+SingleMuon_Run2016G: /SingleMuon/Run2016G-UL2016_MiniAODv2-v2/MINIAOD
+SingleMuon_Run2016H: /SingleMuon/Run2016H-UL2016_MiniAODv2-v2/MINIAOD
+
+Tau_Run2016F: /Tau/Run2016F-UL2016_MiniAODv2-v1/MINIAOD
+Tau_Run2016G: /Tau/Run2016G-UL2016_MiniAODv2-v1/MINIAOD
+Tau_Run2016H: /Tau/Run2016H-UL2016_MiniAODv2-v1/MINIAOD
+
+DoubleEG_Run2016F: /DoubleEG/Run2016F-UL2016_MiniAODv2-v1/MINIAOD
+DoubleEG_Run2016G: /DoubleEG/Run2016G-UL2016_MiniAODv2-v1/MINIAOD
+DoubleEG_Run2016H: /DoubleEG/Run2016H-UL2016_MiniAODv2-v1/MINIAOD
+
+DoubleMuon_Run2016F: /DoubleMuon/Run2016F-UL2016_MiniAODv2-v1/MINIAOD
+DoubleMuon_Run2016G: /DoubleMuon/Run2016G-UL2016_MiniAODv2-v1/MINIAOD
+DoubleMuon_Run2016H: /DoubleMuon/Run2016H-UL2016_MiniAODv2-v2/MINIAOD
+
+JetHT_Run2016F: /JetHT/Run2016F-UL2016_MiniAODv2-v2/MINIAOD
+JetHT_Run2016G: /JetHT/Run2016G-UL2016_MiniAODv2-v2/MINIAOD
+JetHT_Run2016H: /JetHT/Run2016H-UL2016_MiniAODv2-v2/MINIAOD
+
+MET_Run2016F: /MET/Run2016F-UL2016_MiniAODv2-v2/MINIAOD
+MET_Run2016G: /MET/Run2016G-UL2016_MiniAODv2-v2/MINIAOD
+MET_Run2016H: /MET/Run2016H-UL2016_MiniAODv2-v2/MINIAOD
