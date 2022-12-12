@@ -14,7 +14,6 @@ filesToTransfer:
   - RunKit/skim_tree.py
   - RunKit/sh_tools.py
   - NanoProd/data/skim.yaml
-  - NanoProd/data/PNetCodeForCmsRun.py
 site: T2_CH_CERN
 crabOutput: /store/group/phys_tau/kandroso/DeepTau_v2p5_UL18_prod
 finalOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL18
