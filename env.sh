@@ -45,6 +45,8 @@ action() {
         run_cmd scramv1 project CMSSW $CMSSW_VER
         run_cmd cd $CMSSW_VER/src
         run_cmd eval `scramv1 runtime -sh`
+        run_cmd git cms-addpkg RecoBTag/Combined
+        run_cmd git cms-addpkg RecoTauTag
         run_cmd ln -s "$this_dir" NanoProd
         run_cmd scram b -j8
         run_cmd cd "$this_dir"
