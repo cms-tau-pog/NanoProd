@@ -127,7 +127,7 @@ General guidelines:
 
 ## Running with ParticleNET
 
-In order to produce NanoAOD along with output branches from ParticleNET (which will be found in the "Jet" and "FatJet" collections for AK4 and AK8 outputs, respectively), the following additions are needed before executing the code:
+In order to produce NanoAOD along with output branches from ParticleNET (which will be found in the "Jet" and "FatJet" collections for AK4 and AK8 outputs, respectively), the following additions are made automatically when setting up the environment:
 * Follow the installation recipe in the Readme [here](https://gitlab.cern.ch/rgerosa/particlenetstudiesrun2/-/tree/master/)
 * Then copy the PNET models into place where they're needed, according to the first section in the ReadMe [here](https://gitlab.cern.ch/rgerosa/particlenetstudiesrun2/-/tree/master/TrainingNtupleMakerAK4) and [here](https://gitlab.cern.ch/rgerosa/particlenetstudiesrun2/-/tree/master/TrainingNtupleMakerAK8).
 * Then it will only work locally however. To make it work for jobs submitted to crab, put the same files in `RecoBTag/Combined/data/` and `RecoTauTag/data/` inside the CMSSW_BASE/src/ directory.
