@@ -16,8 +16,9 @@ def customize(process):
 def customize_pnet(process):
     process = customize(process)
 
+    addAK8 = False
+
     pnetDiscriminatorsAK4 = []
-    pnetDiscriminatorsAK8 = []
 
     process.pfParticleNetAK4LastJetTagInfos = cms.EDProducer("ParticleNetFeatureEvaluator",
         muons = cms.InputTag("slimmedMuons"),
@@ -41,22 +42,6 @@ def customize_pnet(process):
         dump_feature_tree = cms.bool(False)
     )
 
-    process.pfParticleNetAK8LastJetTagInfos = cms.EDProducer("ParticleNetFeatureEvaluator",
-        vertices = cms.InputTag("offlineSlimmedPrimaryVertices"),
-        secondary_vertices = cms.InputTag("slimmedSecondaryVertices"),
-        pf_candidates = cms.InputTag("packedPFCandidates"),
-        jets = cms.InputTag("updatedJetsAK8WithUserData"),
-        muons = cms.InputTag("slimmedMuons"),
-        electrons = cms.InputTag("slimmedElectrons"),
-        taus = cms.InputTag("slimmedTaus"),
-        jet_radius = cms.double(0.8),
-        min_jet_pt = cms.double(200), # Default value
-        max_jet_eta = cms.double(2.5), # Default value
-        min_pt_for_pfcandidates = cms.double(0.1), # Default value
-        use_puppiP4 = cms.bool(False),
-        min_puppi_wgt = cms.double(-1),
-    )
-
     from RecoBTag.ONNXRuntime.boostedJetONNXJetTagsProducer_cfi import boostedJetONNXJetTagsProducer
     process.pfParticleNetAK4LastJetTags = boostedJetONNXJetTagsProducer.clone();
     process.pfParticleNetAK4LastJetTags.src = cms.InputTag("pfParticleNetAK4LastJetTagInfos");
@@ -64,12 +49,6 @@ def customize_pnet(process):
     process.pfParticleNetAK4LastJetTags.preprocess_json = cms.string('RecoBTag/Combined/data/ParticleNetAK4/CHS/PNETUL/ClassRegQuantileNoJECLost/preprocess.json');
     process.pfParticleNetAK4LastJetTags.model_path = cms.FileInPath('RecoBTag/Combined/data/ParticleNetAK4/CHS/PNETUL/ClassRegQuantileNoJECLost/particle-net.onnx');
     process.pfParticleNetAK4LastJetTags.debugMode = cms.untracked.bool(False)
-
-    process.pfParticleNetAK8LastJetTags = boostedJetONNXJetTagsProducer.clone();
-    process.pfParticleNetAK8LastJetTags.src = cms.InputTag("pfParticleNetAK8LastJetTagInfos");
-    process.pfParticleNetAK8LastJetTags.flav_names = cms.vstring('probHtt','probHtm','probHte','probHbb','probHcc','probHqq','probHgg','probQCD2hf','probQCD1hf','probQCD0hf','masscorr');
-    process.pfParticleNetAK8LastJetTags.preprocess_json = cms.string('RecoBTag/Combined/data/ParticleNetAK8/Puppi/PNETUL/ClassReg/preprocess.json');
-    process.pfParticleNetAK8LastJetTags.model_path = cms.FileInPath('RecoBTag/Combined/data/ParticleNetAK8/Puppi/PNETUL/ClassReg/particle-net.onnx');
 
     pnetDiscriminatorsAK4.extend([
         "pfParticleNetAK4LastJetTags:probmu",
@@ -93,31 +72,11 @@ def customize_pnet(process):
         "pfParticleNetAK4LastJetTags:ptreshigh",
     ])
 
-    pnetDiscriminatorsAK8.extend([
-        "pfParticleNetAK8LastJetTags:probHtt",
-        "pfParticleNetAK8LastJetTags:probHtm",
-        "pfParticleNetAK8LastJetTags:probHte",
-        "pfParticleNetAK8LastJetTags:probHbb",
-        "pfParticleNetAK8LastJetTags:probHcc",
-        "pfParticleNetAK8LastJetTags:probHqq",
-        "pfParticleNetAK8LastJetTags:probHgg",
-        "pfParticleNetAK8LastJetTags:probQCD2hf",
-        "pfParticleNetAK8LastJetTags:probQCD1hf",
-        "pfParticleNetAK8LastJetTags:probQCD0hf",
-        "pfParticleNetAK8LastJetTags:masscorr"
-    ])
-
     from PhysicsTools.PatAlgos.producersLayer1.jetUpdater_cfi import updatedPatJets
     process.slimmedJetsUpdatedPNET = updatedPatJets.clone(
         jetSource = "updatedJetsWithUserData",
         addJetCorrFactors = False,
         discriminatorSources = pnetDiscriminatorsAK4        
-    )
-
-    process.slimmedJetsAK8UpdatedPNET = updatedPatJets.clone(
-        jetSource = "updatedJetsAK8WithUserData",
-        addJetCorrFactors = False,
-        discriminatorSources = pnetDiscriminatorsAK8
     )
 
     from RecoJets.JetProducers.PileupJetID_cfi import _chsalgos_106X_UL18, pileupJetId
@@ -130,31 +89,6 @@ def customize_pnet(process):
     )
 
     process.slimmedJetsUpdatedPNET.userData.userInts.src += ['pileupJetIdUpdatedPNET:fullId'];
-
-    from RecoBTag.FeatureTools.pfDeepBoostedJetTagInfos_cfi import pfDeepBoostedJetTagInfos
-    process.pfParticleNetAK8JetTagInfos = pfDeepBoostedJetTagInfos.clone(
-       jet_radius = 0.8,
-        min_pt_for_track_properties = 0.95,
-        min_jet_pt = 200, # Default value
-        max_jet_eta = 2.5, # Default value
-        use_puppiP4 = False,
-        min_puppi_wgt = -1,
-        vertices = "offlineSlimmedPrimaryVertices",
-        secondary_vertices = "slimmedSecondaryVertices",
-        pf_candidates = "packedPFCandidates",
-        jets = "updatedJetsAK8WithUserData",
-        puppi_value_map = "",
-        vertex_associator = ""
-    )
-
-    process.pfParticleNetMassRegressionJetTags = boostedJetONNXJetTagsProducer.clone(
-        src = 'pfParticleNetAK8JetTagInfos',
-        preprocess_json = 'RecoBTag/Combined/data/ParticleNetAK8/MassRegression/V01/preprocess.json',
-        model_path = 'RecoBTag/Combined/data/ParticleNetAK8/MassRegression/V01/particle-net.onnx',
-        flav_names = ["mass"]
-    )
-
-    process.slimmedJetsAK8UpdatedPNET.discriminatorSources.extend(["pfParticleNetMassRegressionJetTags:mass"]);
 
     from PhysicsTools.NanoAOD.common_cff import Var
     process.finalJets.src = cms.InputTag("slimmedJetsUpdatedPNET")
@@ -177,20 +111,6 @@ def customize_pnet(process):
     process.jetTable.variables.PNET_ptcorr = Var("bDiscriminator('pfParticleNetAK4LastJetTags:ptcorr')",float,precision=10)
     process.jetTable.variables.PNET_ptreslow = Var("bDiscriminator('pfParticleNetAK4LastJetTags:ptreslow')",float,precision=10)
     process.jetTable.variables.PNET_ptreshigh = Var("bDiscriminator('pfParticleNetAK4LastJetTags:ptreshigh')",float,precision=10)
-    process.finalJetsAK8.src = cms.InputTag("slimmedJetsAK8UpdatedPNET")
-    process.lepInAK8JetVars.src = cms.InputTag("slimmedJetsAK8UpdatedPNET")
-    process.fatJetTable.variables.PNET_Htt = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHtt')",float,precision=10)
-    process.fatJetTable.variables.PNET_Htm = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHtm')",float,precision=10)
-    process.fatJetTable.variables.PNET_Hte = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHte')",float,precision=10)
-    process.fatJetTable.variables.PNET_Hbb = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHbb')",float,precision=10)
-    process.fatJetTable.variables.PNET_Hcc = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHcc')",float,precision=10)
-    process.fatJetTable.variables.PNET_Hqq = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHqq')",float,precision=10)
-    process.fatJetTable.variables.PNET_Hgg = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHgg')",float,precision=10)
-    process.fatJetTable.variables.PNET_QCD2hf = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probQCD2hf')",float,precision=10)
-    process.fatJetTable.variables.PNET_QCD1hf = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probQCD1hf')",float,precision=10)
-    process.fatJetTable.variables.PNET_QCD0hf = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probQCD0hf')",float,precision=10)
-    process.fatJetTable.variables.PNET_masscorr = Var("bDiscriminator('pfParticleNetAK8LastJetTags:masscorr')",float,precision=10)
-    process.fatJetTable.variables.PNET_massregression = Var("bDiscriminator('pfParticleNetMassRegressionJetTags:mass')",float,precision=10)
 
     process.edTask = cms.Task()
     process.edTask.add(getattr(process,"slimmedJetsUpdatedPNET"))
@@ -198,20 +118,106 @@ def customize_pnet(process):
     process.edTask.add(getattr(process,"pfParticleNetAK4LastJetTags"))
     process.edTask.add(getattr(process,"pfParticleNetAK4LastJetTagInfos"))
 
-    process.edTask.add(getattr(process,"slimmedJetsAK8UpdatedPNET"))
-    process.edTask.add(getattr(process,"pfParticleNetAK8JetTagInfos"))
-    process.edTask.add(getattr(process,"pfParticleNetMassRegressionJetTags"))
-    process.edTask.add(getattr(process,"pfParticleNetAK8LastJetTags"))
-    process.edTask.add(getattr(process,"pfParticleNetAK8LastJetTagInfos"))
 
-    # For some reason these are lost when integrated as customization, so re-add them to path.
-    #process.edTask.add(getattr(process,"selectedUpdatedPatJetsAK8WithDeepInfo"))
+    if addAK8:
+      pnetDiscriminatorsAK8 = []
+
+      process.pfParticleNetAK8LastJetTagInfos = cms.EDProducer("ParticleNetFeatureEvaluator",
+          vertices = cms.InputTag("offlineSlimmedPrimaryVertices"),
+          secondary_vertices = cms.InputTag("slimmedSecondaryVertices"),
+          pf_candidates = cms.InputTag("packedPFCandidates"),
+          jets = cms.InputTag("updatedJetsAK8WithUserData"),
+          muons = cms.InputTag("slimmedMuons"),
+          electrons = cms.InputTag("slimmedElectrons"),
+          taus = cms.InputTag("slimmedTaus"),
+          jet_radius = cms.double(0.8),
+          min_jet_pt = cms.double(200), # Default value
+          max_jet_eta = cms.double(2.5), # Default value
+          min_pt_for_pfcandidates = cms.double(0.1), # Default value
+          use_puppiP4 = cms.bool(False),
+          min_puppi_wgt = cms.double(-1),
+      )
+
+      process.pfParticleNetAK8LastJetTags = boostedJetONNXJetTagsProducer.clone();
+      process.pfParticleNetAK8LastJetTags.src = cms.InputTag("pfParticleNetAK8LastJetTagInfos");
+      process.pfParticleNetAK8LastJetTags.flav_names = cms.vstring('probHtt','probHtm','probHte','probHbb','probHcc','probHqq','probHgg','probQCD2hf','probQCD1hf','probQCD0hf','masscorr');
+      process.pfParticleNetAK8LastJetTags.preprocess_json = cms.string('RecoBTag/Combined/data/ParticleNetAK8/Puppi/PNETUL/ClassReg/preprocess.json');
+      process.pfParticleNetAK8LastJetTags.model_path = cms.FileInPath('RecoBTag/Combined/data/ParticleNetAK8/Puppi/PNETUL/ClassReg/particle-net.onnx');
+
+      pnetDiscriminatorsAK8.extend([
+          "pfParticleNetAK8LastJetTags:probHtt",
+          "pfParticleNetAK8LastJetTags:probHtm",
+          "pfParticleNetAK8LastJetTags:probHte",
+          "pfParticleNetAK8LastJetTags:probHbb",
+          "pfParticleNetAK8LastJetTags:probHcc",
+          "pfParticleNetAK8LastJetTags:probHqq",
+          "pfParticleNetAK8LastJetTags:probHgg",
+          "pfParticleNetAK8LastJetTags:probQCD2hf",
+          "pfParticleNetAK8LastJetTags:probQCD1hf",
+          "pfParticleNetAK8LastJetTags:probQCD0hf",
+          "pfParticleNetAK8LastJetTags:masscorr"
+      ])
+
+      process.slimmedJetsAK8UpdatedPNET = updatedPatJets.clone(
+          jetSource = "updatedJetsAK8WithUserData",
+          addJetCorrFactors = False,
+          discriminatorSources = pnetDiscriminatorsAK8
+      )
+
+      from RecoBTag.FeatureTools.pfDeepBoostedJetTagInfos_cfi import pfDeepBoostedJetTagInfos
+      process.pfParticleNetAK8JetTagInfos = pfDeepBoostedJetTagInfos.clone(
+         jet_radius = 0.8,
+          min_pt_for_track_properties = 0.95,
+          min_jet_pt = 200, # Default value
+          max_jet_eta = 2.5, # Default value
+          use_puppiP4 = False,
+          min_puppi_wgt = -1,
+          vertices = "offlineSlimmedPrimaryVertices",
+          secondary_vertices = "slimmedSecondaryVertices",
+          pf_candidates = "packedPFCandidates",
+          jets = "updatedJetsAK8WithUserData",
+          puppi_value_map = "",
+          vertex_associator = ""
+      )
+
+      process.pfParticleNetMassRegressionJetTags = boostedJetONNXJetTagsProducer.clone(
+          src = 'pfParticleNetAK8JetTagInfos',
+          preprocess_json = 'RecoBTag/Combined/data/ParticleNetAK8/MassRegression/V01/preprocess.json',
+          model_path = 'RecoBTag/Combined/data/ParticleNetAK8/MassRegression/V01/particle-net.onnx',
+          flav_names = ["mass"]
+      )
+
+      process.slimmedJetsAK8UpdatedPNET.discriminatorSources.extend(["pfParticleNetMassRegressionJetTags:mass"])
+
+      process.finalJetsAK8.src = cms.InputTag("slimmedJetsAK8UpdatedPNET")
+      process.lepInAK8JetVars.src = cms.InputTag("slimmedJetsAK8UpdatedPNET")
+      process.fatJetTable.variables.PNET_Htt = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHtt')",float,precision=10)
+      process.fatJetTable.variables.PNET_Htm = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHtm')",float,precision=10)
+      process.fatJetTable.variables.PNET_Hte = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHte')",float,precision=10)
+      process.fatJetTable.variables.PNET_Hbb = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHbb')",float,precision=10)
+      process.fatJetTable.variables.PNET_Hcc = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHcc')",float,precision=10)
+      process.fatJetTable.variables.PNET_Hqq = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHqq')",float,precision=10)
+      process.fatJetTable.variables.PNET_Hgg = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probHgg')",float,precision=10)
+      process.fatJetTable.variables.PNET_QCD2hf = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probQCD2hf')",float,precision=10)
+      process.fatJetTable.variables.PNET_QCD1hf = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probQCD1hf')",float,precision=10)
+      process.fatJetTable.variables.PNET_QCD0hf = Var("bDiscriminator('pfParticleNetAK8LastJetTags:probQCD0hf')",float,precision=10)
+      process.fatJetTable.variables.PNET_masscorr = Var("bDiscriminator('pfParticleNetAK8LastJetTags:masscorr')",float,precision=10)
+      process.fatJetTable.variables.PNET_massregression = Var("bDiscriminator('pfParticleNetMassRegressionJetTags:mass')",float,precision=10)
+
+      process.edTask.add(getattr(process,"slimmedJetsAK8UpdatedPNET"))
+      process.edTask.add(getattr(process,"pfParticleNetAK8JetTagInfos"))
+      process.edTask.add(getattr(process,"pfParticleNetMassRegressionJetTags"))
+      process.edTask.add(getattr(process,"pfParticleNetAK8LastJetTags"))
+      process.edTask.add(getattr(process,"pfParticleNetAK8LastJetTagInfos"))
+
+    # For some reason these are lost when integrated as customization (even when not processing AK8), so re-add them to path.
     #process.edTask.add(getattr(process,"updatedPatJetsAK8WithDeepInfo"))
+    #process.edTask.add(getattr(process,"selectedUpdatedPatJetsAK8WithDeepInfo"))
     #process.edTask.add(getattr(process,"updatedPatJetsTransientCorrectedAK8WithDeepInfo"))
-    #process.edTask.add(getattr(process,"patJetCorrFactorsAK8WithDeepInfo"))
     #process.edTask.add(getattr(process,"patJetCorrFactorsTransientCorrectedAK8WithDeepInfo"))
-    #process.edTask.add(getattr(process,"pfParticleNetMassRegressionJetTagsAK8WithDeepInfo"))
     #process.edTask.add(getattr(process,"pfParticleNetTagInfosAK8WithDeepInfo"))
+    #process.edTask.add(getattr(process,"pfParticleNetMassRegressionJetTagsAK8WithDeepInfo"))
+    #process.edTask.add(getattr(process,"patJetCorrFactorsAK8WithDeepInfo"))
     for key in process.__dict__.keys():
         if(type(getattr(process,key)).__name__=='EDProducer' or type(getattr(process,key)).__name__=='EDFilter') and "AK8WithDeepInfo" in key:
             process.edTask.add(getattr(process,key))
