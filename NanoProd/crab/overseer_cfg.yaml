@@ -1,6 +1,6 @@
 cmsswPython: RunKit/nanoProdWrapper.py
 params:
-  customise: NanoProd/NanoProd/customize.customize
+  customise: NanoProd/NanoProd/customize.customize_pnet
   skimCfg: skim.yaml
   maxEvents: -1
 splitting: FileBased
