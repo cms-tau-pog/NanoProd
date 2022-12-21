@@ -49,7 +49,7 @@ action() {
         run_cmd git clone ssh://git@gitlab.cern.ch:7999/akhukhun/roccor.git RoccoR
         run_cmd git clone git@github.com:SVfit/ClassicSVfit.git TauAnalysis/ClassicSVfit -b fastMTT_19_02_2019
         run_cmd git clone git@github.com:SVfit/SVfitTF.git TauAnalysis/SVfitTF
-        run_cmd git clone ssh://git@gitlab.cern.ch:7999/rgerosa/particlenetstudiesrun2.git ParticleNetStudiesRun2 -b cmssw_124X
+        run_cmd git clone ssh://git@gitlab.cern.ch:7999/rgerosa/particlenetstudiesrun2.git ParticleNetStudiesRun2 -b cmssw_126X
         #run_cmd mkdir -p $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
         #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/ParticleNetAK4 $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
         #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK8/data/ParticleNetAK8 $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
