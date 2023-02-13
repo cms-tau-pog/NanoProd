@@ -4,30 +4,31 @@ params:
   skimCfg: skim.yaml
   maxEvents: -1
 splitting: FileBased
-unitsPerJob: 4
-scriptExe: RunKit/nanoProdCrabJob.sh
+unitsPerJob: 8
+scriptExe: RunKit/crabJob.sh
 outputFiles:
   - nano.root
 filesToTransfer:
-  - RunKit/nanoProdCrabJob.sh
-  - RunKit/nanoProdCrabJob.py
+  - RunKit/crabJob.sh
+  - RunKit/crabJob.py
+  - RunKit/crabJob_nanoProd.py
   - RunKit/skim_tree.py
   - RunKit/sh_tools.py
   - NanoProd/data/skim.yaml
 site: T2_CH_CERN
-crabOutput: /store/group/phys_tau/kandroso/DeepTau_v2p5_UL18_prod
-finalOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL18
-localCrabOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL18_prod
+crabOutput: /store/group/phys_tau/kandroso/DeepTau_v2p5_UL17_prod
+finalOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL17
+localCrabOutput: /eos/cms/store/group/phys_tau/kandroso/DeepTau_v2p5_UL17_prod
 maxMemory: 2500
 numCores: 1
 inputDBS: global
 allowNonValid: False
 dryrun: False
-maxResubmitCount: 2
+maxResubmitCount: 0
 maxRecoveryCount: 2
 updateInterval: 60
 postProcessing:
-  lawTask: CrabNanoProdTaskPostProcess
+  lawTask: ProdTask
   workflow: htcondor
   bootstrap: bootstrap.sh
 postProcessingDoneFlag: post_processing_done.txt
