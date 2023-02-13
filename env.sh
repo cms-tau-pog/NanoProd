@@ -45,6 +45,25 @@ action() {
         run_cmd scramv1 project CMSSW $CMSSW_VER
         run_cmd cd $CMSSW_VER/src
         run_cmd eval `scramv1 runtime -sh`
+        run_cmd git-cms-init
+        run_cmd git clone ssh://git@gitlab.cern.ch:7999/akhukhun/roccor.git RoccoR
+        run_cmd git clone git@github.com:SVfit/ClassicSVfit.git TauAnalysis/ClassicSVfit -b fastMTT_19_02_2019
+        run_cmd git clone git@github.com:SVfit/SVfitTF.git TauAnalysis/SVfitTF
+        run_cmd git clone ssh://git@gitlab.cern.ch:7999/rgerosa/particlenetstudiesrun2.git ParticleNetStudiesRun2 -b cmssw_126X
+        #run_cmd mkdir -p $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
+        #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/ParticleNetAK4 $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
+        #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK8/data/ParticleNetAK8 $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
+        #run_cmd mkdir -p $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoTauTag/data/TauES/
+        #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/TauES/* $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoTauTag/data/TauES/
+        run_cmd git cms-addpkg RecoBTag/Combined
+        #run_cmd mkdir -p RecoBTag/Combined/data/
+        #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/ParticleNetAK4 RecoBTag/Combined/data
+        run_cmd mkdir -p RecoBTag/Combined/data/ParticleNetAK4/CHS/PNETUL
+        run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/ParticleNetAK4/CHS/PNETUL/ClassRegQuantileNoJECLost RecoBTag/Combined/data/ParticleNetAK4/CHS/PNETUL/
+        #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK8/data/ParticleNetAK8 RecoBTag/Combined/data
+        #run_cmd git cms-addpkg RecoTauTag
+        #run_cmd mkdir -p RecoTauTag/data/TauES/
+        #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/TauES/* RecoTauTag/data/TauES/
         run_cmd ln -s "$this_dir" NanoProd
         run_cmd scram b -j8
         run_cmd cd "$this_dir"
