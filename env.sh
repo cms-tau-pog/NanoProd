@@ -97,8 +97,10 @@ action() {
   local default_cmssw_ver=CMSSW_12_4_8
   export DEFAULT_CMSSW_BASE="$ANALYSIS_PATH/soft/CentOS$os_version/$default_cmssw_ver"
 
-  autoload bashcompinit
-  bashcompinit
+  if [ ! -z $ZSH_VERSION ]; then
+    autoload bashcompinit
+    bashcompinit
+  fi
   source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_102 x86_64-centos${os_version}-gcc11-opt
   source /afs/cern.ch/user/m/mrieger/public/law_sw/setup.sh
 
