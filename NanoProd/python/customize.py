@@ -15,7 +15,7 @@ def customize(process):
 
 def customize_pnet(process):
     process = customize(process)
-    process.finalTaus.cut = 'pt > 0'
+    process.finalTaus.cut = "tauID('decayModeFindingNewDMs')"
     addAK8 = False
 
     pnetDiscriminatorsAK4 = []
