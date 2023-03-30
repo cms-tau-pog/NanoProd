@@ -15,7 +15,7 @@ def customize(process):
 
 def customize_pnet(process):
     process = customize(process)
-
+    process.finalTaus.cut = 'pt > 0'
     addAK8 = False
 
     pnetDiscriminatorsAK4 = []
@@ -76,11 +76,11 @@ def customize_pnet(process):
     process.slimmedJetsUpdatedPNET = updatedPatJets.clone(
         jetSource = "updatedJetsWithUserData",
         addJetCorrFactors = False,
-        discriminatorSources = pnetDiscriminatorsAK4        
+        discriminatorSources = pnetDiscriminatorsAK4
     )
 
     from RecoJets.JetProducers.PileupJetID_cfi import _chsalgos_106X_UL18, pileupJetId
-    process.pileupJetIdUpdatedPNET = pileupJetId.clone( 
+    process.pileupJetIdUpdatedPNET = pileupJetId.clone(
         jets = cms.InputTag("updatedJetsWithUserData"),
         inputIsCorrected = True,
         applyJec = False,
@@ -226,5 +226,6 @@ def customize_pnet(process):
 
     # Schedule definition
     process.schedule = cms.Schedule(process.edPath,process.nanoAOD_step,process.endjob_step,process.NANOAODSIMoutput_step)
+    # process.schedule.insert(0, process.edPath)
 
     return process

@@ -17,13 +17,12 @@ Production should be run on the server that have the crab stageout area mounted 
 1. Load environment on CentOS8 machine
    ```sh
    source $PWD/env.sh
-   source /cvmfs/cms.cern.ch/common/crab-setup.sh
    voms-proxy-init -voms cms -rfc -valid 192:00
    ```
 
-1. Check that all datasets are present and valid:
+1. Check that all datasets are present and valid (replace path to `yaml`s accordingly):
    ```sh
-   cat NanoProd/crab/Run2_2018/*.yaml | grep -v -E '^( +| *#)' | grep -E ' /' | sed -E 's/.*: (.*)/\1/' | xargs python3 RunKit/checkDatasetExistance.py
+   cat NanoProd/crab/ERA/*.yaml | grep -v -E '^( +| *#)' | grep -E ' /' | sed -E 's/.*: (.*)/\1/' | xargs python RunKit/checkDatasetExistance.py
    ```
    If all ok, there should be no output.
 1. Modify output and other site-specific settings in `NanoProd/crab/overseer_cfg.yaml`. In particular:
@@ -35,14 +34,19 @@ Production should be run on the server that have the crab stageout area mounted 
 
 1. Test that the code works locally (take one of the miniAOD files as an input). E.g.
    ```sh
-   python3 RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize skimCfg=NanoProd/data/skim.yaml maxEvents=100 sampleType=mc storeFailed=True era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root
-   ./RunKit/nanoProdCrabJob.sh
+   mkdir -p tmp && cd tmp
+   cmsEnv python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize skimCfg=$ANALYSIS_PATH/NanoProd/data/skim.yaml maxEvents=100 sampleType=mc storeFailed=True era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root writePSet=True skimSetup=skim skimSetupFailed=skim_failed createTar=False
+   cmsEnv $ANALYSIS_PATH/RunKit/crabJob.sh
    ```
-   - check that output file `nano.root` is created correctly
+   Check that output file `nano_0.root` is created correctly. After that, you can remove `tmp` directory:
+   ```sh
+   cd $ANALYSIS_PATH
+   rm -r tmp
+   ```
 
 1. Test a dryrun crab submission
    ```sh
-   python3 RunKit/crabOverseer.py --work-area crab_test --cfg NanoProd/crab/overseer_cfg.yaml --no-loop NanoProd/crab/crab_test.yaml
+   python RunKit/crabOverseer.py --work-area crab_test --cfg NanoProd/crab/overseer_cfg.yaml --no-loop NanoProd/crab/crab_test.yaml
    ```
    - If successful, the last line output to the terminal should be
      ```
@@ -57,19 +61,19 @@ Production should be run on the server that have the crab stageout area mounted 
 1. Test that post-processing task is known to law:
    ```sh
    law index
-   law run CrabNanoProdTaskPostProcess --help
+   law run ProdTask --help
    ```
 
 1. Submit tasks using `RunKit/crabOverseer.py` and monitor the process.
-   It is recommended to run `crabOverseer` in screen.
+   It is recommended to run `crabOverseer` in `screen`.
    ```sh
-   python3 RunKit/crabOverseer.py --cfg NanoProd/crab/overseer_cfg.yaml NanoProd/crab/Run2_2018/FILE1.yaml NanoProd/crab/Run2_2018/FILE2.yaml ...
+   python RunKit/crabOverseer.py --cfg NanoProd/crab/overseer_cfg.yaml NanoProd/crab/Run2_2018/FILE1.yaml NanoProd/crab/Run2_2018/FILE2.yaml ...
    ```
    - Use `NanoProd/crab/Run2_2018/*.yaml` to submit all the tasks
    - For more information about available command line arguments run `python3 RunKit/crabOverseer.py --help`
    - For consecutive runs, if there are no modifications in the configs, it is enough to run `crabOverseer` without any arguments:
      ```sh
-     python3 RunKit/crabOverseer.py
+     python RunKit/crabOverseer.py
      ```
 
 ## Resubmission of failed tasks
@@ -98,7 +102,7 @@ General guidelines:
 
 1. After identifying the problem and taking action to solve it either with CMSSW, requesting Rucio transfer or adding a specific storage center to the whitelist execute the following steps.
    1. Edit the `yaml` file corresponding to the dataset (e.g. [NanoProd/crab/Run2_2018/DY.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/Run2_2018/DY.yaml):
-      1. Increase the maximum number of retries by adding the entry `maxRecoveryCount` to `config` in the `yaml` file: 
+      1. Increase the maximum number of retries by adding the entry `maxRecoveryCount` to `config` in the `yaml` file:
       	 ```python
 		 config:
 		 	maxRecoveryCount: 3
@@ -106,23 +110,24 @@ General guidelines:
 					sampleType: mc
 					era: Run2_2018
 					storeFailed: True
-      	 ```   
+      	 ```
       1. If the job fails due to a file which is corrupted or unavailable it needs to be skipped in the nanoAOD production, this can be done by editing the `yaml` file as follows:
       	 ```python
       	 DYJetsToLL_M-50-madgraphMLM_ext1: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
       	 ```
       	 ->
       	 ```python
-      	 DYJetsToLL_M-50-madgraphMLM_ext1: 
+      	 DYJetsToLL_M-50-madgraphMLM_ext1:
 		 	inputDataset: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
 				ignoreFiles:
 				- /store/mc/RunIISummer20UL18MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1_ext1-v1/40000/1D821371-03FD-B148-9E83-119185898E4F.root
       	 ```
    1. Change the status.json file so the job is marked as `WaitingForRecovery` instead of `Failed`
-   ```sh
-   sed -i 's/Failed/WaitingForRecovery/g' .crabOverseer/DATASET_GROUP_NAME/status.json
-   ```
-   where `DATASET_GROUP_NAME` is the dataset nickname provided in the `yaml` file, e.g. `DYJetsToLL_M-50-madgraphMLM_ext1`
+      ```sh
+      python RunKit/crabOverseer.py --action 'run_cmd task.taskStatus.status = Status.WaitingForRecovery' --select 'task.name == TASK_NAME'
+      ```
+      where `TASK_NAME` is the dataset nickname provided in the `yaml` file, e.g. `DYJetsToLL_M-50-madgraphMLM_ext1`
+   1. Run crabOverseer.py as in step 7 adding `--update-cfg` option.
 
 
 ## Running with ParticleNET
