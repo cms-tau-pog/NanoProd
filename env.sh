@@ -93,7 +93,7 @@ action() {
   run_cmd install_cmssw slc7_amd64_gcc10 CMSSW_12_4_8 7 nano_prod
   run_cmd install_cmssw el8_amd64_gcc10 CMSSW_12_4_8 8 nano_prod
 
-  local os_version=$(cat /etc/os-release | grep VERSION_ID | sed -E 's/VERSION_ID="([0-9]+)"/\1/')
+  local os_version=$(cat /etc/os-release | grep VERSION_ID | sed -E 's/VERSION_ID="([0-9]+).*"/\1/')
   local default_cmssw_ver=CMSSW_12_4_8
   export DEFAULT_CMSSW_BASE="$ANALYSIS_PATH/soft/CentOS$os_version/$default_cmssw_ver"
 

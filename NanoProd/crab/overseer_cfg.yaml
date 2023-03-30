@@ -2,6 +2,8 @@ cmsswPython: RunKit/nanoProdWrapper.py
 params:
   customise: NanoProd/NanoProd/customize.customize_pnet
   skimCfg: skim.yaml
+  skimSetup: skim
+  skimSetupFailed: skim_failed
   maxEvents: -1
 splitting: FileBased
 unitsPerJob: 8
