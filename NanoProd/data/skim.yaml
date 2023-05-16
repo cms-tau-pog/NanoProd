@@ -133,6 +133,8 @@ skim:
     - keep ^HLT_Mu.*Ele.*$
     - keep ^HLT_Ele.*WPTight.*$
     - keep ^HLT_IsoMu.*$
+    - keep ^HLT_IsoTkMu.*$
+    - keep ^HLT_Mu50.*$
     - keep ^HLT_PFMETNoMu.*$
     - keep ^HLT_PFJet[0-9]+$
     - keep ^HLT_IsoTrack.*$
