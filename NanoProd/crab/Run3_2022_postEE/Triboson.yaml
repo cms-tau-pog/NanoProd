@@ -1,0 +1,6 @@
+config:
+  params:
+    sampleType: mc
+    era: Run3_2022_postEE
+    storeFailed: True
+
