@@ -28,33 +28,9 @@ do_install_cmssw() {
     run_cmd scramv1 project CMSSW $CMSSW_VER
     run_cmd cd $CMSSW_VER/src
     run_cmd eval `scramv1 runtime -sh`
-    run_cmd git-cms-init
-    run_cmd git clone ssh://git@gitlab.cern.ch:7999/akhukhun/roccor.git RoccoR
-    run_cmd git clone git@github.com:SVfit/ClassicSVfit.git TauAnalysis/ClassicSVfit -b fastMTT_19_02_2019
-    run_cmd git clone git@github.com:SVfit/SVfitTF.git TauAnalysis/SVfitTF
-    run_cmd git clone ssh://git@gitlab.cern.ch:7999/rgerosa/particlenetstudiesrun2.git ParticleNetStudiesRun2
-    run_cmd cd ParticleNetStudiesRun2
-    run_cmd git checkout 4521bb16157d632e8e519e2032dd42af9bdcaadd
-    run_cmd cd ..
-    #run_cmd mkdir -p $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
-    #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/ParticleNetAK4 $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
-    #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK8/data/ParticleNetAK8 $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoBTag/Combined/data/
-    #run_cmd mkdir -p $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoTauTag/data/TauES/
-    #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/TauES/* $CMSSW_BASE/external/$SCRAM_ARCH/data/RecoTauTag/data/TauES/
-    run_cmd git cms-addpkg RecoBTag/Combined
-    #run_cmd mkdir -p RecoBTag/Combined/data/
-    #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/ParticleNetAK4 RecoBTag/Combined/data
-    run_cmd mkdir -p RecoBTag/Combined/data/ParticleNetAK4/CHS/PNETUL
-    run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/ParticleNetAK4/CHS/PNETUL/ClassRegQuantileNoJECLost RecoBTag/Combined/data/ParticleNetAK4/CHS/PNETUL/
-    #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK8/data/ParticleNetAK8 RecoBTag/Combined/data
-    #run_cmd git cms-addpkg RecoTauTag
-    #run_cmd mkdir -p RecoTauTag/data/TauES/
-    #run_cmd cp -r ParticleNetStudiesRun2/TrainingNtupleMakerAK4/data/TauES/* RecoTauTag/data/TauES/
     run_cmd ln -s "$this_dir" NanoProd
     run_cmd scram b -j8
     run_cmd cd "$this_dir"
-    # run_cmd mkdir -p "$this_dir/soft/CentOS$os_version/bin"
-    # run_cmd ln -s $(which python3) "$this_dir/soft/CentOS$os_version/bin/python"
     run_cmd touch "$this_dir/soft/CentOS$os_version/$CMSSW_VER/.installed"
   fi
 }
@@ -65,13 +41,25 @@ install_cmssw() {
   local scram_arch=$1
   local cmssw_version=$2
   local os_version=$3
-  if [[ $os_version < 8 ]] ; then
-    local env_cmd=cmssw-cc$os_version
+  local target_os_version=$4
+  if [[ $os_version == $target_os_version ]]; then
+    local env_cmd=""
+    local env_cmd_args=""
   else
-    local env_cmd=cmssw-el$os_version
+    if [[ $target_os_version < 8 ]] ; then
+      local os_type="cc"
+    else
+      local os_type="el"
+    fi
+    local env_cmd="cmssw-$os_type$target_os_version"
+    if ! command -v $env_cmd &> /dev/null; then
+      echo "Unable to do a cross-platform installation for $cmssw_version SCRAM_ARCH=$scram_arch. $env_cmd is not available."
+      return 1
+    fi
+    local env_cmd_args="--command-to-run"
   fi
-  if ! [ -f "$this_dir/soft/CentOS$os_version/$CMSSW_VER/.installed" ]; then
-    run_cmd $env_cmd --command-to-run /usr/bin/env -i HOME=$HOME bash "$this_file" install_cmssw $scram_arch $cmssw_version $os_version
+  if ! [ -f "$this_dir/soft/CentOS$target_os_version/$CMSSW_VER/.installed" ]; then
+    run_cmd $env_cmd $env_cmd_args /usr/bin/env -i HOME=$HOME bash "$this_file" install_cmssw $scram_arch $cmssw_version $target_os_version
   fi
 }
 
@@ -90,12 +78,12 @@ action() {
 
   run_cmd mkdir -p "$ANALYSIS_DATA_PATH"
 
-  run_cmd install_cmssw slc7_amd64_gcc10 CMSSW_12_4_8 7 nano_prod
-  run_cmd install_cmssw el8_amd64_gcc10 CMSSW_12_4_8 8 nano_prod
-
   local os_version=$(cat /etc/os-release | grep VERSION_ID | sed -E 's/VERSION_ID="([0-9]+).*"/\1/')
-  local default_cmssw_ver=CMSSW_12_4_8
+  local default_cmssw_ver=CMSSW_13_0_7
   export DEFAULT_CMSSW_BASE="$ANALYSIS_PATH/soft/CentOS$os_version/$default_cmssw_ver"
+
+  run_cmd install_cmssw slc7_amd64_gcc11 $default_cmssw_ver $os_version 7
+  run_cmd install_cmssw el8_amd64_gcc11 $default_cmssw_ver $os_version 8
 
   if [ ! -z $ZSH_VERSION ]; then
     autoload bashcompinit

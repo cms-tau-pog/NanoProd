@@ -5,6 +5,7 @@ __init__.py
 *.root
 /.law
 /.crabOverseer*
+/tmp
 /data
 /soft
 /FrameworkJobReport.xml
