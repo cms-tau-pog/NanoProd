@@ -18,9 +18,9 @@ filesToTransfer:
   - RunKit/sh_tools.py
   - NanoProd/data/skim.yaml
 site: T2_CH_CERN
-crabOutput: /store/group/phys_tau/irandreo/Run3_22
+crabOutput: /store/group/phys_tau/irandreo/Run3_22_prod
 finalOutput: /eos/cms/store/group/phys_tau/irandreo/Run3_22
-localCrabOutput: /eos/cms/store/group/phys_tau/irandreo/Run3_22
+localCrabOutput: /eos/cms/store/group/phys_tau/irandreo/Run3_22_prod
 maxMemory: 2500
 numCores: 1
 inputDBS: global
