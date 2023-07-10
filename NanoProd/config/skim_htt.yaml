@@ -1,0 +1,136 @@
+skim:
+  input_tree: Events
+  other_trees:
+    - LuminosityBlocks
+    - Runs
+  sel_ref: selection
+  column_filters:
+    - drop Jet_btagDeepB
+    - drop Jet_btagDeepCvB
+    - drop Jet_btagDeepCvL
+    - drop Jet_btagCSVV2
+    - drop Jet_qgl
+    - drop Jet_neEmEF
+    - drop Jet_neHEF
+    - drop Jet_chFPV0EF
+    - drop Jet_chHEF
+    - drop Jet_hfsigmaEtaEta
+    - drop Jet_hfsigmaPhiPhi
+    - drop Jet_chEmEF
+    - drop Jet_muEF
+    - drop Jet_hfcentralEtaStripSize
+    - drop Jet_hfadjacentEtaStripsSize
+    - drop Jet_nMuons
+    - drop Jet_muonIdx1
+    - drop Jet_muonIdx2
+    - drop Jet_nElectrons
+    - drop Jet_electronIdx1
+    - drop Jet_electronIdx2
+    - drop Electron_miniPFRelIso_all
+    - drop Electron_miniPFRelIso_chg
+    - drop Electron_eInvMinusPInv
+    - drop Electron_deltaEtaSC
+    - drop Electron_sieie
+    - drop Electron_scEtOverPt
+    - drop Electron_jetRelIso
+    - drop Electron_r9
+    - drop Electron_jetPtRelv2
+    - drop Electron_vidNestedWPBitmap
+    - drop Electron_energyErr
+    - drop Electron_hoe
+    - drop Electron_vidNestedWPBitmapHEEP
+    - drop Electron_dr03EcalRecHitSumEt
+    - drop Electron_dr03HcalDepth1TowerSumEt
+    - drop Electron_jetNDauCharged
+    - drop Electron_dr03TkSumPt
+    - drop Electron_dr03TkSumPtHEEP
+    - drop Electron_tightCharge
+    - drop Electron_isPFcand
+    - drop Electron_lostHits
+    - drop Electron_cutBased_HEEP
+    - drop Electron_photonIdx
+    - drop Electron_fsrPhotonIdx
+    - drop Muon_miniPFRelIso_all
+    - drop Muon_miniPFRelIso_chg
+    - drop Muon_dxybs
+    - drop Muon_segmentComp
+    - drop Muon_jetRelIso
+    - drop Muon_jetPtRelv2
+    - drop Muon_nTrackerLayers
+    - drop Muon_nStations
+    - drop Muon_jetNDauCharged
+    - drop Muon_fsrPhotonIdx
+    - drop Tau_idDecayModeOldDMs
+    - drop Tau_idAntiEleDeadECal
+    - drop ^Tau_leadTk.*$
+    - drop Tau_photonsOutsideSignalCone
+    - drop Tau_puCorr
+    - drop Tau_chargedIso
+    - drop Tau_neutralIso
+    - drop ^(n|)boostedTau(_.*|)$
+    # - drop ^(n|)SV(_.*|)$
+    - drop ^(n|)OtherPV(_.*|)$
+    - drop ^(n|)Photon(_.*|)$
+    - drop ^(n|)LowPtElectron(_.*|)$
+    - drop ^(n|)SoftActivityJet(.*|)$
+    - drop ^(n|)IsoTrack(_.*|)$
+    - drop ^(n|)FsrPhoton(_.*|)$
+    - drop ^(n|)GenDressedLepton(_.*|)$
+    - drop ^(n|)GenIsolatedPhoton(_.*|)$
+    - drop ^(n|)GenProton(_.*|)$
+    - drop ^(n|)Proton(_.*|)$
+    - drop ^(n|)PPSLocalTrack(_.*|)$
+    - drop ^L1_.*$
+    - drop ^HLT_.*$
+    - keep ^HLT_.*Tau.*$
+    - keep ^HLT_PFMET.*$
+    - keep ^HLT_PFHT.*$
+    - keep ^HLT_(|Iso|Old)(|Tk)Mu[1-9][0-9]+.*$
+    - keep ^HLT_Ele[1-9][0-9]+.*$
+    - drop ^HLT_Ele.*CaloId.*$
+    - keep ^HLT_Ele[1-9][0-9]+.*CaloId.*PFJet.*$
+    - keep ^HLT_Photon[0-9]+_TwoProngs[0-9]+$
+    - keep ^HLT_Quad(|PF)Jet.*$
+    - keep ^HLT_MonoCentralPFJet.*$
+    - keep ^HLT_AK8PFJet[0-9]+.*BoostedDoubleB.*$
+    - keep ^HLT_Diphoton.*NoPixelVeto.*$
+    - drop ^HLT_Ele.*Ele.*$
+    - drop ^HLT_.*Tau3[mM]u.*$
+    - drop ^HLT_Mu.*(Ele|Mu|Jpsi|Upsilon|NoFilters|IP).*
+
+skim_failed:
+  input_tree: Events
+  output_tree: EventsNotSelected
+  sel_ref: selection
+  invert_sel: true
+  column_filters:
+    - drop ^.*$
+    - keep ^LHE_.*$
+    - keep genWeight
+    - keep ^Pileup_(nPU|nTrueInt)$
+
+selection: "
+  auto ele_base_sel = Electron_pt > 8 && abs(Electron_eta) < 2.5 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045;
+  auto ele_mvaIso_sel = Electron_mvaIso_WP90;
+  auto ele_mvaNoIso_sel = Electron_mvaNoIso_WP90;
+  auto ele_pfIso_sel = Electron_pfRelIso03_all < 0.5;
+  auto ele_sel = ele_base_sel && (ele_mvaIso_sel || (ele_mvaNoIso_sel && ele_pfIso_sel));
+
+  auto muon_base_sel = Muon_pt > 8 && abs(Muon_eta) < 2.4 && abs(Muon_dz) < 0.2 && abs(Muon_dxy) < 0.045;
+  auto muon_id_sel = Muon_tightId || Muon_mediumId || Muon_highPtId;
+  auto muon_iso_sel = Muon_pfRelIso04_all < 0.5 || Muon_pfRelIso03_all < 0.5 || Muon_tkRelIso < 0.5;
+  auto muon_sel = muon_base_sel && muon_id_sel && muon_iso_sel;
+
+  auto tau_base_sel = Tau_pt > 18 && abs(Tau_eta) < 2.5 && abs(Tau_dz) < 0.2;
+  auto tau_dm_sel = Tau_decayMode != 5 && Tau_decayMode != 6;
+  auto tau_deepTau_v2p1_sel = Tau_idDeepTau2017v2p1VSmu > 0 && Tau_idDeepTau2017v2p1VSjet > 0 && Tau_idDeepTau2017v2p1VSe > 0;
+  auto tau_deepTau_v2p5_sel = Tau_idDeepTau2018v2p5VSmu > 0 && Tau_idDeepTau2018v2p5VSjet > 0 && Tau_idDeepTau2018v2p5VSe > 0;
+  auto tau_pnet_sel = Tau_rawPNetVSjet > 0.05;
+  auto tau_sel = tau_base_sel && ((tau_dm_sel && (tau_deepTau_v2p1_sel || tau_deepTau_v2p5_sel)) || tau_pnet_sel);
+
+  int n_electrons = Electron_pt[ele_sel].size();
+  int n_muons = Muon_pt[muon_sel].size();
+  int n_taus = Tau_pt[tau_sel].size();
+
+  return n_electrons + n_muons + n_taus >= 2;
+  "
