@@ -28,8 +28,11 @@ def customizeTaus(process):
   deepTauCuts = []
   for deep_tau_ver in [ "2017v2p1", "2018v2p5" ]:
     cuts = []
-    for vs, wp in [ ("e", "VVVLoose"), ("mu", "VLoose"), ("jet", "VVVLoose") ]:
-      cuts.append(f"tauID('by{wp}DeepTau{deep_tau_ver}VS{vs}')")
+    for vs, wp, score in [ ("e", "VVVLoose", "0.099"), ("mu", "VLoose","0.2949"), ("jet", "VVVLoose","0.4083") ]:
+      if deep_tau_ver == "2018v2p5":
+        cuts.append(f"tauID('byDeepTau{deep_tau_ver}VS{vs}raw') > {score}")
+      else:
+        cuts.append(f"tauID('by{wp}DeepTau{deep_tau_ver}VS{vs}')")
     cut = "(" + " && ".join(cuts) + ")"
     deepTauCuts.append(cut)
   deepTauCut = "(tauID('decayModeFindingNewDMs') > 0.5 && (" + " || ".join(deepTauCuts) + "))"
