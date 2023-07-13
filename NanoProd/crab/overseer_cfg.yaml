@@ -1,14 +1,13 @@
 cmsswPython: RunKit/nanoProdWrapper.py
 params:
-  customise: NanoProd/NanoProd/customize.customize_pnet
-  skimCfg: skim.yaml
+  customise: NanoProd/NanoProd/customize.customize
+  skimCfg: skim_htt.yaml
   skimSetup: skim
   skimSetupFailed: skim_failed
   maxEvents: -1
 splitting: FileBased
 unitsPerJob: 8
 scriptExe: RunKit/crabJob.sh
-crabType: dev
 outputFiles:
   - nano.root
 filesToTransfer:
@@ -18,6 +17,7 @@ filesToTransfer:
   - RunKit/skim_tree.py
   - RunKit/sh_tools.py
   - NanoProd/config/skim_htt.yaml
+  - NanoProd/python/customize.py
 site: T2_CH_CERN
 crabOutput: /store/group/phys_tau/irandreo/Run3_22_prod
 finalOutput: /eos/cms/store/group/phys_tau/irandreo/Run3_22
