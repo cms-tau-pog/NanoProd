@@ -4,17 +4,17 @@ config:
     era: Run3_2022_postEE
   #lumiMask: /afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions18/13TeV/Legacy_2018/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
 
-EGamma_Run2022E: /EGamma/Run2022E-PromptReco-v1/MINIAOD
-EGamma_Run2022E_rereco: /EGamma/Run2022E-10Dec2022-v3/MINIAOD
+#EGamma_Run2022E: /EGamma/Run2022E-PromptReco-v1/MINIAOD
+#EGamma_Run2022E_rereco: /EGamma/Run2022E-10Dec2022-v3/MINIAOD
 EGamma_Run2022F: /EGamma/Run2022F-PromptReco-v1/MINIAOD
 EGamma_Run2022G: /EGamma/Run2022G-PromptReco-v1/MINIAOD
 
-Tau_Run2022E: /Tau/Run2022E-PromptReco-v1/MINIAOD
-Tau_Run2022E_rereco: /Tau/Run2022E-10Dec2022-v2/MINIAOD
+#Tau_Run2022E: /Tau/Run2022E-PromptReco-v1/MINIAOD
+#Tau_Run2022E_rereco: /Tau/Run2022E-10Dec2022-v2/MINIAOD
 Tau_Run2022F: /Tau/Run2022F-PromptReco-v1/MINIAOD
 Tau_Run2022G: /Tau/Run2022G-PromptReco-v1/MINIAOD
 
-MuonEG_Run2022E: /MuonEG/Run2022E-PromptReco-v1/MINIAOD
-MuonEG_Run2022E_rereco: /MuonEG/Run2022E-10Dec2022-v2/MINIAOD
+#MuonEG_Run2022E: /MuonEG/Run2022E-PromptReco-v1/MINIAOD
+#MuonEG_Run2022E_rereco: /MuonEG/Run2022E-10Dec2022-v2/MINIAOD
 MuonEG_Run2022F: /MuonEG/Run2022F-PromptReco-v1/MINIAOD
 MuonEG_Run2022G: /MuonEG/Run2022G-PromptReco-v1/MINIAOD
