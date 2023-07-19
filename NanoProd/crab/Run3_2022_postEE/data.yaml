@@ -10,5 +10,11 @@ EGamma_Run2022G: /EGamma/Run2022G-PromptReco-v1/MINIAOD
 Tau_Run2022F: /Tau/Run2022F-PromptReco-v1/MINIAOD
 Tau_Run2022G: /Tau/Run2022G-PromptReco-v1/MINIAOD
 
+Muon_Run2022F: /Muon/Run2022F-PromptReco-v1/MINIAOD
+Muon_Run2022G: /Muon/Run2022G-PromptReco-v1/MINIAOD
+
 MuonEG_Run2022F: /MuonEG/Run2022F-PromptReco-v1/MINIAOD
 MuonEG_Run2022G: /MuonEG/Run2022G-PromptReco-v1/MINIAOD
+
+JetMet_Run2022F: /JetMET/Run2022F-PromptReco-v1/MINIAOD
+JetMet_Run2022G: /JetMET/Run2022G-PromptReco-v1/MINIAOD
