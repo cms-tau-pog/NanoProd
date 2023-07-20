@@ -1,5 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 from PhysicsTools.NanoAOD.common_cff import Var
+from RecoTauTag.RecoTau.tauIdWPsDefs import WORKING_POINTS_v2p5
 
 def customizeGenParticles(process):
   def pdgOR(pdgs):
@@ -28,7 +29,10 @@ def customizeTaus(process):
   deepTauCuts = []
   for deep_tau_ver in [ "2017v2p1", "2018v2p5" ]:
     cuts = []
-    for vs, wp, score in [ ("e", "VVVLoose", "0.099"), ("mu", "VLoose","0.2949"), ("jet", "VVVLoose","0.4083") ]:
+    e_VVVLoose = WORKING_POINTS_v2p5["e"]["VVVLoose"]
+    mu_VLoose = WORKING_POINTS_v2p5["mu"]["VLoose"]
+    jet_VVVLoose = WORKING_POINTS_v2p5["jet"]["VVVLoose"]
+    for vs, wp, score in [ ("e", "VVVLoose", e_VVVLoose), ("mu", "VLoose", mu_VLoose), ("jet", "VVVLoose", jet_VVVLoose) ]:
       if deep_tau_ver == "2018v2p5":
         cuts.append(f"tauID('byDeepTau{deep_tau_ver}VS{vs}raw') > {score}")
       else:
