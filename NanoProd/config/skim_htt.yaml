@@ -131,6 +131,7 @@ selection: "
   int n_electrons = Electron_pt[ele_sel].size();
   int n_muons = Muon_pt[muon_sel].size();
   int n_taus = Tau_pt[tau_sel].size();
+  int n_met = MET_pt > 80 || DeepMETResolutionTune_pt > 80 || DeepMETResponseTune_pt > 80 || PuppiMET_pt > 80;
 
-  return n_electrons + n_muons + n_taus >= 2;
+  return n_electrons + n_muons + n_taus + n_met >= 2;
   "
