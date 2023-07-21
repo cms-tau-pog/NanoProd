@@ -35,10 +35,15 @@ Production should be run on the server that have the crab stageout area mounted 
 1. Test that the code works locally (take one of the miniAOD files as an input). E.g.
    ```sh
    mkdir -p tmp && cd tmp
-   cmsEnv python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize skimCfg=$ANALYSIS_PATH/NanoProd/data/skim.yaml maxEvents=100 sampleType=mc storeFailed=True era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root writePSet=True skimSetup=skim skimSetupFailed=skim_failed createTar=False
+   cmsEnv python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize skimCfg=$ANALYSIS_PATH/NanoProd/config/skim.yaml maxEvents=100 sampleType=mc storeFailed=True era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root writePSet=True skimSetup=skim skimSetupFailed=skim_failed createTar=False
    cmsEnv $ANALYSIS_PATH/RunKit/crabJob.sh
    ```
-   Check that output file `nano_0.root` is created correctly. After that, you can remove `tmp` directory:
+   Check that output file `nano_0.root` is created correctly.
+   You can, for example, create a documentation page based on the file you created:
+   ```sh
+   cmsEnv python3 $ANALYSIS_PATH/RunKit/inspectNanoFile.py nano_0.root -d content.html -s size.html
+   ```
+   After that, you can remove `tmp` directory:
    ```sh
    cd $ANALYSIS_PATH
    rm -r tmp
