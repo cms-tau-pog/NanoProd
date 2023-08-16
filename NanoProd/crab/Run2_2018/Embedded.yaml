@@ -1,0 +1,28 @@
+config:
+  params:
+    sampleType: data
+    era: Run2_2018
+    storeFailed: False
+    customise: NanoProd/NanoProd/customize.customizeEmbedding
+    PFNSprefix: root://cmsxrootd-kit.gridka.de/
+  inputDBS: phys03
+
+Embed_MuTau_Run2018A: /EmbeddingRun2018A/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2018B: /EmbeddingRun2018B/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2018C: /EmbeddingRun2018C/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2018D: /EmbeddingRun2018D/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+
+Embed_ElTau_Run2018A: /EmbeddingRun2018A/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2018B: /EmbeddingRun2018B/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2018C: /EmbeddingRun2018C/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2018D: /EmbeddingRun2018D/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+
+Embed_TauTau_Run2018A: /EmbeddingRun2018A/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2018B: /EmbeddingRun2018B/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2018C: /EmbeddingRun2018C/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2018D: /EmbeddingRun2018D/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+
+Embed_ElMu_Run2018A: /EmbeddingRun2018A/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2018B: /EmbeddingRun2018B/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2018C: /EmbeddingRun2018C/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2018D: /EmbeddingRun2018D/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
