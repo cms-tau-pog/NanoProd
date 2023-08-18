@@ -1,5 +1,11 @@
 # NanoProd
 
+`NanoProd`: produce nanoAOD from miniAOD using CRAB and local grids.
+`NanoProd` is based on the following tools:
+- [law](https://github.com/riga/law) to submit and monitor jobs on a local grid
+- [RunKit](https://github.com/kandrosov/RunKit) a toolkit to simplify root-tuple production and job submission within the CMS infrastructure
+  - additional details on how to run and configure `RunKit/crabOverseer.py` can be found on [this page](https://kandrosov.github.io/RunKit/crabOverseer/)
+
 ## How to install
 ```sh
 git clone --recursive https://github.com/cms-tau-pog/NanoProd.git
