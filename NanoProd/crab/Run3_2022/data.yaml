@@ -1,0 +1,20 @@
+config:
+  params:
+    sampleType: data
+    era: Run3_2022
+  #lumiMask: /eos/user/c/cmsdqm/www/CAF/certification/Collisions22/Cert_Collisions2022_355100_362760_Golden.json
+
+EGamma_Run2022C: /EGamma/Run2022C-27Jun2023-v1/MINIAOD
+EGamma_Run2022D: /EGamma/Run2022D-22Sep2023-v1/MINIAOD
+
+Tau_Run2022C: /Tau/Run2022C-27Jun2023-v2/MINIAOD
+Tau_Run2022D: /Tau/Run2022D-27Jun2023-v2/MINIAOD
+
+Muon_Run2022C: /Muon/Run2022C-27Jun2023-v1/MINIAOD
+Muon_Run2022D: /Muon/Run2022D-22Sep2023-v1/MINIAOD
+
+MuonEG_Run2022C: /MuonEG/Run2022C-22Sep2023-v1/MINIAOD
+MuonEG_Run2022D: /MuonEG/Run2022D-22Sep2023-v1/MINIAOD
+
+JetMet_Run2022C: /JetMET/Run2022C-22Sep2023-v1/MINIAOD
+JetMet_Run2022D: /JetMET/Run2022D-27Jun2023-v2/MINIAOD
