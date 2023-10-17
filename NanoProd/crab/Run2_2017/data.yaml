@@ -11,11 +11,11 @@ SingleElectron_Run2017D: /SingleElectron/Run2017D-UL2017_MiniAODv2-v1/MINIAOD
 SingleElectron_Run2017E: /SingleElectron/Run2017E-UL2017_MiniAODv2-v1/MINIAOD
 SingleElectron_Run2017F: /SingleElectron/Run2017F-UL2017_MiniAODv2-v1/MINIAOD
 
-SingleMuon_Run2017B: /SingleMuon/Run2017B-UL2017_MiniAODv2-v1/MINIAOD
-SingleMuon_Run2017C: /SingleMuon/Run2017C-UL2017_MiniAODv2-v1/MINIAOD
-SingleMuon_Run2017D: /SingleMuon/Run2017D-UL2017_MiniAODv2_GT36-v1/MINIAOD
-SingleMuon_Run2017E: /SingleMuon/Run2017E-UL2017_MiniAODv2-v1/MINIAOD
-SingleMuon_Run2017F: /SingleMuon/Run2017F-UL2017_MiniAODv2_GT36-v1/MINIAOD
+SingleMuon_Run2017B: /SingleMuon/Run2017B-UL2017_MiniAODv2_GT36-v2/MINIAOD
+SingleMuon_Run2017C: /SingleMuon/Run2017C-UL2017_MiniAODv2_GT36-v2/MINIAOD
+SingleMuon_Run2017D: /SingleMuon/Run2017D-UL2017_MiniAODv2_GT36-v2/MINIAOD
+SingleMuon_Run2017E: /SingleMuon/Run2017E-UL2017_MiniAODv2_GT36-v2/MINIAOD
+SingleMuon_Run2017F: /SingleMuon/Run2017F-UL2017_MiniAODv2_GT36-v2/MINIAOD
 
 Tau_Run2017B: /Tau/Run2017B-UL2017_MiniAODv2-v1/MINIAOD
 Tau_Run2017C: /Tau/Run2017C-UL2017_MiniAODv2-v1/MINIAOD
