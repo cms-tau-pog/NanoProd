@@ -19,6 +19,7 @@ filesToTransfer:
   - NanoProd/config/skim_htt.yaml
   - NanoProd/python/customize.py
 site: T2_CH_CERN
+tmp_area: TMPDIR
 crabOutput: /store/group/phys_tau/irandreo/Run3_22_prod
 finalOutput: /eos/cms/store/group/phys_tau/irandreo/Run3_22
 localCrabOutput: /eos/cms/store/group/phys_tau/irandreo/Run3_22_prod
