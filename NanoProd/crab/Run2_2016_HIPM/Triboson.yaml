@@ -1,7 +1,7 @@
 config:
   params:
     sampleType: mc
-    era: Run3_2016_HIPM
+    era: Run2_2016_HIPM
     storeFailed: True
 
 WWW_4F: /WWW_4F_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11-v1/MINIAODSIM
