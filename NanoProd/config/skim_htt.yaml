@@ -110,21 +110,21 @@ skim_failed:
     - keep ^Pileup_(nPU|nTrueInt)$
 
 selection: "
-  auto ele_base_sel = Electron_pt > 8 && abs(Electron_eta) < 2.5 && abs(Electron_dz) < 0.2 && abs(Electron_dxy) < 0.045;
+  auto ele_base_sel = Electron_pt > 8 && abs(Electron_eta) < 2.5;
   auto ele_mvaIso_sel = Electron_mvaIso_WP90;
   auto ele_mvaNoIso_sel = Electron_mvaNoIso_WP90;
   auto ele_pfIso_sel = Electron_pfRelIso03_all < 0.5;
   auto ele_sel = ele_base_sel && (ele_mvaIso_sel || (ele_mvaNoIso_sel && ele_pfIso_sel));
 
-  auto muon_base_sel = Muon_pt > 8 && abs(Muon_eta) < 2.4 && abs(Muon_dz) < 0.2 && abs(Muon_dxy) < 0.045;
+  auto muon_base_sel = Muon_pt > 8 && abs(Muon_eta) < 2.4;
   auto muon_id_sel = Muon_tightId || Muon_mediumId || Muon_highPtId;
   auto muon_iso_sel = Muon_pfRelIso04_all < 0.5 || Muon_pfRelIso03_all < 0.5 || Muon_tkRelIso < 0.5;
   auto muon_sel = muon_base_sel && muon_id_sel && muon_iso_sel;
 
   auto tau_base_sel = Tau_pt > 18 && abs(Tau_eta) < 2.5 && abs(Tau_dz) < 0.2;
   auto tau_dm_sel = Tau_decayMode != 5 && Tau_decayMode != 6;
-  auto tau_deepTau_v2p1_sel = Tau_idDeepTau2017v2p1VSmu > 0 && Tau_idDeepTau2017v2p1VSjet > 0 && Tau_idDeepTau2017v2p1VSe > 0;
-  auto tau_deepTau_v2p5_sel = Tau_idDeepTau2018v2p5VSmu > 0 && Tau_idDeepTau2018v2p5VSjet > 0 && Tau_idDeepTau2018v2p5VSe > 0;
+  auto tau_deepTau_v2p1_sel = Tau_rawDeepTau2018v2p1VSmu > 0.05 && Tau_idDeepTau2017v2p1VSjet > 0 && Tau_idDeepTau2017v2p1VSe > 0;
+  auto tau_deepTau_v2p5_sel = Tau_rawDeepTau2018v2p5VSmu > 0.05 && Tau_idDeepTau2018v2p5VSjet > 0 && Tau_idDeepTau2018v2p5VSe > 0;
   auto tau_pnet_sel = Tau_rawPNetVSjet > 0.05;
   auto tau_sel = tau_base_sel && ((tau_dm_sel && (tau_deepTau_v2p1_sel || tau_deepTau_v2p5_sel)) || tau_pnet_sel);
 
