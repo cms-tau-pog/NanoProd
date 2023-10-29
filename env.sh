@@ -101,7 +101,7 @@ action() {
     export CMSSW_SINGULARITY=""
     local env_cmd=""
   else
-    export CMSSW_SINGULARITY="cmssw-$target_os"
+    export CMSSW_SINGULARITY="/cvmfs/cms.cern.ch/common/cmssw-$target_os"
     local env_cmd="$CMSSW_SINGULARITY --command-to-run"
   fi
 

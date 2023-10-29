@@ -1,5 +1,5 @@
 import FWCore.ParameterSet.Config as cms
-from PhysicsTools.NanoAOD.common_cff import Var
+from PhysicsTools.NanoAOD.common_cff import Var, P3Vars
 from RecoTauTag.RecoTau.tauIdWPsDefs import WORKING_POINTS_v2p5
 
 def customizeGenParticles(process):
@@ -15,8 +15,9 @@ def customizeGenParticles(process):
     '+keep statusFlags().isFirstCopy() && ' + leptons,
     'keep+ statusFlags().isLastCopy() && ' + important_particles,
     '+keep statusFlags().isFirstCopy() && ' + important_particles,
-    '+keep pdgId == 22 && status == 1 && (pt > 10 || isPromptFinalState())',
-    'keep statusFlags().fromHardProcess() && statusFlags().isLastCopy()',
+    'keep abs(pdgId) == 12 || abs(pdgId) == 14 || abs(pdgId) == 16', # keep neutrinos
+    '+keep pdgId == 22 && status == 1 && (pt > 10 || isPromptFinalState())', # keep photons
+    'keep statusFlags().fromHardProcess() && statusFlags().isLastCopy()', # keep hard process particles
     "drop abs(pdgId) == 2212 && abs(pz) > 1000", #drop LHC protons accidentally added by previous keeps
   ]
 
@@ -31,9 +32,11 @@ def customizeTaus(process):
   deepTauCuts = []
   for deep_tau_ver in [ "2017v2p1", "2018v2p5" ]:
     cuts = []
+    e_VVVLoose = WORKING_POINTS_v2p5["e"]["VVVLoose"]
+    mu_VVLoose = 0.05
     jet_VVVLoose = WORKING_POINTS_v2p5["jet"]["VVVLoose"]
-    for vs, wp, score in [ ("jet", "VVVLoose", jet_VVVLoose) ]:
-      if deep_tau_ver == "2018v2p5":
+    for vs, wp, score in [ ("e", "VVVLoose", e_VVVLoose), ("mu", None, mu_VVLoose), ("jet", "VVVLoose", jet_VVVLoose) ]:
+      if deep_tau_ver == "2018v2p5" or wp is None:
         cuts.append(f"tauID('byDeepTau{deep_tau_ver}VS{vs}raw') > {score}")
       else:
         cuts.append(f"tauID('by{wp}DeepTau{deep_tau_ver}VS{vs}')")
@@ -43,6 +46,28 @@ def customizeTaus(process):
   pnetCut = "( isTauIDAvailable('byPNetVSjetraw') && tauID('byPNetVSjetraw') > 0.05 )"
 
   process.finalTaus.cut = f"pt > 18 && ( {deepTauCut} || {pnetCut} )"
+
+  process.tauSignalCands = cms.EDProducer("PATTauSignalCandidatesProducer",
+    src = process.tauTable.src,
+    storeLostTracks = cms.bool(True)
+  )
+
+  from PhysicsTools.NanoAOD.simpleCandidateFlatTableProducer_cfi import simpleCandidateFlatTableProducer
+  process.tauSignalCandsTable = simpleCandidateFlatTableProducer.clone(
+    src = cms.InputTag("tauSignalCands"),
+    cut = cms.string("pt > 0."),
+    name = cms.string("TauProd"),
+    doc = cms.string("tau signal candidates"),
+    variables = cms.PSet(
+        P3Vars,
+        pdgId = Var("pdgId", int, doc="PDG code assigned by the event reconstruction (not by MC truth)"),
+        tauIdx = Var("status", "int16", doc="index of the mother tau"),
+        #trkPt = Var("?daughter(0).hasTrackDetails()?daughter(0).bestTrack().pt():0", float, precision=-1, doc="pt of associated track"), #MB: better to store ratio over cand pt?
+    )
+  )
+
+  process.tauSignalCandsTask = cms.Task(process.tauSignalCands, process.tauSignalCandsTable)
+  process.tauTablesTask.add(process.tauSignalCandsTask)
   return process
 
 def customize(process):
