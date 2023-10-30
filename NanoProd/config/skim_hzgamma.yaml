@@ -102,8 +102,11 @@ selection: "
   auto muon_iso_sel = Muon_pfRelIso04_all < 0.5 || Muon_pfRelIso03_all < 0.5 || Muon_tkRelIso < 0.5;
   auto muon_sel = muon_base_sel && muon_id_sel && muon_iso_sel;
 
+  auto photon_sel = Photon_pt > 10 && (Photon_isScEtaEB || Photon_isScEtaEE) && Photon_electronVeto;
+
   int n_electrons = Electron_pt[ele_sel].size();
   int n_muons = Muon_pt[muon_sel].size();
+  int n_photons = Photon_pt[photon_sel].size();
 
-  return n_electrons + n_muons >= 2;
+  return (n_electrons + n_muons >= 2) && (n_photons >= 1);
   "
