@@ -20,3 +20,6 @@ WJetsToLNu_HT-800To1200: /WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pyth
 
 WToTauNu_M-200: /WToTauNu_M-200_TuneCP5_13TeV-pythia8-tauola/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM
 WToMuNu_M-200: /WToMuNu_M-200_TuneCP5_13TeV-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM
+
+EWKWPlus2Jets_WToLNu_M-50: /EWKWPlus2Jets_WToLNu_M-50_TuneCP5_withDipoleRecoil_13TeV-madgraph-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v2/MINIAODSIM
+EWKWMinus2Jets_WToLNu_M-50: /EWKWMinus2Jets_WToLNu_M-50_TuneCP5_withDipoleRecoil_13TeV-madgraph-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v2/MINIAODSIM
