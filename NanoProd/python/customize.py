@@ -15,6 +15,8 @@ def customizeGenParticles(process):
     '+keep statusFlags().isFirstCopy() && ' + leptons,
     'keep+ statusFlags().isLastCopy() && ' + important_particles,
     '+keep statusFlags().isFirstCopy() && ' + important_particles,
+    '+keep pdgId == 22 && status == 1 && (pt > 10 || isPromptFinalState())',
+    'keep statusFlags().fromHardProcess() && statusFlags().isLastCopy()',
     "drop abs(pdgId) == 2212 && abs(pz) > 1000", #drop LHC protons accidentally added by previous keeps
   ]
 
