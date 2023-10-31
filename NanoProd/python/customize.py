@@ -7,7 +7,7 @@ def customizeGenParticles(process):
     abs_pdgs = [ f'abs(pdgId) == {pdg}' for pdg in pdgs ]
     return '( ' + ' || '.join(abs_pdgs) + ' )'
 
-  leptons = pdgOR([ 11, 13, 15 ])
+  leptons = pdgOR([ 11, 12, 13, 14, 15, 16 ])
   important_particles = pdgOR([ 6, 23, 24, 25, 35, 39, 9990012, 9900012, 1000015 ])
   process.finalGenParticles.select = [
     'drop *',
@@ -15,10 +15,6 @@ def customizeGenParticles(process):
     '+keep statusFlags().isFirstCopy() && ' + leptons,
     'keep+ statusFlags().isLastCopy() && ' + important_particles,
     '+keep statusFlags().isFirstCopy() && ' + important_particles,
-    'keep abs(pdgId) == 12 || abs(pdgId) == 14 || abs(pdgId) == 16', # keep neutrinos
-    '+keep pdgId == 22 && status == 1 && (pt > 10 || isPromptFinalState())', # keep photons
-    'keep statusFlags().fromHardProcess() && statusFlags().isLastCopy()', # keep hard process particles
-    "drop abs(pdgId) == 2212 && abs(pz) > 1000", #drop LHC protons accidentally added by previous keeps
   ]
 
   for coord in [ 'x', 'y', 'z']:
@@ -47,6 +43,19 @@ def customizeTaus(process):
 
   process.finalTaus.cut = f"pt > 18 && ( {deepTauCut} || {pnetCut} )"
 
+  process.tauTable.variables.dxyErr = Var("dxy_error", float, doc="dxy error", precision=10)
+  process.tauTable.variables.ip3d = Var("ip3d", float, doc="3D impact parameter", precision=10)
+  process.tauTable.variables.ip3dErr = Var("ip3d_error", float, doc="3D impact parameter error", precision=10)
+  process.tauTable.variables.hasSV = Var("hasSecondaryVertex", bool, doc="has secondary vertex")
+  process.tauTable.variables.flightLengthX = Var("flightLength().x()", float, doc="flight length x", precision=10)
+  process.tauTable.variables.flightLengthY = Var("flightLength().y()", float, doc="flight length y", precision=10)
+  process.tauTable.variables.flightLengthZ = Var("flightLength().z()", float, doc="flight length z", precision=10)
+  process.tauTable.variables.flightLengthSig = Var("flightLengthSig()", float, doc="flight length significance", precision=10)
+
+  process.tauTable.variables.dzErr = Var("?leadChargedHadrCand.isNonnull() && leadChargedHadrCand.hasTrackDetails()?leadChargedHadrCand.dzError(): 0/0.", float, doc="dz error", precision=10)
+  process.tauTable.variables.leadTkNormChi2 = Var("leadingTrackNormChi2()", float, doc="normalized chi2 of the leading track", precision=10)
+  process.tauTable.variables.leadChCandEtaAtEcalEntrance = Var("etaAtEcalEntranceLeadChargedCand", float, doc="eta of the leading charged candidate at the entrance of the ECAL", precision=10)
+
   process.tauSignalCands = cms.EDProducer("PATTauSignalCandidatesProducer",
     src = process.tauTable.src,
     storeLostTracks = cms.bool(True)
@@ -68,6 +77,14 @@ def customizeTaus(process):
 
   process.tauSignalCandsTask = cms.Task(process.tauSignalCands, process.tauSignalCandsTable)
   process.tauTablesTask.add(process.tauSignalCandsTask)
+
+  process.tauExTable = cms.EDProducer("TauExTableProducer",
+    taus = process.tauTable.src,
+    precision = cms.int32(10),
+  )
+
+  process.tauExTableTask = cms.Task(process.tauExTable)
+  process.tauTablesTask.add(process.tauExTableTask)
   return process
 
 def customize(process):

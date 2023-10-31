@@ -62,7 +62,6 @@ skim:
     - drop Muon_fsrPhotonIdx
     - drop Tau_idDecayModeOldDMs
     - drop Tau_idAntiEleDeadECal
-    - drop ^Tau_leadTk.*$
     - drop Tau_photonsOutsideSignalCone
     - drop Tau_puCorr
     - drop Tau_chargedIso
@@ -98,9 +97,13 @@ skim_failed:
   invert_sel: true
   column_filters:
     - drop ^.*$
-    - keep ^LHE_.*$
     - keep genWeight
     - keep ^Pileup_(nPU|nTrueInt)$
+    - keep ^(n|)LHE.*$
+    - keep ^(n|)GenPart(_.*|)$
+    - drop ^GenPart_v[xyz]$
+    - keep ^HTXS_.*$
+
 
 selection: "
   auto ele_base_sel = Electron_pt > 8 && abs(Electron_eta) < 2.5;
@@ -114,7 +117,7 @@ selection: "
   auto muon_iso_sel = Muon_pfRelIso04_all < 0.5 || Muon_pfRelIso03_all < 0.5 || Muon_tkRelIso < 0.5;
   auto muon_sel = muon_base_sel && muon_id_sel && muon_iso_sel;
 
-  auto tau_base_sel = Tau_pt > 18 && abs(Tau_eta) < 2.5 && abs(Tau_dz) < 0.2;
+  auto tau_base_sel = Tau_pt > 18 && abs(Tau_eta) < 2.5;
   auto tau_deepTau_v2p1_sel = Tau_rawDeepTau2017v2p1VSmu > 0.05 && Tau_idDeepTau2017v2p1VSjet > 0 && Tau_idDeepTau2017v2p1VSe > 0;
   auto tau_deepTau_v2p5_sel = Tau_rawDeepTau2018v2p5VSmu > 0.05 && Tau_idDeepTau2018v2p5VSjet > 0 && Tau_idDeepTau2018v2p5VSe > 0;
   auto tau_pnet_sel = Tau_rawPNetVSjet > 0.05;

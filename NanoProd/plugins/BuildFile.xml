@@ -1,2 +1,5 @@
-<use name="FWCore/Framework"/>
+<use name="DataFormats/NanoAOD"/>
 <use name="PhysicsTools/PatAlgos"/>
+<use name="RecoVertex/KalmanVertexFit"/>
+<use name="RecoVertex/VertexPrimitives"/>
+<use name="TrackingTools/TransientTrack"/>
