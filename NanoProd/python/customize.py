@@ -87,8 +87,21 @@ def customizeTaus(process):
   process.tauTablesTask.add(process.tauExTableTask)
   return process
 
+def customizePV(process):
+  process.vertexBSTable = cms.EDProducer("VertexBSTableProducer",
+    pfCands = cms.InputTag("packedPFCandidates"),
+    lostTracks = cms.InputTag("lostTracks"),
+    beamSpot = cms.InputTag("offlineBeamSpot"),
+    precision = cms.int32(10),
+  )
+
+  process.vertexBSTableTask = cms.Task(process.vertexBSTable)
+  process.vertexTablesTask.add(process.vertexBSTableTask)
+  return process
+
 def customize(process):
   process.MessageLogger.cerr.FwkReport.reportEvery = 100
   process = customizeGenParticles(process)
   process = customizeTaus(process)
+  process = customizePV(process)
   return process

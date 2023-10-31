@@ -120,13 +120,13 @@ selection: "
   auto tau_base_sel = Tau_pt > 18 && abs(Tau_eta) < 2.5;
   auto tau_deepTau_v2p1_sel = Tau_rawDeepTau2017v2p1VSmu > 0.05 && Tau_idDeepTau2017v2p1VSjet > 0 && Tau_idDeepTau2017v2p1VSe > 0;
   auto tau_deepTau_v2p5_sel = Tau_rawDeepTau2018v2p5VSmu > 0.05 && Tau_idDeepTau2018v2p5VSjet > 0 && Tau_idDeepTau2018v2p5VSe > 0;
-  auto tau_pnet_sel = Tau_rawPNetVSjet > 0.05;
+  auto tau_pnet_sel = Tau_rawPNetVSjet > 0.05 && Tau_rawPNetVSe > 0.05 && Tau_rawPNetVSmu > 0.05;
   auto tau_sel = tau_base_sel && (tau_deepTau_v2p1_sel || tau_deepTau_v2p5_sel || tau_pnet_sel);
 
   int n_electrons = Electron_pt[ele_sel].size();
   int n_muons = Muon_pt[muon_sel].size();
   int n_taus = Tau_pt[tau_sel].size();
-  int n_met = MET_pt > 80 || DeepMETResolutionTune_pt > 80 || DeepMETResponseTune_pt > 80 || PuppiMET_pt > 80;
+  int n_met = std::max({MET_pt, DeepMETResolutionTune_pt, DeepMETResponseTune_pt, PuppiMET_pt}) > 100;
 
   return n_electrons + n_muons + n_taus + n_met >= 2;
   "

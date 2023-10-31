@@ -15,23 +15,7 @@ SV refitting code is based on https://github.com/cms-sw/cmssw/blob/master/RecoTa
 #include "RecoVertex/VertexPrimitives/interface/TransientVertex.h"
 #include "TrackingTools/TransientTrack/interface/TransientTrackBuilder.h"
 #include "TrackingTools/Records/interface/TransientTrackRecord.h"
-
-
-namespace {
-  const reco::Track* getTrack(const reco::Candidate& cand) {
-    const reco::PFCandidate* pfCand = dynamic_cast<const reco::PFCandidate*>(&cand);
-    if (pfCand != nullptr) {
-      if (pfCand->trackRef().isNonnull())
-        return &*pfCand->trackRef();
-      else if (pfCand->gsfTrackRef().isNonnull())
-        return &*pfCand->gsfTrackRef();
-    }
-    const pat::PackedCandidate* pCand = dynamic_cast<const pat::PackedCandidate*>(&cand);
-    if (pCand != nullptr && pCand->hasTrackDetails())
-      return &pCand->pseudoTrack();
-    return nullptr;
-  }
-}  // namespace
+#include "CandidateTools.h"
 
 class TauExTableProducer : public edm::global::EDProducer<> {
 public:
@@ -56,6 +40,8 @@ private:
     std::vector<float> sv_x(taus.size(), default_value);
     std::vector<float> sv_y(taus.size(), default_value);
     std::vector<float> sv_z(taus.size(), default_value);
+    std::vector<float> sv_chi2(taus.size(), default_value);
+    std::vector<float> sv_ndof(taus.size(), default_value);
     std::vector<std::vector<float>> sv_cov(6, std::vector<float>(taus.size(), default_value));
 
     for(size_t tau_index = 0; tau_index < taus.size(); ++tau_index) {
@@ -68,23 +54,25 @@ private:
         for (const auto& cand : cands) {
           if (cand.isNull())
             continue;
-          const reco::Track* track = getTrack(*cand);
+          const reco::Track* track = cand_tools::getTrack(*cand);
           if (track != nullptr)
             transTrk.push_back(transTrackBuilder.build(*track));
         }
         TransientVertex transVtx;
-        if(fitVertex(transTrk, transVtx)) {
+        if(transTrk.size() > 1 && fitVertex(transTrk, transVtx)) {
           const reco::Vertex sv(transVtx);
           has_sv[tau_index] = true;
           sv_x[tau_index] = sv.x();
           sv_y[tau_index] = sv.y();
           sv_z[tau_index] = sv.z();
+          sv_chi2[tau_index] = sv.chi2();
+          sv_ndof[tau_index] = sv.ndof();
           const auto cov = sv.covariance();
 
           size_t cov_index = 0;
           for(size_t i = 0; i < 3; ++i) {
             for(size_t j = i; j < 3; ++j) {
-              sv_cov[cov_index][tau_index] = cov(i, j);
+              sv_cov.at(cov_index)[tau_index] = cov(i, j);
               ++cov_index;
             }
           }
@@ -97,6 +85,8 @@ private:
     tauTable->addColumn<float>("refitSVx", sv_x, "x of the refit SV", precision_);
     tauTable->addColumn<float>("refitSVy", sv_y, "y of the refit SV", precision_);
     tauTable->addColumn<float>("refitSVz", sv_z, "z of the refit SV", precision_);
+    tauTable->addColumn<float>("refitSVchi2", sv_chi2, "chi2 of the refit SV", precision_);
+    tauTable->addColumn<float>("refitSVndof", sv_ndof, "ndof of the refit SV", precision_);
 
     size_t cov_index = 0;
     for(size_t i = 0; i < 3; ++i) {
@@ -104,7 +94,7 @@ private:
         std::ostringstream name, description;
         name << "refitSVcov" << i << j;
         description << "covariance (" << i << ", " << j << ") of the refit SV";
-        tauTable->addColumn<float>(name.str(), sv_cov[cov_index], description.str(), precision_);
+        tauTable->addColumn<float>(name.str(), sv_cov.at(cov_index), description.str(), precision_);
         ++cov_index;
       }
     }
