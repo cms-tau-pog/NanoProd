@@ -83,12 +83,12 @@ skim:
     - keep ^HLT_PFMET.*$
     - keep ^HLT_PFHT.*$
     - keep ^HLT_(|Iso|Old)(|Tk)Mu[1-9][0-9]+.*$
-    - keep ^HLT_Ele[2-9][0-9]+.*$
+    - keep ^HLT_Ele[1-9][0-9]+.*$
     - drop ^HLT_Ele.*CaloId.*$
     - keep ^HLT_AK8PFJet[0-9]+.*BoostedDoubleB.*$
     - drop ^HLT_Ele.*Ele.*$
     - drop ^HLT_.*Tau3[mM]u.*$
-    - drop ^HLT_Mu.*(Ele|Jpsi|Upsilon|NoFilters|IP).*
+    - drop ^HLT_Mu.*(Jpsi|Upsilon|NoFilters|IP).*$
 
 skim_failed:
   input_tree: Events
