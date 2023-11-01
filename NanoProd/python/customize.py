@@ -39,7 +39,11 @@ def customizeTaus(process):
     cut = "(" + " && ".join(cuts) + ")"
     deepTauCuts.append(cut)
   deepTauCut = "(tauID('decayModeFindingNewDMs') > 0.5 && (" + " || ".join(deepTauCuts) + "))"
-  pnetCut = "( isTauIDAvailable('byPNetVSjetraw') && tauID('byPNetVSjetraw') > 0.05 )"
+  cuts = []
+  for vs, score in [ ("e", 0.05), ("mu", 0.05), ("jet", 0.05) ]:
+    cuts.append(f"isTauIDAvailable('byPNetVSjetraw')")
+    cuts.append(f"tauID('byPNetVS{vs}raw') > {score}")
+  pnetCut = "(" + " && ".join(cuts) + ")"
 
   process.finalTaus.cut = f"pt > 18 && ( {deepTauCut} || {pnetCut} )"
 
