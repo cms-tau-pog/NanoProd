@@ -1,0 +1,6 @@
+<use name="DataFormats/NanoAOD"/>
+<use name="PhysicsTools/PatAlgos"/>
+<use name="RecoVertex/KalmanVertexFit"/>
+<use name="RecoVertex/AdaptiveVertexFit"/>
+<use name="RecoVertex/VertexPrimitives"/>
+<use name="TrackingTools/TransientTrack"/>

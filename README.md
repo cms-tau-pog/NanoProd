@@ -20,7 +20,7 @@ source env.sh
 
 Production should be run on the server that have the crab stageout area mounted to the file system.
 
-1. Load environment on CentOS8 machine
+1. Load environment
    ```sh
    source $PWD/env.sh
    voms-proxy-init -voms cms -rfc -valid 192:00
