@@ -15,7 +15,8 @@ filesToTransfer:
   - RunKit/crabJob.py
   - RunKit/crabJob_nanoProd.py
   - RunKit/skim_tree.py
-  - RunKit/sh_tools.py
+  - RunKit/run_tools.py
+  - RunKit/grid_tools.py
   - NanoProd/config/skim_htt.yaml
   - NanoProd/python/customize.py
 site: T2_CH_CERN
