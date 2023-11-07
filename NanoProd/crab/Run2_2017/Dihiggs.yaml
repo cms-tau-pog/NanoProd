@@ -2,7 +2,6 @@ config:
   params:
     sampleType: mc
     era: Run2_2017
-    storeFailed: True
 
 GluGluToHHTo2B2Tau_node_1: /GluGluToHHTo2B2Tau_TuneCP5_PSWeights_node_1_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
 GluGluToHHTo2B2Tau_node_2: /GluGluToHHTo2B2Tau_TuneCP5_PSWeights_node_2_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM

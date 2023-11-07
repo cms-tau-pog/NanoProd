@@ -2,12 +2,10 @@ config:
   params:
     sampleType: data
     era: Run2_2016_HIPM
-    storeFailed: False
-  #lumiMask: /afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
 
 # Note: 2016B is split up into two sub-eras "ver1" and "ver2", but no events remain in any "ver1" datasets after applying the golden json.
 
-#SingleElectron_Run2016Bv1: /SingleElectron/Run2016B-ver1_HIPM_UL2016_MiniAODv2-v2/MINIAOD # 
+#SingleElectron_Run2016Bv1: /SingleElectron/Run2016B-ver1_HIPM_UL2016_MiniAODv2-v2/MINIAOD #
 SingleElectron_Run2016B: /SingleElectron/Run2016B-ver2_HIPM_UL2016_MiniAODv2-v2/MINIAOD
 SingleElectron_Run2016C: /SingleElectron/Run2016C-HIPM_UL2016_MiniAODv2-v2/MINIAOD
 SingleElectron_Run2016D: /SingleElectron/Run2016D-HIPM_UL2016_MiniAODv2-v2/MINIAOD

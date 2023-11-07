@@ -2,7 +2,6 @@ config:
   params:
     sampleType: mc
     era: Run2_2018
-    storeFailed: True
 
 WWW_4F: /WWW_4F_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM
 WWW_4F_ext1: /WWW_4F_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v2/MINIAODSIM

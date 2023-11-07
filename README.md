@@ -117,7 +117,6 @@ General guidelines:
 				params:
 					sampleType: mc
 					era: Run2_2018
-					storeFailed: True
       	 ```
       1. If the job fails due to a file which is corrupted or unavailable it needs to be skipped in the nanoAOD production, this can be done by editing the `yaml` file as follows:
       	 ```python

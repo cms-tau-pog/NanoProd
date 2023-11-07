@@ -2,7 +2,6 @@ config:
   params:
     sampleType: mc
     era: Run2_2016
-    storeFailed: True
 
 GluGluHToTauTau_UncorrelatedDecay_CPodd_Filtered: /GluGluHToTauTauPlusTwoJetsUncorDecay_CPodd_Filtered_M125_TuneCP5_13TeV-amcatnlopowheg-minlo-pythia8/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17-v2/MINIAODSIM
 GluGluHToTauTau_UncorrelatedDecay_MM_Filtered: /GluGluHToTauTauPlusTwoJetsUncorDecay_MM_Filtered_M125_TuneCP5_13TeV-amcatnlopowheg-minlo-pythia8/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17-v2/MINIAODSIM
