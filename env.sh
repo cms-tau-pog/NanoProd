@@ -98,7 +98,7 @@ action() {
 
   source "$( law completion )" ""
 
-  source /cvmfs/cms.cern.ch/rucio/setup-py3.sh
+  source /cvmfs/cms.cern.ch/rucio/setup-py3.sh &> /dev/null
 
   if [[ $node_os == $target_os ]]; then
     export CMSSW_SINGULARITY=""

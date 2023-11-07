@@ -1,5 +1,5 @@
 import FWCore.ParameterSet.Config as cms
-from PhysicsTools.NanoAOD.common_cff import Var, P3Vars
+from PhysicsTools.NanoAOD.common_cff import Var, CandVars
 from RecoTauTag.RecoTau.tauIdWPsDefs import WORKING_POINTS_v2p5
 
 def customizeGenParticles(process):
@@ -72,10 +72,8 @@ def customizeTaus(process):
     name = cms.string("TauProd"),
     doc = cms.string("tau signal candidates"),
     variables = cms.PSet(
-        P3Vars,
-        pdgId = Var("pdgId", int, doc="PDG code assigned by the event reconstruction (not by MC truth)"),
+        CandVars,
         tauIdx = Var("status", "int16", doc="index of the mother tau"),
-        #trkPt = Var("?daughter(0).hasTrackDetails()?daughter(0).bestTrack().pt():0", float, precision=-1, doc="pt of associated track"), #MB: better to store ratio over cand pt?
     )
   )
 
