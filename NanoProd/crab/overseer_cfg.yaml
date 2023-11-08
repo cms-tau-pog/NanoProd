@@ -34,6 +34,7 @@ localProcessing:
   bootstrap: bootstrap.sh
 targetOutputFileSize: 2048
 renewKerberosTicket: True
+htmlReport: T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_v1/Run2_2016
 whitelistFinalRecovery:
   - T1_DE_KIT
   - T2_CH_CERN
