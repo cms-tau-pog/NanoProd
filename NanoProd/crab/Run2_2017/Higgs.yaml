@@ -2,7 +2,6 @@ config:
   params:
     sampleType: mc
     era: Run2_2017
-    storeFailed: True
 
 ZH_Hbb_Zll: /ZH_HToBB_ZToLL_M-125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM
 ZH_Hbb_Zqq: /ZH_HToBB_ZToQQ_M-125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM

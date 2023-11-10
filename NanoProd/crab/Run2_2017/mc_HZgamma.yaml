@@ -2,12 +2,11 @@ config:
   params:
     sampleType: mc
     era: Run2_2017
-    storeFailed: True
 
 ZGToLLG_01J_5f_lowMLL_lowGPt-amcatnloFXFX: /ZGToLLG_01J_5f_lowMLL_lowGPt_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
 ZGamma2JToGamma2L2J_EWK_MLL-50_MJJ-120-madgraph: /ZGamma2JToGamma2L2J_EWK_MLL-50_MJJ-120_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
 TTGJets-amcatnloFXFX: /TTGJets_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM
-      
+
 GluGluHToZG_ZToLL_M-120-powheg: /GluGluHToZG_ZToLL_M-120_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM
 GluGluHToZG_ZToLL_M-125-powheg_ext1: /GluGluHToZG_ZToLL_M-125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9_ext1-v3/MINIAODSIM
 GluGluHToZG_ZToLL_M-125-powheg: /GluGluHToZG_ZToLL_M-125_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM

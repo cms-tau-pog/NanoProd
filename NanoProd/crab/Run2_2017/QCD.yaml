@@ -2,7 +2,6 @@ config:
   params:
     sampleType: mc
     era: Run2_2017
-    storeFailed: True
 
 QCD_HT50to100: /QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
 QCD_HT50to100_PSWeights: /QCD_HT50to100_TuneCP5_PSWeights_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM

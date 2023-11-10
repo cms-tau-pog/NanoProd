@@ -2,7 +2,6 @@ config:
   params:
     sampleType: data
     era: Run3_2022CDE
-  #lumiMask: /eos/user/c/cmsdqm/www/CAF/certification/Collisions22/Cert_Collisions2022_355100_362760_Golden.json
 
 EGamma_Run2022E: /EGamma/Run2022E-22Sep2023-v1/MINIAOD
 

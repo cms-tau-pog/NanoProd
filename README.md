@@ -32,16 +32,13 @@ Production should be run on the server that have the crab stageout area mounted 
    ```
    If all ok, there should be no output.
 1. Modify output and other site-specific settings in `NanoProd/crab/overseer_cfg.yaml`. In particular:
-   - site
-   - crabOutput
-   - localCrabOutput
-   - finalOutput
+   - params/outputs
    - renewKerberosTicket
 
 1. Test that the code works locally (take one of the miniAOD files as an input). E.g.
    ```sh
    mkdir -p tmp && cd tmp
-   cmsEnv python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize skimCfg=$ANALYSIS_PATH/NanoProd/config/skim.yaml maxEvents=100 sampleType=mc storeFailed=True era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root writePSet=True skimSetup=skim skimSetupFailed=skim_failed createTar=False
+   cmsEnv python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize maxEvents=100 sampleType=mc era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root writePSet=True 'output=nano.root;./output;../NanoProd/config/skim_htt.yaml;skim;skim_failed'
    cmsEnv $ANALYSIS_PATH/RunKit/crabJob.sh
    ```
    Check that output file `nano_0.root` is created correctly.
@@ -120,7 +117,6 @@ General guidelines:
 				params:
 					sampleType: mc
 					era: Run2_2018
-					storeFailed: True
       	 ```
       1. If the job fails due to a file which is corrupted or unavailable it needs to be skipped in the nanoAOD production, this can be done by editing the `yaml` file as follows:
       	 ```python
@@ -139,13 +135,4 @@ General guidelines:
       ```
       where `TASK_NAME` is the dataset nickname provided in the `yaml` file, e.g. `DYJetsToLL_M-50-madgraphMLM_ext1`
    1. Run crabOverseer.py as in step 7 adding `--update-cfg` option.
-
-
-## Running with ParticleNET
-
-In order to produce NanoAOD along with output branches from ParticleNET (which will be found in the "Jet" and "FatJet" collections for AK4 and AK8 outputs, respectively), the following additions are made automatically when setting up the environment:
-* Follow the installation recipe in the Readme [here](https://gitlab.cern.ch/rgerosa/particlenetstudiesrun2/-/tree/master/)
-* Then copy the PNET models into place where they're needed, according to the first section in the ReadMe [here](https://gitlab.cern.ch/rgerosa/particlenetstudiesrun2/-/tree/master/TrainingNtupleMakerAK4) and [here](https://gitlab.cern.ch/rgerosa/particlenetstudiesrun2/-/tree/master/TrainingNtupleMakerAK8).
-* Then it will only work locally however. To make it work for jobs submitted to crab, put the same files in `RecoBTag/Combined/data/` and `RecoTauTag/data/` inside the CMSSW_BASE/src/ directory.
-
 
