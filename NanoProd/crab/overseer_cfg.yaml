@@ -32,7 +32,9 @@ localProcessing:
   lawTask: ProdTask
   workflow: htcondor
   bootstrap: bootstrap.sh
-targetOutputFileSize: 2048
+  maxParallelJobs: 1000
+  maxRuntime: 24 # hours
+targetOutputFileSize: 2048 # MiB
 renewKerberosTicket: True
 htmlReport: T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_v1/Run2_2016
 whitelistFinalRecovery:

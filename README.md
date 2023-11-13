@@ -44,7 +44,7 @@ Production should be run on the server that have the crab stageout area mounted 
    Check that output file `nano_0.root` is created correctly.
    You can, for example, create a documentation page based on the file you created:
    ```sh
-   cmsEnv python3 $ANALYSIS_PATH/RunKit/inspectNanoFile.py nano_0.root -d content.html -s size.html
+   cmsEnv python3 $ANALYSIS_PATH/RunKit/inspectNanoFile.py output/nano_0.root -d content.html -s size.html
    ```
    After that, you can remove `tmp` directory:
    ```sh
