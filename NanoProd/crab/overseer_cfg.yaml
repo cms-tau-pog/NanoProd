@@ -9,7 +9,6 @@ params:
       skimSetup: skim
       skimSetupFailed: skim_failed
   maxEvents: -1
-splitting: FileBased
 unitsPerJob: 16
 scriptExe: RunKit/crabJob.sh
 filesToTransfer:
@@ -26,7 +25,7 @@ numCores: 1
 inputDBS: global
 allowNonValid: False
 dryrun: False
-maxRecoveryCount: 3
+maxRecoveryCount: 4
 updateInterval: 60
 localProcessing:
   lawTask: ProdTask
