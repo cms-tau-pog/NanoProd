@@ -3,8 +3,8 @@ params:
   customise: NanoProd/NanoProd/customize.customize
   outputs:
     - file: nanoHTT.root
-      crabOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1_prod/Run2_2016
-      finalOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1/Run2_2016
+      crabOutput: TODO #T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1_prod/Run2_2016
+      finalOutput: TODO #T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1/Run2_2016
       skimCfg: skim_htt.yaml
       skimSetup: skim
       skimSetupFailed: skim_failed
@@ -35,10 +35,26 @@ localProcessing:
   maxRuntime: 24 # hours
 targetOutputFileSize: 2048 # MiB
 renewKerberosTicket: True
-htmlReport: T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_v1/Run2_2016
+htmlReport: TODO #T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_v1/Run2_2016
 whitelistFinalRecovery:
   - T1_DE_KIT
+  - T1_US_FNAL
+  - T2_AT_Vienna
+  - T2_BR_SPRACE
   - T2_CH_CERN
+  - T2_CN_Beijing
   - T2_DE_DESY
+  - T2_DE_RWTH
+  - T2_EE_Estonia
+  - T2_ES_CIEMAT
+  - T2_FR_GRIF_LLR
+  - T2_IT_Bari
   - T2_IT_Legnaro
-  - T3_CH_PSI
+  - T2_IT_Pisa
+  - T2_IT_Rome
+  - T2_UK_London_IC
+  - T2_US_Caltech
+  - T2_US_Florida
+  - T2_US_MIT
+  - T2_US_UCSD
+  - T2_US_Wisconsin
