@@ -31,9 +31,10 @@ Production should be run on the server that have the crab stageout area mounted 
    cat NanoProd/crab/ERA/*.yaml | grep -v -E '^( +| *#)' | grep -E ' /' | sed -E 's/.*: (.*)/\1/' | xargs python RunKit/checkDatasetExistance.py
    ```
    If all ok, there should be no output.
-1. Modify output and other site-specific settings in `NanoProd/crab/overseer_cfg.yaml`. In particular:
-   - params/outputs
-   - renewKerberosTicket
+1. Modify output and other site-specific settings in `NanoProd/crab/overseer_cfg.yaml`. In particular fileds value "TODO" must be set:
+   - params/outputs/crabOutput
+   - params/outputs/finalOutput
+   - htmlReport
 
 1. Test that the code works locally (take one of the miniAOD files as an input). E.g.
    ```sh
@@ -44,7 +45,7 @@ Production should be run on the server that have the crab stageout area mounted 
    Check that output file `nano_0.root` is created correctly.
    You can, for example, create a documentation page based on the file you created:
    ```sh
-   cmsEnv python3 $ANALYSIS_PATH/RunKit/inspectNanoFile.py nano_0.root -d content.html -s size.html
+   cmsEnv python3 $ANALYSIS_PATH/RunKit/inspectNanoFile.py output/nano_0.root -d content.html -s size.html
    ```
    After that, you can remove `tmp` directory:
    ```sh
