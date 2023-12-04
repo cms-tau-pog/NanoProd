@@ -26,11 +26,11 @@ Production should be run on the server that have the crab stageout area mounted 
    voms-proxy-init -voms cms -rfc -valid 192:00
    ```
 
-1. Check that all datasets are present and valid (replace path to `yaml`s accordingly):
+1. Check that task configurations for the given era are consistent and that all datasets are present and valid (replace path to `yaml`s accordingly):
    ```sh
-   cat NanoProd/crab/ERA/*.yaml | grep -v -E '^( +| *#)' | grep -E ' /' | sed -E 's/.*: (.*)/\1/' | xargs python RunKit/checkDatasetExistance.py
+   python RunKit/checkTasksConsistency.py NanoProd/crab/ERA/*.yaml
+   python RunKit/checkDatasetExistance.py NanoProd/crab/ERA/*.yaml
    ```
-   If all ok, there should be no output.
 1. Modify output and other site-specific settings in `NanoProd/crab/overseer_cfg.yaml`. In particular fileds value "TODO" must be set:
    - params/outputs/crabOutput
    - params/outputs/finalOutput
@@ -88,52 +88,25 @@ Production should be run on the server that have the crab stageout area mounted 
 ## Resubmission of failed tasks
 
 The job handler will automatically create recovery tasks for jobs that failed multiple times.
-As of recovery #1 the jobs created will run on a single miniAOD file each, while for the latest available iteration (default is recovery #2) the job will only run on specified sites which are whitelisted in the crab overseer config: [NanoProd/crab/overseer_cfg.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/overseer_cfg.yaml).
+For each consecutive recovery number of files per job is reduced by a factor of 2.
+For the last recovery with crab, one file for job will be used and the job will be submitted only to sites whitelisted in [NanoProd/crab/overseer_cfg.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/overseer_cfg.yaml).
+After the last recovery with crab, the final recovery attempt is done by submitting jobs on the local grid.
+
 Note: if the file has no available Rucio replica on any of those sites, the job is bound to fail.
 
-### Handling failed jobs after last recovery task
+### Handling failures
 
-General guidelines:
+If automatic recovery attemnts have failed, task will be declared as failed and requiring a manual intervention.
 
-1. Check job output via Grafana [monit-grafana.cern.ch/d/cmsTMDetail/cms-task-monitoring-task-view](https://monit-grafana.cern.ch/d/15468761344/personal-tasks-monitoring-globalview?from=now-90d&to=now&orgId=11&var-user=All&var-site=All&var-current_url=%2Fd%2FcmsTMDetail%2Fcms_task_monitoring&var-task=All)
-   During the resubmission step a link is also printed to screen with the direct link to the ongoing CRAB task.
-
-1. Identify exit code, see [JobExitCodes](https://twiki.cern.ch/twiki/bin/view/CMSPublic/JobExitCodes)
-   1. `>50000` most likely associated to I/O issue with the site or the dataset. Increase the number of max retries and resend the job.
-
-   1. Special exit code defined in the tool: 666 - it is used to label errors which are neither related to CMSSW compilation, bash or crab job handling. Check the specific job output from the CRAB Monitor tool, copy the jobID from Grafana.
-   It includes cases where the dataset is corrupted, unaccessible on any tier or with no existing replica.
-   To check if the file has any available replica on the sites run
+1. Run `check_update_failed` action to check availability of the input files for the failed jobs
    ```sh
-   dasgoclient --query 'site file=FILENAME'
+   python RunKit/crabOverseer.py --action check_update_failed | tee missing_files.txt
    ```
-   In case there is no available Rucio replica the file cannot be processed, please write an issue on CMS-talk (e.g. [Issue for Tau UL2018 file](https://cms-talk.web.cern.ch/t/cant-access-one-file-from-tau-run2018d-ul2018-miniaodv2-v1-miniaod/14522/2) and remove the file from the studied inputs, see below.
+   - If there is least one file available available, the task status will be reset to `SubmittedToLocal`. And production can be continued in a usual way by running `crabOverseer.py`.
+   - If all listed files don't have replicas on DISK, or replicas are corrupted, please report it to O&C/Computing Tools.
 
-1. After identifying the problem and taking action to solve it either with CMSSW, requesting Rucio transfer or adding a specific storage center to the whitelist execute the following steps.
-   1. Edit the `yaml` file corresponding to the dataset (e.g. [NanoProd/crab/Run2_2018/DY.yaml](https://github.com/cms-tau-pog/NanoProd/blob/main/NanoProd/crab/Run2_2018/DY.yaml):
-      1. Increase the maximum number of retries by adding the entry `maxRecoveryCount` to `config` in the `yaml` file:
-      	 ```python
-		 config:
-		 	maxRecoveryCount: 3
-				params:
-					sampleType: mc
-					era: Run2_2018
-      	 ```
-      1. If the job fails due to a file which is corrupted or unavailable it needs to be skipped in the nanoAOD production, this can be done by editing the `yaml` file as follows:
-      	 ```python
-      	 DYJetsToLL_M-50-madgraphMLM_ext1: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
-      	 ```
-      	 ->
-      	 ```python
-      	 DYJetsToLL_M-50-madgraphMLM_ext1:
-		 	inputDataset: /DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1_ext1-v1/MINIAODSIM
-				ignoreFiles:
-				- /store/mc/RunIISummer20UL18MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1_ext1-v1/40000/1D821371-03FD-B148-9E83-119185898E4F.root
-      	 ```
-   1. Change the status.json file so the job is marked as `WaitingForRecovery` instead of `Failed`
-      ```sh
-      python RunKit/crabOverseer.py --action 'run_cmd task.taskStatus.status = Status.WaitingForRecovery' --select 'task.name == TASK_NAME'
-      ```
-      where `TASK_NAME` is the dataset nickname provided in the `yaml` file, e.g. `DYJetsToLL_M-50-madgraphMLM_ext1`
-   1. Run crabOverseer.py as in step 7 adding `--update-cfg` option.
-
+1. If post-processing job fails, check the output log in `.crabOverseer/law/jobs/ProdTask/*.txt`. If the error is due to file access, it could be that the output file is corrupted in the storage element. In this case, you need to rerun the production job for these files before proceeding with the post-processing. To identify such cases run `check_update_processed` action:
+   ```sh
+   python RunKit/crabOverseer.py --action check_update_processed | tee output_file_status.txt
+   ```
+   - If at leaset one corrupted file is found, the task status will be reset to `SubmittedToLocal`. And production can be continued in a usual way by running `crabOverseer.py`.
