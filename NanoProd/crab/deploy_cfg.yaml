@@ -1,0 +1,14 @@
+common:
+  task_files:
+  - $ANALYSIS_PATH/NanoProd/crab/$ERA/*.yaml
+  info: T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/HTT_skim_v1
+  storage: T2_CH_CERN:/store/group/phys_higgs/HLepRare/HTT_skim_v1
+  prod_report_file: prodReport_nanoHTT.json
+  title: "HTT nano skim v1"
+  config_files:
+  - $ANALYSIS_PATH/NanoProd/config/skim_htt.yaml
+  - $ANALYSIS_PATH/NanoProd/python/customize.py
+
+Run2_2016:
+  outputs:
+  - T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1/Run2_2016
