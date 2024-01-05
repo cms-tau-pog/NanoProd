@@ -75,19 +75,25 @@ action() {
 
   local os_version=$(cat /etc/os-release | grep VERSION_ID | sed -E 's/VERSION_ID="([0-9]+).*"/\1/')
   if [[ $os_version < 8 ]] ; then
-    local os_prefix="cc"
+    local os_prefix="slc"
   else
     local os_prefix="el"
   fi
   local node_os=$os_prefix$os_version
 
-  local default_cmssw_ver=CMSSW_13_0_10
+  local default_cmssw_ver=CMSSW_13_3_1
+  #local target_os_version=7
   local target_os_version=8
-  local target_os_prefix="el"
+  #local target_os_version=9
+  if [[ $target_os_version < 8 ]] ; then
+    local target_os_prefix="slc"
+  else
+    local target_os_prefix="el"
+  fi
   local target_os=$target_os_prefix$target_os_version
   export DEFAULT_CMSSW_BASE="$ANALYSIS_PATH/soft/$default_cmssw_ver"
 
-  run_cmd install_cmssw el8_amd64_gcc11 $default_cmssw_ver $node_os $target_os
+  run_cmd install_cmssw ${target_os}_amd64_gcc11 $default_cmssw_ver $node_os $target_os
 
   if [ ! -z $ZSH_VERSION ]; then
     autoload bashcompinit

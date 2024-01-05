@@ -102,7 +102,13 @@ def customizePV(process):
   return process
 
 def customize(process):
-  process.MessageLogger.cerr.FwkReport.reportEvery = 100
+  #customize printout frequency
+  maxEvts = process.maxEvents.input.value()
+  if maxEvts > 10000 or maxEvts < 0:
+    process.MessageLogger.cerr.FwkReport.reportEvery = 1000
+  elif maxEvts > 10:
+    process.MessageLogger.cerr.FwkReport.reportEvery = maxEvts//10
+  #customize stored objects
   process = customizeGenParticles(process)
   process = customizeTaus(process)
   process = customizePV(process)
