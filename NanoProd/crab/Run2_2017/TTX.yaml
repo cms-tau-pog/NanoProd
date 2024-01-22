@@ -21,3 +21,23 @@ TTHHTo2B2Tau_HEFT_kl-2: /TTHHTo2B2Tau_HEFT_kl-2_TuneCP5_13TeV-madgraph-pythia8/R
 TTHHTo2B2Tau_HEFT_kl-3: /TTHHTo2B2Tau_HEFT_kl-3_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
 TTHHTo2B2Tau_HEFT_kt-2: /TTHHTo2B2Tau_HEFT_kt-2_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
 TTHHTo2B2Tau: /TTHHTo2B2Tau_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
+
+# toBeAdded
+TTZZTo4b: /TTZZTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
+TTZHTo4b: /TTZHTo4b_TuneCP5_13TeV-madgraph-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
+TT4b: /TT4b_TuneCP5_13TeV_madgraph_pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
+TTTT: /TTTT_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
+TTZToNuNu: /TTZToNuNu_TuneCP5_13TeV_amcatnlo-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v3/MINIAODSIM
+TTZToBB: /TTZToBB_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
+TTGJets: /TTGJets_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM
+TTZToQQ_Dilept: /TTZToQQ_Dilept_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v1/MINIAODSIM
+TTZToLL_M-1to10: /TTZToLL_M-1to10_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9-v2/MINIAODSIM
+
+
+#TTZZToNon4b:
+#TTGamma_Dilept:
+#TTGamma_Hadronic:
+#TTGamma_SingleLept:
+#TTGJets_ext1:
+# TTGG
+#TTZHToNon4b:
