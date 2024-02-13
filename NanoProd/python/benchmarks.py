@@ -5,7 +5,7 @@ import shutil
 import tempfile
 
 from RunKit.law_customizations import HTCondorWorkflow, copy_param
-from RunKit.sh_tools import sh_call
+from RunKit.run_tools import ps_call
 from RunKit.envToJson import get_cmsenv
 
 class BenchmarkBase:
@@ -63,9 +63,9 @@ class ProdBenchmark(BenchmarkBase, HTCondorWorkflow, law.LocalWorkflow):
     input, input_type = self.branch_data
     print(f'Processing {input}')
     cmd = f'python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise={self.customise} maxEvents={self.maxEvents} sampleType={input_type} era={self.era} inputFiles=file:{self.input}/{input}.root writePSet=True createTar=False'
-    sh_call([cmd], shell=True, env=self.cmssw_env(), cwd=job_home, verbose=1)
+    ps_call([cmd], shell=True, env=self.cmssw_env(), cwd=job_home, verbose=1)
     cmd = '$ANALYSIS_PATH/RunKit/crabJob.sh'
-    sh_call([cmd], shell=True, env=self.cmssw_env(), cwd=job_home, verbose=1)
+    ps_call([cmd], shell=True, env=self.cmssw_env(), cwd=job_home, verbose=1)
     cmssw_output = os.path.join(job_home, 'nano_0.root')
     root_output = self.local_path(f'{input}.root')
     os.makedirs(self.local_path(), exist_ok=True)
@@ -73,7 +73,7 @@ class ProdBenchmark(BenchmarkBase, HTCondorWorkflow, law.LocalWorkflow):
     doc_html_path = self.local_path(f'{input}.doc.html')
     size_html_path = self.local_path(f'{input}.size.html')
     cmd = f'python $ANALYSIS_PATH/RunKit/inspectNanoFile.py --doc {doc_html_path} --size {size_html_path} {root_output}'
-    sh_call([cmd], shell=True, verbose=1)
+    ps_call([cmd], shell=True, verbose=1)
     htaccess_path = self.local_path('..', '.htaccess')
     if not os.path.exists(htaccess_path):
       with open(htaccess_path, 'w') as f:
@@ -101,18 +101,18 @@ class SkimBenchmark(BenchmarkBase, law.LocalWorkflow):
     skim_tree_path = os.path.join(os.getenv('ANALYSIS_PATH'), 'RunKit', 'skim_tree.py')
     cmd_line = [ 'python', skim_tree_path, '--input', input_root, '--output', root_output,
                  '--config', self.skimCfg, '--setup', self.skimSetup, '--verbose', '1' ]
-    sh_call(cmd_line, verbose=1)
+    ps_call(cmd_line, verbose=1)
 
     if len(self.skimSetupFailed) and input_type == 'mc':
       cmd_line = [ 'python', skim_tree_path, '--input', input_root, '--output', root_output,
                    '--config', self.skimCfg, '--setup', self.skimSetupFailed,
                    '--update-output', '--verbose', '1' ]
-      sh_call(cmd_line, verbose=1)
+      ps_call(cmd_line, verbose=1)
 
     doc_html_path = self.local_path(f'{input}.doc.html')
     size_html_path = self.local_path(f'{input}.size.html')
     cmd = f'python $ANALYSIS_PATH/RunKit/inspectNanoFile.py --doc {doc_html_path} --size {size_html_path} {root_output}'
-    sh_call([cmd], shell=True, verbose=1)
+    ps_call([cmd], shell=True, verbose=1)
     htaccess_path = self.local_path('..', '.htaccess')
     if not os.path.exists(htaccess_path):
       with open(htaccess_path, 'w') as f:
