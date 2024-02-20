@@ -18,6 +18,13 @@ Run2_2016_HIPM:
 Run2_2017:
   outputs:
   - T2_CH_CERN:/store/group/phys_tau/smonig/htt_skim_v1/Run2_2017
+  - T2_CH_CERN:/store/group/phys_tau/alebihan/htt_skim_v3/Run2_2017
+  - T2_CH_CERN:/store/group/phys_tau/alebihan/htt_skim_v3DY/Run2_2017
+  - T2_CH_CERN:/store/group/phys_tau/alebihan/htt_skim_v4/Run2_2017
+  - T2_CH_CERN:/store/group/phys_tau/alebihan/htt_skim_v5/Run2_2017
+  - T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1/Run2_2017
 Run2_2018:
   outputs:
   - T2_DE_DESY:/store/user/nprouvos/tau_pog/htt_skim_v1/Run_2018
+  - T2_DE_DESY:/store/user/pkeicher/tau_pog/htt_skim_v1/Run_2018
+  - T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1/Run2_2018
