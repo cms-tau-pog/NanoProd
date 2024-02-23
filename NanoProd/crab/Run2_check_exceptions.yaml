@@ -1,2 +1,45 @@
-ZHToTauTau_M125:
+NMSSM_XToYHTo2Tau2B_MX-2400_MY-1300:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-60:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-70:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-90:
+  - Run2_2016_HIPM
+ZHToTauTau_M125_ext1:
   - Run2_2016
+WJetsToLNu_HT-1200To2500_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+WJetsToLNu_HT-2500ToInf_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+WJetsToLNu_HT-400To600_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+WJetsToLNu_HT-600To800_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+WJetsToLNu_HT-800To1200_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+NMSSM_XToYHTo2Tau2B_MX-2500_MY-500:
+  - Run2_2016
+NMSSM_XToYHTo2Tau2B_MX-700_MY-150:
+  - Run2_2016
+DYJetsToLL_M-50-madgraphMLM_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+WJetsToLNu_HT-70To100_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2018
+TTGJets_ext1:
+  - Run2_2016_HIPM
+  - Run2_2016
+  - Run2_2017
