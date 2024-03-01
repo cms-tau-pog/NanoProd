@@ -66,9 +66,14 @@ def customizeTaus(process):
     tauIdx = Var("status", "int16", doc="index of the mother tau"),
   )
 
+  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTimeLifeInfoToTaus
+  addTimeLifeInfoToTaus(process)
+
   return process
 
 def customizePV(process):
+  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addExtendVertexInfo
+  addExtendVertexInfo(process)
   #for backward compatibility (different table name, chi2 instead of normChi2)
   #process.refittedPV.useEleKfTracks = False
   process.pvbsTable.name = "RefitPV"
@@ -81,8 +86,11 @@ def customizePV(process):
   return process
 
 def customizeLeptons(process):
+  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTimeLifeInfoToElectrons, addTimeLifeInfoToMuons
+  addTimeLifeInfoToElectrons(process)
+  #process.electronTimeLifeInfoTable.selection = 'pt > 22'# nanoAOD default: >15
+  addTimeLifeInfoToMuons(process)
   #process.muonTimeLifeInfoTable.selection = 'pt > 17'# nanoAOD default: >15
-  #process.electronTimeLifeInfoTable.selection = 'pt > 22'# nanoAOD default: >20
 
   return process
 
