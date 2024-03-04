@@ -43,10 +43,6 @@ install_cmssw_addons() {
   if [ "X$CMSSW_VER" = "XCMSSW_13_3_1" ]; then
       run_cmd echo "installing addons on top of "$CMSSW_VER
       run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_13_3_X_httNanoAddons_v2
-  elif [ "X$CMSSW_VER" = "XCMSSW_14_0_0" ]; then
-      #MB: it should not be needed when 14_0_1 is provided
-      run_cmd echo "installing addons on top of "$CMSSW_VER
-      run_cmd git cms-merge-topic -u mbluj:CMSSW_14_0_X_httNanoAddons_rebase
   fi
 }
 
@@ -96,7 +92,7 @@ action() {
   fi
   local node_os=$os_prefix$os_version
 
-  local default_cmssw_ver=CMSSW_14_0_0 #MB: it should be replaced by 14_0_1 when ready
+  local default_cmssw_ver=CMSSW_14_0_1
   #local target_os_version=7
   local target_os_version=8
   #local target_os_version=9
