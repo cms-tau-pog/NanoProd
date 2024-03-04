@@ -60,12 +60,6 @@ def customizeTaus(process):
   process.tauTable.variables.leadTkNormChi2 = Var("leadingTrackNormChi2()", float, doc="normalized chi2 of the leading track", precision=10)
   process.tauTable.variables.leadChCandEtaAtEcalEntrance = Var("etaAtEcalEntranceLeadChargedCand", float, doc="eta of the leading charged candidate at the entrance of the ECAL", precision=10)
 
-  #for backward compatibility (full set of candVars with redundant charge and mass not stored in official NanoAOD)
-  process.tauSignalCandsTable.variables = cms.PSet(
-    CandVars,
-    tauIdx = Var("status", "int16", doc="index of the mother tau"),
-  )
-
   from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTimeLifeInfoToTaus
   addTimeLifeInfoToTaus(process)
 
