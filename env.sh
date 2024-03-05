@@ -9,6 +9,22 @@ function run_cmd {
   fi
 }
 
+get_os_prefix() {
+  local os_version=$1
+  local for_global_tag=$2
+  if (( $os_version >= 8 )); then
+    echo el
+  elif (( $os_version < 6 )); then
+    echo error
+  else
+    if [[ $for_global_tag == 1 || $os_version == 6 ]]; then
+      echo slc
+    else
+      echo cc
+    fi
+  fi
+}
+
 do_install_cmssw() {
   local this_file="$( [ ! -z "$ZSH_VERSION" ] && echo "${(%):-%x}" || echo "${BASH_SOURCE[0]}" )"
   local this_dir="$( cd "$( dirname "$this_file" )" && pwd )"
@@ -74,20 +90,19 @@ action() {
   run_cmd mkdir -p "$ANALYSIS_DATA_PATH"
 
   local os_version=$(cat /etc/os-release | grep VERSION_ID | sed -E 's/VERSION_ID="([0-9]+).*"/\1/')
-  if [[ $os_version < 8 ]] ; then
-    local os_prefix="cc"
-  else
-    local os_prefix="el"
-  fi
+  local os_prefix=$(get_os_prefix $os_version)
   local node_os=$os_prefix$os_version
 
-  local default_cmssw_ver=CMSSW_13_0_10
+  local default_cmssw_ver=CMSSW_14_0_1
+  #local target_os_version=7
   local target_os_version=8
-  local target_os_prefix="el"
+  #local target_os_version=9
+  local target_os_prefix=$(get_os_prefix $target_os_version)
+  local target_os_gt_prefix=$(get_os_prefix $target_os_version 1)
   local target_os=$target_os_prefix$target_os_version
   export DEFAULT_CMSSW_BASE="$ANALYSIS_PATH/soft/$default_cmssw_ver"
 
-  run_cmd install_cmssw el8_amd64_gcc11 $default_cmssw_ver $node_os $target_os
+  run_cmd install_cmssw ${target_os_gt_prefix}${target_os_version}_amd64_gcc11 $default_cmssw_ver $node_os $target_os
 
   if [ ! -z $ZSH_VERSION ]; then
     autoload bashcompinit

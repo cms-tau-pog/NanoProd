@@ -60,50 +60,44 @@ def customizeTaus(process):
   process.tauTable.variables.leadTkNormChi2 = Var("leadingTrackNormChi2()", float, doc="normalized chi2 of the leading track", precision=10)
   process.tauTable.variables.leadChCandEtaAtEcalEntrance = Var("etaAtEcalEntranceLeadChargedCand", float, doc="eta of the leading charged candidate at the entrance of the ECAL", precision=10)
 
-  process.tauSignalCands = cms.EDProducer("PATTauSignalCandidatesProducer",
-    src = process.tauTable.src,
-    storeLostTracks = cms.bool(True)
-  )
+  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTimeLifeInfoToTaus
+  addTimeLifeInfoToTaus(process)
 
-  from PhysicsTools.NanoAOD.simpleCandidateFlatTableProducer_cfi import simpleCandidateFlatTableProducer
-  process.tauSignalCandsTable = simpleCandidateFlatTableProducer.clone(
-    src = cms.InputTag("tauSignalCands"),
-    cut = cms.string("pt > 0."),
-    name = cms.string("TauProd"),
-    doc = cms.string("tau signal candidates"),
-    variables = cms.PSet(
-        CandVars,
-        tauIdx = Var("status", "int16", doc="index of the mother tau"),
-    )
-  )
-
-  process.tauSignalCandsTask = cms.Task(process.tauSignalCands, process.tauSignalCandsTable)
-  process.tauTablesTask.add(process.tauSignalCandsTask)
-
-  process.tauExTable = cms.EDProducer("TauExTableProducer",
-    taus = process.tauTable.src,
-    precision = cms.int32(10),
-  )
-
-  process.tauExTableTask = cms.Task(process.tauExTable)
-  process.tauTablesTask.add(process.tauExTableTask)
   return process
 
 def customizePV(process):
-  process.vertexBSTable = cms.EDProducer("VertexBSTableProducer",
-    pfCands = cms.InputTag("packedPFCandidates"),
-    lostTracks = cms.InputTag("lostTracks"),
-    beamSpot = cms.InputTag("offlineBeamSpot"),
-    precision = cms.int32(10),
+  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addExtendVertexInfo
+  addExtendVertexInfo(process)
+  #for backward compatibility (different table name, chi2 instead of normChi2)
+  #process.refittedPV.useEleKfTracks = False
+  process.pvbsTable.name = "RefitPV"
+  process.pvbsTable.variables.chi2 = Var("chi2()", float, doc = "chi2", precision = 8)
+  process.pvbsTable.variables = cms.PSet(
+    process.pvbsTable.variables,
+    valid = Var("isValid()", bool, doc = "PV fit is valid")
   )
 
-  process.vertexBSTableTask = cms.Task(process.vertexBSTable)
-  process.vertexTablesTask.add(process.vertexBSTableTask)
+  return process
+
+def customizeLeptons(process):
+  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTimeLifeInfoToElectrons, addTimeLifeInfoToMuons
+  addTimeLifeInfoToElectrons(process)
+  #process.electronTimeLifeInfoTable.selection = 'pt > 22'# nanoAOD default: >15
+  addTimeLifeInfoToMuons(process)
+  #process.muonTimeLifeInfoTable.selection = 'pt > 17'# nanoAOD default: >15
+
   return process
 
 def customize(process):
-  process.MessageLogger.cerr.FwkReport.reportEvery = 100
+  #customize printout frequency
+  maxEvts = process.maxEvents.input.value()
+  if maxEvts > 10000 or maxEvts < 0:
+    process.MessageLogger.cerr.FwkReport.reportEvery = 1000
+  elif maxEvts > 10:
+    process.MessageLogger.cerr.FwkReport.reportEvery = maxEvts//10
+  #customize stored objects
   process = customizeGenParticles(process)
   process = customizeTaus(process)
+  process = customizeLeptons(process)
   process = customizePV(process)
   return process
