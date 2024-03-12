@@ -1,0 +1,32 @@
+config:
+  params:
+    sampleType: data
+    era: Run2_2016_HIPM
+    storeFailed: False
+    customise: NanoProd/NanoProd/customize.customizeEmbedding
+    PFNSprefix: root://cmsxrootd-kit.gridka.de/
+  inputDBS: phys03
+
+Embed_MuTau_Run2016B: /EmbeddingRun2016-HIPM_B_ver2/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2016C: /EmbeddingRun2016-HIPM_C/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2016D: /EmbeddingRun2016-HIPM_D/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2016E: /EmbeddingRun2016-HIPM_E/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2016F: /EmbeddingRun2016-HIPM_F/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+
+Embed_ElTau_Run2016B: /EmbeddingRun2016-HIPM_B_ver2/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2016C: /EmbeddingRun2016-HIPM_C/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2016D: /EmbeddingRun2016-HIPM_D/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2016E: /EmbeddingRun2016-HIPM_E/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2016F: /EmbeddingRun2016-HIPM_F/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+
+Embed_TauTau_Run2016B: /EmbeddingRun2016-HIPM_B_ver2/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2016C: /EmbeddingRun2016-HIPM_C/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2016D: /EmbeddingRun2016-HIPM_D/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2016E: /EmbeddingRun2016-HIPM_E/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2016F: /EmbeddingRun2016-HIPM_F/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+
+Embed_ElMu_Run2016B: /EmbeddingRun2016-HIPM_B_ver2/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2016C: /EmbeddingRun2016-HIPM_C/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2016D: /EmbeddingRun2016-HIPM_D/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2016E: /EmbeddingRun2016-HIPM_E/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2016F: /EmbeddingRun2016-HIPM_F/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
