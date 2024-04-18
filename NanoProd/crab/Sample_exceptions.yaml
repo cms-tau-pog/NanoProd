@@ -1,0 +1,965 @@
+# Diboson
+WWto2L2Nu_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+WWto4Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+WWtoLNu2Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+WZto2L2Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+WZtoLNu2Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ZZto2L2Nu_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ZZto2L2Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZZto2Nu2Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ZZto4L_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+WZto1L3Nu:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZZto4Q:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# Higgs_CP
+ZHToTauTau_M125_ext1:
+  - Run2_2016
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZHToTauTau_UncorrelatedDecay_Filtered:
+  - Run3_2022
+GluGluHToTauTau_UncorrelatedDecay_CPodd_UnFiltered: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToTauTau_UncorrelatedDecay_MM_UnFiltered: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToTauTau_UncorrelatedDecay_SM_UnFiltered: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToTauTau_UncorrelatedDecay_CPodd_Filtered: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToTauTau_UncorrelatedDecay_MM_Filtered: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToTauTau_UncorrelatedDecay_SM_Filtered: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHTo2TauUncorrelatedDecay_Unfiltered:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGluHTo2TauUncorrelatedDecay_Filtered:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+# Higgs 
+GluGluHToTauTau_M125:
+  - Run3_2022EE
+  - Run3_2023
+VBFHToTauTau_M125:
+  - Run3_2022EE
+  - Run3_2023
+GluGluHToTauTau_M125_Poisson60:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToTauTau_M125_Poisson70:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+VBFHToTauTau_M125_Poisson60:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+VBFHToTauTau_M125_Poisson70:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+ZH_Hbb_Zll: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZH_Hbb_Zqq: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ggHToZZTo2L2Q: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WplusHToTauTau_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WminusHToTauTau_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZHToTauTau_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToWWTo2L2Nu_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+VBFHToWWTo2L2Nu_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+HWplusJ_HToWW_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+HWminusJ_HToWW_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+HZJ_HToWW_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+HZJ_HToWW_M125_ext1: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluZH_HToWW_ZTo2L_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluZH_HToWW_ZTo2L_M125_ext1: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ttHToNonbb_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ttHTobb_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ttHToTauTau_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# SingleTop
+ST_tW_antitop_5f_InclusiveDecays:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_top_5f_InclusiveDecays: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_antitop_5f_NoFullyHadronicDecays: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_top_5f_NoFullyHadronicDecays: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_t-channel_antitop_4f_InclusiveDecays_erdON: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_t-channel_top_4f_InclusiveDecays_erdON: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_t-channel_antitop_4f_InclusiveDecays:
+  - Run3_2023
+  - Run3_2023BPix
+ST_t-channel_top_4f_InclusiveDecays:
+  - Run3_2023
+  - Run3_2023BPix
+ST_s-channel_4f_leptonDecays:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_s-channel_4f_hadronicDecays:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_top_2L2Nu: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ST_tW_top_2L2Nu_ext1: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_antitop_2L2Nu: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ST_tW_antitop_2L2Nu_ext1: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_top_4Q: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ST_tW_top_4Q_ext1: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_antitop_4Q: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ST_tW_antitop_4Q_ext1: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_top_LNu2Q: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ST_tW_top_LNu2Q_ext1: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_antitop_LNu2Q: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+ST_tW_antitop_LNu2Q_ext1: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ST_s-channel_top_4f: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+ST_s-channel_antitop_4f: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+
+# Triboson
+WWW_4F_ext1:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WWZ_4F_ext1:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WZZ_ext1:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZZZ_ext1:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# Z
+ZJetsToNuNu_HT-1500To2500:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ZJetsToNuNu_HT-400To800:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ZJetsToNuNu_HT-800To1500:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ZJetsToNuNu_HT-1200To2500:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZJetsToNuNu_HT-400To600: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZJetsToNuNu_HT-600To800: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZJetsToNuNu_HT-800To1200:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZJetsToQQ_HT-200to400: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZJetsToQQ_HT-400to600: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZJetsToQQ_HT-600to800: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZJetsToQQ_HT-800toInf: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+EWK_ZTo2L: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+EWK_ZTo2Nu:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# W
+WtoLNu_amcatnloFXFX:
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_madgraphMLM_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-100To400:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WtoLNu_HT-400To800:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WtoLNu_0J-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_1J-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_2J-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-100To200:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-1200To2500:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-1200To2500_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-2500ToInf_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-400To600_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-600To800_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-800To1200_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-200To400:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-2500ToInf:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-400To600:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-600To800:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-70To100:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-70To100_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_HT-800To1200:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WGToLNuG:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+EWK_WplusToLNu:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+EWK_WminusToLNu:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# DY
+DYJetsToLL_M-50-madgraphMLM: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-50_forPOG: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+DYTo2L_MLL-4to50: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYto2TautoMuTauh_M-50:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+DYTo2L_MLL-4to50_Poisson60:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+DYTo2L_MLL-50_Poisson60:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-10to50-madgraphMLM:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_LHEFilterPtZ-0To50-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_LHEFilterPtZ-50To100-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_LHEFilterPtZ-100To250-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_LHEFilterPtZ-250To400-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_LHEFilterPtZ-400To650-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_LHEFilterPtZ-650ToInf-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToTauTauToMuTauh-madgraphMLM:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToTauTauToMuTauh-madgraphMLM_ext1: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToTauTauToMuTauh-madgraphMLM_ext2: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-1000to1500-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-100to200-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-1500to2000-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-2000to3000-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-200to500-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-500to700-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-700to800-amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_M-800to1000-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_1400_2300-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_200_400-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_2300_3500-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_3500_4500-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_400_800-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_4500_6000-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_6000_Inf-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_1J_MLL_800_1400-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_1400_2300-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_200_400-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_2300_3500-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_3500_4500-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_400_800-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_4500_6000-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_6000_Inf-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_0J_MLL_800_1400-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_1400_2300-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_200_400-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_2300_3500-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_3500_4500-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_400_800-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_4500_6000-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_6000_Inf-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYJetsToLL_2J_MLL_800_1400-amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+DYto2L_M-50_madgraphMLM_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run3_2023
+  - Run3_2023BPix
+
+# TT
+TTto2L2Nu_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+TTtoLNu2Q:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+TTtoLNu2Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023  
+  - Run3_2023BPix
+TTto4Q:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+TTto4Q_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+TT:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+TT_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+TT_Poisson60:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+TT_Poisson60_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022 
+  - Run3_2023
+  - Run3_2023BPix
+TT_Poisson70:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+TT_Poisson70_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+TTToHadronic:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+TTToSemiLeptonic:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
