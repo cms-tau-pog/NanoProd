@@ -1,4 +1,4 @@
- config:
+config:
   params:
     sampleType: mc
     era: Run3_2023BPix
