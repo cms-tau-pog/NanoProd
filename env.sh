@@ -93,7 +93,7 @@ action() {
   local os_prefix=$(get_os_prefix $os_version)
   local node_os=$os_prefix$os_version
 
-  local default_cmssw_ver=CMSSW_14_0_1
+  local default_cmssw_ver=CMSSW_14_0_5
   #local target_os_version=7
   local target_os_version=8
   #local target_os_version=9
