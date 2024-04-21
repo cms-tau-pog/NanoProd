@@ -953,12 +953,101 @@ TT_Poisson70_ext1:
   - Run3_2022
   - Run3_2023
   - Run3_2023BPix
-TTToHadronic:
+TTtoHadronic: 
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-TTToSemiLeptonic:
+TTtoSemiLeptonic: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# Dihiggs
+^GluGluToHHTo2B2Tau:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^GluGluToRadionToHHTo2B2Tau:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^GluGluToBulkGravitonToHHTo2B2Tau:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^VBFToRadionToHHTo2B2Tau:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^VBFToBulkGravitonToHHTo2B2Tau:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# TTX
+^TTW:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^TTZ:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^TTH:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^TTT:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^TTG:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+TT4b:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+TTGJets_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+
+# nmssm
+^NMSSM:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+NMSSM_XToYHTo2Tau2B_MX-2500_MY-500:
+  - Run2_2016
+NMSSM_XToYHTo2Tau2B_MX-700_MY-150:
+  - Run2_2016
+NMSSM_XToYHTo2Tau2B_MX-2400_MY-1300:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-60:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-70:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-90:
+  - Run2_2016_HIPM
+
+# QCD:
+^QCD:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
