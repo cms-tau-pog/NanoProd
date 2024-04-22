@@ -618,14 +618,6 @@ EWK_WminusToLNu:
   - Run3_2023BPix
 
 # DY
-DYJetsToLL_M-50-madgraphMLM: 
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-  - Run3_2022
-  - Run3_2023
-  - Run3_2023BPix
 DYJetsToLL_M-50_forPOG: 
   - Run2_2016
   - Run2_2016_HIPM
