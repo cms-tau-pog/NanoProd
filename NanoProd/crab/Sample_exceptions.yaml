@@ -690,12 +690,12 @@ TT_ext1:
 ^GluGlutoBulkGravitontoHHto2B2Tau:
   - Run3_2023
   - Run3_2023BPix
-^VBFToRadiontoHHto2B2Tau:
+^VBFtoRadiontoHHto2B2Tau:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^VBFToBulkGravitontoHHto2B2Tau:
+^VBFtoBulkGravitontoHHto2B2Tau:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
