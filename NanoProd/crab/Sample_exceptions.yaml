@@ -474,6 +474,10 @@ EWK_ZTo2Nu:
   - Run3_2023BPix
 
 # W
+WToTauNu_M-200:
+  - Run3_2022
+WToMuNu_M-200:
+  - Run3_2022
 WtoLNu_amcatnloFXFX:
   - Run3_2023
   - Run3_2023BPix
@@ -619,6 +623,7 @@ DYJetsToLL_M-50-madgraphMLM:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
+  - Run3_2022
   - Run3_2023
   - Run3_2023BPix
 DYJetsToLL_M-50_forPOG: 
@@ -626,6 +631,7 @@ DYJetsToLL_M-50_forPOG:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
+  - Run3_2022
   - Run3_2023
   - Run3_2023BPix
 DYTo2L_MLL-4to50: 
@@ -641,8 +647,7 @@ DYto2TautoMuTauh_M-50:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-  - Run3_2022EE
-DYTo2L_MLL-4to50_Poisson60:
+DYto2L_MLL-4to50_Poisson60:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
@@ -650,7 +655,7 @@ DYTo2L_MLL-4to50_Poisson60:
   - Run3_2022
   - Run3_2023
   - Run3_2023BPix
-DYTo2L_MLL-50_Poisson60:
+DYto2L_MLL-50_Poisson60:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
