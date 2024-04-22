@@ -679,7 +679,7 @@ TT_ext1:
   - Run3_2023BPix
 
 # Dihiggs
-^GluGlutoHHto2B2Tau:
+^GluGlutoHHto2B2Tau_node:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -698,6 +698,78 @@ TT_ext1:
 ^VBFToBulkGravitontoHHto2B2Tau:
   - Run3_2022
   - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+^GluGlutoHHto2B2Tau_kl:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^VBFHHto2B2Tau_CV:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+GluGlutoHHto2B2Tau_kl-0p00_kt-1p00_c2-0p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-0p00_kt-1p00_c2-1p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-0p10:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-0p35:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-3p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-m2p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-2p45_kt-1p00_c2-0p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-5p00_kt-1p00_c2-0p00:
+  - Run3_2022EE
+
+VBFHHto2B2Tau_CV-1_C2V-1_C3-1:
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-1_C2V-1_C3-2:
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-1_C2V-2_C3-1:
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-1p74_C2V-1p37_C3-14p4:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m0p012_C2V-0p030_C3-10p2:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m0p758_C2V-1p44_C3-m19p3:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m0p962_C2V-0p959_C3-m1p43:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m1p21_C2V-1p94_C3-m0p94:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m1p60_C2V-2p72_C3-m1p36:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m2p12_C2V-3p87_C3-m5p96:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV_1_C2V_0_C3_1:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV_1_C2V_1_C3_1:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
+  - Run3_2022
   - Run3_2023
   - Run3_2023BPix
 
