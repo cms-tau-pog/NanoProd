@@ -679,31 +679,142 @@ TT_ext1:
   - Run3_2023BPix
 
 # Dihiggs
-^GluGluToHHTo2B2Tau:
+^GluGlutoHHto2B2Tau:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^GluGluToRadionToHHTo2B2Tau:
+^GluGlutoRadiontoHHto2B2Tau:
+  - Run3_2023
+  - Run3_2023BPix
+^GluGlutoBulkGravitontoHHto2B2Tau:
+  - Run3_2023
+  - Run3_2023BPix
+^VBFToRadiontoHHto2B2Tau:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^GluGluToBulkGravitonToHHTo2B2Tau:
+^VBFToBulkGravitontoHHto2B2Tau:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^VBFToRadionToHHTo2B2Tau:
+
+GluGlutoRadiontoHHto2B2Tau_M-320:
   - Run3_2022
   - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-^VBFToBulkGravitonToHHTo2B2Tau:
+GluGlutoRadiontoHHto2B2Tau_M-400:
   - Run3_2022
   - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
+GluGlutoRadiontoHHto2B2Tau_M-500: 
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoRadiontoHHto2B2Tau_M-750:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoRadiontoHHto2B2Tau_M-850:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoRadiontoHHto2B2Tau_M-900:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoRadiontoHHto2B2Tau_M-1250:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoRadiontoHHto2B2Tau_M-1500:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoRadiontoHHto2B2Tau_M-1750:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-320:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-400:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-500:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-750:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-850:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-900:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-1250:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-1500:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-1750:
+  - Run3_2022
+  - Run3_2022EE
+GluGlutoBulkGravitontoHHto2B2Tau_M-1200:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoBulkGravitontoHHto2B2Tau_M-1400:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoBulkGravitontoHHto2B2Tau_M-1600:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoBulkGravitontoHHto2B2Tau_M-1800:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoBulkGravitontoHHto2B2Tau_M-4000:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoBulkGravitontoHHto2B2Tau_M-5000:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoRadiontoHHto2B2Tau_M-1200:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoRadiontoHHto2B2Tau_M-1400:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoRadiontoHHto2B2Tau_M-1600:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoRadiontoHHto2B2Tau_M-1800:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoRadiontoHHto2B2Tau_M-4000:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+GluGlutoRadiontoHHto2B2Tau_M-5000:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
 
 # TTX
 ^TTW:
