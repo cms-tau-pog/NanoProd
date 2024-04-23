@@ -2,6 +2,3 @@ config:
   params:
     sampleType: mc
     era: Run3_2023
-
-#GluGluHToTauTau_M125: Missing
-#VBFHToTauTau_M125: Missing

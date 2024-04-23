@@ -452,7 +452,7 @@ EWK_WminusToLNu:
   - Run3_2023BPix
 
 # DY
-DYJetsToLL_M-50_forPOG: 
+DYJetsToLL_M-50: 
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
