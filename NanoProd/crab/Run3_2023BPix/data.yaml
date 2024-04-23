@@ -1,7 +1,7 @@
 config:
   params:
     sampleType: data
-    era: Run3_2023BPix
+    era: Run3_2023
 
 EGamma0_Run2022D_v1: /EGamma0/Run2023D-22Sep2023_v1-v1/MINIAOD
 EGamma0_Run2022D_v2: /EGamma0/Run2023D-22Sep2023_v2-v1/MINIAOD
