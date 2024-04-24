@@ -1,27 +1,89 @@
 # Diboson
-^(WWto2L2Nu|WWto4Q|WWtoLNu2Q|WZto2L2Q|WZtoLNu2Q|ZZto2L2Nu|ZZto2Nu2Q|ZZto4L)_ext1:
+^(WWto2L2Nu|WWto4Q|WWtoLNu2Q|WZto2L2Q|WZtoLNu2Q|ZZto2L2Nu|ZZto2Nu2Q|ZZto4L|ZZto2L2Q)_ext1:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-ZZto2L2Q_ext1:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-WZtoL3Nu:
-  - Run3_2023
-  - Run3_2023BPix
-ZZto4Q:
+WWtoLNu2Q_amcatnloFXFX:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
+WWto4Q_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WZtoLNu2Q_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WZto2L2Q_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WZto3LNu_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WZtoL3Nu_amcatnloFXFX:
+  - Run3_2023
+  - Run3_2023BPix
+ZZto2L2Q_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZZto2Nu2Q_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZZto4Q_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+WWto4Q_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WWtoLNu2Q_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WZto3LNu_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WZto2L2Q_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WZtoLNu2Q_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ZZto2L2Q_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+ZZto2Nu2Q_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
 
 # Higgs_CP
 ZHToTauTau_UncorrelatedDecay_Filtered:
