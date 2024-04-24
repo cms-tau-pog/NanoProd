@@ -14,9 +14,7 @@ ZZto2L2Q_ext1:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-WZto1L3Nu:
-  - Run3_2022
-  - Run3_2022EE
+WZtoL3Nu:
   - Run3_2023
   - Run3_2023BPix
 ZZto4Q:
@@ -26,12 +24,6 @@ ZZto4Q:
   - Run3_2023BPix
 
 # Higgs_CP
-ZHToTauTau_M125_ext1:
-  - Run2_2016
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
 ZHToTauTau_UncorrelatedDecay_Filtered:
   - Run3_2022
 ^GluGluHToTauTau_UncorrelatedDecay:
@@ -46,6 +38,19 @@ ZHToTauTau_UncorrelatedDecay_Filtered:
   - Run2_2018
 
 # Higgs 
+GluGluHToTauTau_M125_amcatnloFXFX:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023BPix
+ZHToTauTau_M125_ext1:
+  - Run2_2016
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
 GluGluHToTauTau_M125:
   - Run3_2022EE
   - Run3_2023
