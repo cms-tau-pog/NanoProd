@@ -1021,3 +1021,10 @@ NMSSM_XToYHTo2Tau2B_MX-2800_MY-90:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
+
+# BSM Higgs
+^GluGluHto2Tau_M.*_2HDM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
