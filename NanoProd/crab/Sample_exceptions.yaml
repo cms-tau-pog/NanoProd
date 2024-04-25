@@ -387,31 +387,7 @@ VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
   - Run3_2023
   - Run3_2023BPix
 
-GluGlutoRadiontoHHto2B2Tau_M-320:
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-400:
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-500: 
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-750:
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-850:
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-900:
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-1250:
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-1500:
-  - Run3_2022
-  - Run3_2022EE
-GluGlutoRadiontoHHto2B2Tau_M-1750:
+^GluGlutoRadiontoHHto2B2Tau_M-(320|400|500|750|850|900|1250|1500|1750)$:
   - Run3_2022
   - Run3_2022EE
 GluGlutoBulkGravitontoHHto2B2Tau_M-320:
