@@ -95,6 +95,11 @@ GluGluZH_HToWW_ZTo2L_M125:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
+GluGluZH_HToWW_ZTo2L_M125_ext1: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
 ttHToTauTau_M125: 
   - Run3_2022
   - Run3_2022EE
@@ -164,11 +169,6 @@ ST_tW_antitop_LNu2Q:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^ZJetsToQQ_HT-(200to400|400to600|600to800|800toInf): 
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
 ^EWK_(ZTo2L|ZTo2Nu): 
   - Run3_2022
   - Run3_2022EE
@@ -186,29 +186,30 @@ WtoLNu_madgraphMLM_ext1:
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-^(WtoLNu_0J|WtoLNu_1J|WtoLNu_2J)-amcatnloFXFX:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-^WtoLNu_HT-(100To400|400To800):
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
 ^WtoLNu_HT-(70To100|100To200|200To400|400To600|600To800|800To1200|1200To2500|2500ToInf):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^WtoLNu_HT-(1200To2500|2500ToInf|400To600|600To800|800To1200)_ext1:
+^WtoLNu_HT-(400To600|600To800|800To1200|1200To2500|2500ToInf)_madgraph_ext1:
   - Run2_2016
   - Run2_2017
   - Run2_2018
-WtoLNu_HT-70To100_ext1:
+WtoLNu_HT-70To100_madgraph_ext1:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2018
+^WtoLNu_MLNu-0to120_HT-(40To100|100To400|400To800|1500To2500)_madgraph:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WtoLNu_MLNu-0to120_HT-800To1500_madgraph:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
 WGToLNuG:
   - Run3_2022
   - Run3_2022EE
@@ -221,19 +222,6 @@ WGToLNuG:
   - Run3_2023BPix
 
 # DY
-DYJetsToLL_M-50: 
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-  - Run3_2022
-  - Run3_2023
-  - Run3_2023BPix
-DYJetsToLL_M-10to50-madgraphMLM:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
 DYto2L_M-50_madgraphMLM_ext1:
   - Run2_2016
   - Run2_2016_HIPM
@@ -247,17 +235,12 @@ DYTo2L_MLL-4to50:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-DYto2TautoMuTauh_M-50:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
 ^DYJetsToLL_LHEFilterPtZ: 
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^DYJetsToTauTauToMuTauh-madgraphMLM:
+^DYto2TautoMuTauh_M-50_madgraphMLM_(ext1|ext2):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -272,7 +255,19 @@ DYto2TautoMuTauh_M-50:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-
+^DYto2L_M-50_PTLL-(100to200|200to400|400to600|40to100)_(1J|2J)_amcatnloFXFX:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^DYto2L_M-50_PTLL-600_(1J|2J)_amcatnloFXFX:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
 # TT
 ^(TTto2L2Nu|TTtoLNu2Q|TTto4Q)_ext1:
   - Run2_2016
