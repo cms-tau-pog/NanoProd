@@ -206,14 +206,14 @@ ST_tW_antitop_LNu2Q_ext1:
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-ST_s-channel_top_4f: 
+ST_s-channel_top_4f_leptonDecays: 
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-ST_s-channel_antitop_4f: 
+ST_s-channel_antitop_4f_leptonDecays: 
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
