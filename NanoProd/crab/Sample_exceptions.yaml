@@ -107,12 +107,7 @@ ttHToTauTau_M125:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-ST_t-channel_antitop_4f_InclusiveDecays_erdON: 
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-ST_t-channel_top_4f_InclusiveDecays_erdON: 
+^ST_t-channel_(anti|)top_4f_InclusiveDecays_erdON: 
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
