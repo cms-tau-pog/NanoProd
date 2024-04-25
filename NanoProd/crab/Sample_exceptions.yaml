@@ -136,6 +136,8 @@ ST_s-channel_4f_hadronicDecays:
 ^ST_tW_(anti|)top_(2L2Nu|4Q|LNu2Q)_ext1: 
   - Run3_2023
   - Run3_2023BPix
+ST_tW_antitop_LNu2Q:
+  - Run3_2023
 ^ST_s-channel_(anti|)top_4f_leptonDecays: 
   - Run2_2016
   - Run2_2016_HIPM
