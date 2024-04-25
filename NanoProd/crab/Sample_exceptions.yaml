@@ -119,8 +119,6 @@ ST_t-channel_top_4f_InclusiveDecays:
   - Run3_2023
   - Run3_2023BPix
 ST_s-channel_4f_leptonDecays:
-  - Run3_2022
-  - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
 ST_s-channel_4f_hadronicDecays:
