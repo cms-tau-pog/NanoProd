@@ -28,12 +28,7 @@ ZHToTauTau_UncorrelatedDecay_Filtered:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluHTo2Tau_UncorrelatedDecay_UnFiltered:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-GluGluHTo2Tau_UncorrelatedDecay_Filtered:
+^GluGluHTo2Tau_UncorrelatedDecay_(Un|)Filtered:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
