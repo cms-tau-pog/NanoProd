@@ -15,3 +15,5 @@ GluGluHToWWTo2L2Nu_M125: /GluGluHto2Wto2L2Nu_M-125_TuneCP5_13p6TeV_powheg-jhugen
 
 ttHToNonbb_M125: /TTHtoNon2B_M-125_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v4/MINIAODSIM
 ttHTobb_M125: /TTHto2B_M-125_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v3/MINIAODSIM
+
+VBFHToWWTo2L2Nu_M125: /VBFHto2Wto2L2Nu_M-125_TuneCP5_13p6TeV_powheg-jhugen752-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v2/MINIAODSIM

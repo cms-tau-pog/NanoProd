@@ -1,5 +1,8 @@
 # Diboson
-^(WWto2L2Nu|WWto4Q|WWtoLNu2Q|WZto2L2Q|WZtoLNu2Q|ZZto2L2Nu|ZZto2Nu2Q|ZZto4L|ZZto2L2Q).*_ext1:
+^(WWto4Q|WWtoLNu2Q|WZto2L2Q|WZtoLNu2Q|ZZto2Nu2Q|ZZto2L2Q).*_ext1:
+  - Run3_2023
+  - Run3_2023BPix
+^(WWto2L2Nu|ZZto2L2Nu|ZZto4L).*_ext1:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
@@ -80,8 +83,6 @@ GluGluHToWWTo2L2Nu_M125:
   - Run3_2023
   - Run3_2023BPix
 VBFHToWWTo2L2Nu_M125:
-  - Run3_2022
-  - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
 ^(HWplusJ|HWminusJ|HZJ)_HToWW_M125: 
