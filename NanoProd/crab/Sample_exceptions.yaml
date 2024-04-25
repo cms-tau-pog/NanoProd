@@ -102,22 +102,7 @@ ttHToTauTau_M125:
   - Run3_2023BPix
 
 # SingleTop
-ST_tW_antitop_5f_InclusiveDecays:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-ST_tW_top_5f_InclusiveDecays: 
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-ST_tW_antitop_5f_NoFullyHadronicDecays: 
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-ST_tW_top_5f_NoFullyHadronicDecays: 
+^ST_tW_(antitop_5f_InclusiveDecays|top_5f_InclusiveDecays|antitop_5f_NoFullyHadronicDecays|top_5f_NoFullyHadronicDecays):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
