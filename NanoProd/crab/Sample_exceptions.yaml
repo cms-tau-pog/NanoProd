@@ -6,10 +6,7 @@
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-WWtoLNu2Q_amcatnloFXFX:
-  - Run3_2023
-  - Run3_2023BPix
-WWto4Q_amcatnloFXFX:
+^(WWtoLNu2Q|WWto4Q)_amcatnloFXFX:
   - Run3_2023
   - Run3_2023BPix
 WZto2L2Q_amcatnloFXFX:
