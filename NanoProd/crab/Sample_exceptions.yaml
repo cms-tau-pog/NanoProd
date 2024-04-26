@@ -1,0 +1,565 @@
+# Diboson
+^(WWto4Q|WWtoLNu2Q|WZto2L2Q|WZtoLNu2Q|ZZto2Nu2Q|ZZto2L2Q).*_ext1:
+  - Run3_2023
+  - Run3_2023BPix
+^(WWto2L2Nu|ZZto2L2Nu|ZZto4L).*_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+^(WWtoLNu2Q|WWto4Q)_amcatnloFXFX:
+  - Run3_2023
+  - Run3_2023BPix
+^(WZto2L2Q|ZZto2Nu2Q|ZZto4Q)_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^(WWto4Q|WWtoLNu2Q|WZto2L2Q|WZtoLNu2Q|ZZto2L2Q|ZZto2Nu2Q)_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+# Higgs_CP
+ZHToTauTau_UncorrelatedDecay_Filtered:
+  - Run3_2022
+^GluGluHTo2Tau_UncorrelatedDecay_(CPodd|MM|SM):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^GluGluHTo2Tau_UncorrelatedDecay_(Un|)Filtered:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+# Higgs 
+GluGluHToTauTau_M125_amcatnloFXFX:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023BPix
+ZHToTauTau_M125_ext1:
+  - Run2_2016
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToTauTau_M125:
+  - Run3_2022EE
+  - Run3_2023
+VBFHToTauTau_M125:
+  - Run3_2022EE
+  - Run3_2023
+^(ZH_Hbb_Zqq|ZH_Hbb_Zll)_ext1: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHtoZZto2L2Q: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^(Wplus|Wminus)HToTauTau_M125:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ZHToTauTau_M125:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluHToWWTo2L2Nu_M125: 
+  - Run3_2023
+  - Run3_2023BPix
+VBFHToWWTo2L2Nu_M125:
+  - Run3_2023
+  - Run3_2023BPix
+^(HWplusJ|HWminusJ|HZJ)_HToWW_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluZH_HToWW_ZTo2L_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGluZH_HToWW_ZTo2L_M125_ext1: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ttHToTauTau_M125: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# SingleTop
+^ST_tW_(antitop_5f_InclusiveDecays|top_5f_InclusiveDecays|antitop_5f_NoFullyHadronicDecays|top_5f_NoFullyHadronicDecays):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^ST_t-channel_(anti|)top_4f_InclusiveDecays_erdON: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_t-channel_antitop_4f_InclusiveDecays:
+  - Run3_2023
+  - Run3_2023BPix
+ST_t-channel_top_4f_InclusiveDecays:
+  - Run3_2023
+  - Run3_2023BPix
+ST_s-channel_4f_leptonDecays:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+ST_s-channel_4f_hadronicDecays:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^ST_tW_(anti|)top_(2L2Nu|4Q|LNu2Q)(_ext1|): 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^ST_tW_(anti|)top_(2L2Nu|4Q|LNu2Q)_ext1: 
+  - Run3_2023
+  - Run3_2023BPix
+ST_tW_antitop_LNu2Q:
+  - Run3_2023
+^ST_s-channel_(anti|)top_4f_leptonDecays: 
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+
+# Triboson
+^(WWW_4F|WWZ_4F|WZZ|ZZZ)_ext1:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# Z
+^Zto2Nu_HT-(400To800|800To1500|1500To2500):
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^Zto2Nu_HT-(400To600|600To800|800To1200|1200To2500):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^EWK_(ZTo2L|ZTo2Nu): 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# W
+WtoLNu_amcatnloFXFX:
+  - Run3_2023
+  - Run3_2023BPix
+WtoLNu_madgraphMLM_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+^WtoLNu_HT-(70To100|100To200|200To400|400To600|600To800|800To1200|1200To2500|2500ToInf):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^WtoLNu_HT-(400To600|600To800|800To1200|1200To2500|2500ToInf)_madgraph_ext1:
+  - Run2_2016
+  - Run2_2017
+  - Run2_2018
+WtoLNu_HT-70To100_madgraph_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2018
+^WtoLNu_MLNu-0to120_HT-(40To100|100To400|400To800|1500To2500)_madgraph:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WtoLNu_MLNu-0to120_HT-800To1500_madgraph:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+WGToLNuG:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^EWK_(WplusToLNu|WminusToLNu):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# DY
+DYto2L_M-50_madgraphMLM_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run3_2023
+  - Run3_2023BPix
+^DYto2L_M-50_PTLL-(0to50|50to100|100to250|250to400|400to650|650toInf)_amcatnloFXFX:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^DYto2TautoMuTauh_M-50_madgraphMLM_(ext1|ext2):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^DYto2L_M-(100to200|200to500|500to700|700to800|800to1000|1000to1500|1500to2000|2000to3000)_amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^DYto2L_(0J|1J|2J)_MLL_(200_400|400_800|800_1400|1400_2300|2300_3500|3500_4500|4500_6000|6000_Inf)_amcatnloFXFX: 
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^DYto2L_M-50_PTLL-(100to200|200to400|400to600|40to100)_(1J|2J)_amcatnloFXFX:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^DYto2L_M-50_PTLL-600_(1J|2J)_amcatnloFXFX:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^DYto2(E|Mu|Tau)_MLL-.*_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+# TT
+^(TTto2L2Nu|TTtoLNu2Q|TTto4Q)_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+  - Run3_2023BPix
+TT:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+TT_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+# Dihiggs
+^GluGlutoHHto2B2Tau_node:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^GluGlutoRadiontoHHto2B2Tau:
+  - Run3_2023
+  - Run3_2023BPix
+^GluGlutoBulkGravitontoHHto2B2Tau:
+  - Run3_2023
+  - Run3_2023BPix
+^VBFtoRadiontoHHto2B2Tau:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^VBFtoBulkGravitontoHHto2B2Tau:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
+^GluGlutoHHto2B2Tau_kl:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^VBFHHto2B2Tau_CV:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+GluGlutoHHto2B2Tau_kl-0p00_kt-1p00_c2-0p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-0p00_kt-1p00_c2-1p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-0p10:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-0p35:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-3p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-m2p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-2p45_kt-1p00_c2-0p00:
+  - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-5p00_kt-1p00_c2-0p00:
+  - Run3_2022EE
+
+VBFHHto2B2Tau_CV-1_C2V-1_C3-1:
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-1_C2V-1_C3-2:
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-1_C2V-2_C3-1:
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-1p74_C2V-1p37_C3-14p4:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m0p012_C2V-0p030_C3-10p2:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m0p758_C2V-1p44_C3-m19p3:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m0p962_C2V-0p959_C3-m1p43:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m1p21_C2V-1p94_C3-m0p94:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m1p60_C2V-2p72_C3-m1p36:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m2p12_C2V-3p87_C3-m5p96:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV_1_C2V_0_C3_1:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV_1_C2V_1_C3_1:
+  - Run3_2023
+  - Run3_2023BPix
+VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+
+^GluGlutoRadiontoHHto2B2Tau_M-(320|400|500|750|850|900|1250|1500|1750)$:
+  - Run3_2022
+  - Run3_2022EE
+^GluGlutoBulkGravitontoHHto2B2Tau_M-(320|400|500|750|850|900|1250|1500|1750)$:
+  - Run3_2022
+  - Run3_2022EE
+^GluGlutoBulkGravitontoHHto2B2Tau_M-(1200|1400|1600|1800|4000|5000)$:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^GluGlutoRadiontoHHto2B2Tau_M-(1200|1400|1600|1800|4000|5000)$:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+# TTX
+TTZToQQ:
+  - Run3_2023
+  - Run3_2023BPix
+^TT(WJetsToLNu|WJetsToQQ|WZ|ZToLLNuNu_M-10|ZToBB|ZToLL_M-1to10|ZToNuNu|ZToQQ_Dilept|GJets|Gamma|T|4b|GG|ZZTo4b|ZZToNon4b|ZHTo4b|ZHToNon4b):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^TTHH:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+TTGJets_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+
+# nmssm
+^NMSSM:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+NMSSM_XToYHTo2Tau2B_MX-2500_MY-500:
+  - Run2_2016
+NMSSM_XToYHTo2Tau2B_MX-700_MY-150:
+  - Run2_2016
+NMSSM_XToYHTo2Tau2B_MX-2400_MY-1300:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-60:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-70:
+  - Run2_2016_HIPM
+NMSSM_XToYHTo2Tau2B_MX-2800_MY-90:
+  - Run2_2016_HIPM
+
+# QCD:
+QCD_PT-20_MuEnrichedPt15:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^QCD_HT(50to100|200to300|300to500|500to700|700to1000|1000to1500):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_HT100to200:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_HT1500to2000:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_HT2000toInf:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_PT_3200toInf:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^QCD_PT-(15To20|20To30|30To50|50To80|80To120|120To170|170To300|300To470|470To600|600To800|800To1000)_MuEnrichedPt5:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_PT-15to20_EMEnriched:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_PT-20to30_EMEnriched:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+QCD_PT-300toInf_EMEnriched:
+  - Run3_2022EE
+QCD_HT40to70_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+^QCD_HT(70to100|200to400|400to600|600to800|1200to1500)_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_HT800to1000_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+QCD_HT1000to1200_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+^QCD_PT-(15to20|20to30|30to50|50to80|80to120|120to170|170to300|300to470|470to600|600to800|800to1000)_MuEnrichedPt5:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_PT-10to30_EMEnriched:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_PT_3200:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_HT1000To1200_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023BPix
+QCD_PT-300_EMEnriched:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+QCD_HT800to10000_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023BPix
+QCD_PT_600:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+
+
+# BSM Higgs
+^GluGluHto2Tau_M.*_2HDM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
