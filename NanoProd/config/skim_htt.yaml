@@ -126,7 +126,7 @@ selection: "
   int n_electrons = Electron_pt[ele_sel].size();
   int n_muons = Muon_pt[muon_sel].size();
   int n_taus = Tau_pt[tau_sel].size();
-  int n_met = std::max({MET_pt, DeepMETResolutionTune_pt, DeepMETResponseTune_pt, PuppiMET_pt}) > 100;
+  int n_met = std::max({PFMET_pt, DeepMETResolutionTune_pt, DeepMETResponseTune_pt, PuppiMET_pt}) > 100;
 
   return n_electrons + n_muons + n_taus + n_met >= 2;
   "
