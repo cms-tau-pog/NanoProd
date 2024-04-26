@@ -411,32 +411,15 @@ VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
   - Run2_2018
 
 # TTX
-^TTW:
+TTZToQQ:
+  - Run3_2023
+  - Run3_2023BPix
+^TT(WJetsToLNu|WJetsToQQ|WZ|ZToLLNuNu_M-10|ZToBB|ZToLL_M-1to10|ZToNuNu|ZToQQ_Dilept|GJets|Gamma|T|4b|GG|ZZTo4b|ZZToNon4b|ZHTo4b|ZHToNon4b):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^TTZ:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-^TTH:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-^TTT:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-^TTG:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-TT4b:
+^TTHH:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
