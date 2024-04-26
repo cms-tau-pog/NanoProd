@@ -268,6 +268,12 @@ DYTo2L_MLL-4to50:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
+^DYto2(E|Mu|Tau)_MLL-.*_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
 # TT
 ^(TTto2L2Nu|TTtoLNu2Q|TTto4Q)_ext1:
   - Run2_2016
@@ -460,11 +466,121 @@ NMSSM_XToYHTo2Tau2B_MX-2800_MY-90:
   - Run2_2016_HIPM
 
 # QCD:
-^QCD:
+QCD_PT-20_MuEnrichedPt15:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
+^QCD_HT(50to100|200to300|300to500|500to700|700to1000|1000to1500):
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_HT100to200:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_HT1500to2000:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_HT2000toInf:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_PT_3200toInf:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+^QCD_PT-(15To20|20To30|30To50|50To80|80To120|120To170|170To300|300To470|470To600|600To800|800To1000)_MuEnrichedPt5:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_PT-15to20_EMEnriched:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+QCD_PT-20to30_EMEnriched:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+QCD_PT-300toInf_EMEnriched:
+  - Run3_2022EE
+QCD_HT40to70_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+^QCD_HT(70to100|200to400|400to600|600to800|1200to1500)_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_HT800to1000_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2023
+QCD_HT1000to1200_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022EE
+  - Run3_2023
+^QCD_PT-(15to20|20to30|30to50|50to80|80to120|120to170|170to300|300to470|470to600|600to800|800to1000)_MuEnrichedPt5:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_PT-10to30_EMEnriched:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_PT_3200:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+QCD_HT1000To1200_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023BPix
+QCD_PT-300_EMEnriched:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+QCD_HT800to10000_MLM:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023BPix
+QCD_PT_600:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+
 
 # BSM Higgs
 ^GluGluHto2Tau_M.*_2HDM:
