@@ -227,14 +227,6 @@ DYto2L_M-50_madgraphMLM_ext1:
   - Run2_2016_HIPM
   - Run3_2023
   - Run3_2023BPix
-DYTo2L_MLL-4to50: 
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
 ^DYto2L_M-50_PTLL-(0to50|50to100|100to250|250to400|400to650|650toInf)_amcatnloFXFX:
   - Run3_2022
   - Run3_2022EE
