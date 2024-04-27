@@ -39,7 +39,7 @@ Production should be run on the server that have the crab stageout area mounted 
 1. Test that the code works locally (take one of the miniAOD files as an input). E.g.
    ```sh
    mkdir -p tmp && cd tmp
-   cmsEnv python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize maxEvents=100 sampleType=mc era=Run2_2018 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD_UL18/TTToSemiLeptonic.root writePSet=True 'output=nano.root;./output;../NanoProd/config/skim_htt.yaml;skim;skim_failed'
+   cmsEnv python3 $ANALYSIS_PATH/RunKit/nanoProdWrapper.py customise=NanoProd/NanoProd/customize.customize maxEvents=100 sampleType=mc era=Run3_2022 inputFiles=file:/eos/cms/store/group/phys_tau/kandroso/miniAOD/Run3_2022/TTtoLNu2Q.root writePSet=True keepIntermediateFiles=True 'output=nano.root;./output;../NanoProd/config/skim_htt.yaml;skim;skim_failed'
    cmsEnv $ANALYSIS_PATH/RunKit/crabJob.sh
    ```
    Check that output file `nano_0.root` is created correctly.

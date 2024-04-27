@@ -108,7 +108,7 @@ action() {
     autoload bashcompinit
     bashcompinit
   fi
-  source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_102 x86_64-centos${os_version}-gcc11-opt
+  source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_105 x86_64-${os_prefix}${os_version}-gcc13-opt
   source /afs/cern.ch/user/m/mrieger/public/law_sw/setup.sh
 
   source "$( law completion )" ""

@@ -5,61 +5,38 @@ skim:
     - Runs
   sel_ref: selection
   column_filters:
-    - drop Jet_btagDeepB
-    - drop Jet_btagDeepCvB
-    - drop Jet_btagDeepCvL
-    - drop Jet_btagCSVV2
-    - drop Jet_qgl
-    - drop Jet_neEmEF
-    - drop Jet_neHEF
-    - drop Jet_chFPV0EF
-    - drop Jet_chHEF
     - drop Jet_hfsigmaEtaEta
     - drop Jet_hfsigmaPhiPhi
-    - drop Jet_chEmEF
-    - drop Jet_muEF
     - drop Jet_hfcentralEtaStripSize
     - drop Jet_hfadjacentEtaStripsSize
-    - drop Jet_nMuons
-    - drop Jet_muonIdx1
-    - drop Jet_muonIdx2
-    - drop Jet_nElectrons
-    - drop Jet_electronIdx1
-    - drop Jet_electronIdx2
-    - drop Electron_miniPFRelIso_all
-    - drop Electron_miniPFRelIso_chg
-    - drop Electron_eInvMinusPInv
-    - drop Electron_deltaEtaSC
+    - drop Jet_chEmEF
+    - drop Jet_chHEF
+    - drop Jet_hfEmEF
+    - drop Jet_hfHEF
+    - drop Jet_muEF
+    - drop Jet_neEmEF
+    - drop Jet_neHEF
+    - drop Jet_muonSubtrFactor
     - drop Electron_sieie
     - drop Electron_scEtOverPt
     - drop Electron_jetRelIso
     - drop Electron_r9
     - drop Electron_jetPtRelv2
     - drop Electron_vidNestedWPBitmap
-    - drop Electron_energyErr
-    - drop Electron_hoe
     - drop Electron_vidNestedWPBitmapHEEP
+    - drop Electron_hoe
     - drop Electron_dr03EcalRecHitSumEt
     - drop Electron_dr03HcalDepth1TowerSumEt
     - drop Electron_jetNDauCharged
     - drop Electron_dr03TkSumPt
     - drop Electron_dr03TkSumPtHEEP
     - drop Electron_tightCharge
-    - drop Electron_isPFcand
-    - drop Electron_lostHits
     - drop Electron_cutBased_HEEP
-    - drop Electron_photonIdx
-    - drop Electron_fsrPhotonIdx
-    - drop Muon_miniPFRelIso_all
-    - drop Muon_miniPFRelIso_chg
-    - drop Muon_dxybs
     - drop Muon_segmentComp
     - drop Muon_jetRelIso
     - drop Muon_jetPtRelv2
-    - drop Muon_nTrackerLayers
     - drop Muon_nStations
     - drop Muon_jetNDauCharged
-    - drop Muon_fsrPhotonIdx
     - drop Tau_idDecayModeOldDMs
     - drop Tau_idAntiEleDeadECal
     - drop Tau_photonsOutsideSignalCone
@@ -72,23 +49,11 @@ skim:
     - drop ^(n|)LowPtElectron(_.*|)$
     - drop ^(n|)SoftActivityJet(.*|)$
     - drop ^(n|)IsoTrack(_.*|)$
-    - drop ^(n|)FsrPhoton(_.*|)$
     - drop ^(n|)GenIsolatedPhoton(_.*|)$
     - drop ^(n|)GenProton(_.*|)$
     - drop ^(n|)Proton(_.*|)$
     - drop ^(n|)PPSLocalTrack(_.*|)$
     - drop ^L1_.*$
-    - drop ^HLT_.*$
-    - keep ^HLT_.*Tau.*$
-    - keep ^HLT_PFMET.*$
-    - keep ^HLT_PFHT.*$
-    - keep ^HLT_(|Iso|Old)(|Tk)Mu[1-9][0-9]+.*$
-    - keep ^HLT_Ele[1-9][0-9]+.*$
-    - drop ^HLT_Ele.*CaloId.*$
-    - keep ^HLT_AK8PFJet[0-9]+.*BoostedDoubleB.*$
-    - drop ^HLT_Ele.*Ele.*$
-    - drop ^HLT_.*Tau3[mM]u.*$
-    - drop ^HLT_Mu.*(Jpsi|Upsilon|NoFilters|IP).*$
 
 skim_failed:
   input_tree: Events
@@ -106,15 +71,15 @@ skim_failed:
 
 
 selection: "
-  auto ele_base_sel = Electron_pt > 8 && abs(Electron_eta) < 2.5;
+  auto ele_base_sel = Electron_pt > 5 && abs(Electron_eta) < 2.5;
   auto ele_mvaIso_sel = Electron_mvaIso_WP90;
   auto ele_mvaNoIso_sel = Electron_mvaNoIso_WP90;
-  auto ele_pfIso_sel = Electron_pfRelIso03_all < 0.5;
+  auto ele_pfIso_sel = Electron_pfRelIso03_all < 0.5 || Electron_miniPFRelIso_all < 0.5;
   auto ele_sel = ele_base_sel && (ele_mvaIso_sel || (ele_mvaNoIso_sel && ele_pfIso_sel));
 
-  auto muon_base_sel = Muon_pt > 8 && abs(Muon_eta) < 2.4;
-  auto muon_id_sel = Muon_tightId || Muon_mediumId || Muon_highPtId;
-  auto muon_iso_sel = Muon_pfRelIso04_all < 0.5 || Muon_pfRelIso03_all < 0.5 || Muon_tkRelIso < 0.5;
+  auto muon_base_sel = Muon_pt > 5 && abs(Muon_eta) < 2.4;
+  auto muon_id_sel = Muon_tightId || Muon_mediumId || Muon_mediumPromptId || Muon_highPtId || Muon_mvaMuID_WP >= 1 || Muon_miniIsoId >= 2;
+  auto muon_iso_sel = Muon_pfRelIso04_all < 0.5 || Muon_pfRelIso03_all < 0.5 || Muon_tkRelIso < 0.5 || Muon_miniPFRelIso_all < 0.5;
   auto muon_sel = muon_base_sel && muon_id_sel && muon_iso_sel;
 
   auto tau_base_sel = Tau_pt > 18 && abs(Tau_eta) < 2.5;
@@ -127,6 +92,14 @@ selection: "
   int n_muons = Muon_pt[muon_sel].size();
   int n_taus = Tau_pt[tau_sel].size();
   int n_met = std::max({PFMET_pt, DeepMETResolutionTune_pt, DeepMETResponseTune_pt, PuppiMET_pt}) > 100;
+  if(n_electrons + n_muons + n_taus + n_met >= 2) return true;
 
-  return n_electrons + n_muons + n_taus + n_met >= 2;
+  auto fatJet_sel = FatJet_particleNet_XteVsQCD > 0.05 || FatJet_particleNet_XtmVsQCD > 0.05 || FatJet_particleNet_XttVsQCD > 0.05;
+  int n_fatJet = FatJet_pt[fatJet_sel].size();
+  if(n_fatJet >= 1 || nFatJet >= 2) return true;
+
+  if(n_electrons + n_muons < 1) return false;
+  float lep_pt = n_electrons > 0 ? Electron_pt[ele_sel][0] : Muon_pt[muon_sel][0];
+  float HT = Sum(Jet_pt);
+  return nJet >= 4 && (lep_pt > 20 || HT > 280);
   "
