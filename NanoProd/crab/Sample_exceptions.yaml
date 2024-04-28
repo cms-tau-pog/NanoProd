@@ -37,7 +37,7 @@ ZHToTauTau_UncorrelatedDecay_Filtered:
   - Run2_2017
   - Run2_2018
 
-# Higgs 
+# Higgs
 GluGluHToTauTau_M125_amcatnloFXFX:
   - Run2_2016
   - Run2_2016_HIPM
@@ -57,14 +57,14 @@ GluGluHToTauTau_M125:
 VBFHToTauTau_M125:
   - Run3_2022EE
   - Run3_2023
-^(ZH_Hbb_Zqq|ZH_Hbb_Zll)_ext1: 
+^(ZH_Hbb_Zqq|ZH_Hbb_Zll)_ext1:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-GluGluHtoZZto2L2Q: 
+GluGluHtoZZto2L2Q:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -79,28 +79,28 @@ ZHToTauTau_M125:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluHToWWTo2L2Nu_M125: 
+GluGluHToWWTo2L2Nu_M125:
   - Run3_2023
   - Run3_2023BPix
 VBFHToWWTo2L2Nu_M125:
   - Run3_2023
   - Run3_2023BPix
-^(HWplusJ|HWminusJ|HZJ)_HToWW_M125: 
+^(HWplusJ|HWminusJ|HZJ)_HToWW_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluZH_HToWW_ZTo2L_M125: 
+GluGluZH_HToWW_ZTo2L_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluZH_HToWW_ZTo2L_M125_ext1: 
+GluGluZH_HToWW_ZTo2L_M125_ext1:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-ttHToTauTau_M125: 
+ttHToTauTau_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -112,7 +112,7 @@ ttHToTauTau_M125:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^ST_t-channel_(anti|)top_4f_InclusiveDecays_erdON: 
+^ST_t-channel_(anti|)top_4f_InclusiveDecays_erdON:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -133,17 +133,17 @@ ST_s-channel_4f_hadronicDecays:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^ST_tW_(anti|)top_(2L2Nu|4Q|LNu2Q)(_ext1|): 
+^ST_tW_(anti|)top_(2L2Nu|4Q|LNu2Q)(_ext1|):
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^ST_tW_(anti|)top_(2L2Nu|4Q|LNu2Q)_ext1: 
+^ST_tW_(anti|)top_(2L2Nu|4Q|LNu2Q)_ext1:
   - Run3_2023
   - Run3_2023BPix
 ST_tW_antitop_LNu2Q:
   - Run3_2023
-^ST_s-channel_(anti|)top_4f_leptonDecays: 
+^ST_s-channel_(anti|)top_4f_leptonDecays:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
@@ -169,7 +169,7 @@ ST_tW_antitop_LNu2Q:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^EWK_(ZTo2L|ZTo2Nu): 
+^EWK_(ZTo2L|ZTo2Nu):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -237,12 +237,12 @@ DYto2L_M-50_madgraphMLM_ext1:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^DYto2L_M-(100to200|200to500|500to700|700to800|800to1000|1000to1500|1500to2000|2000to3000)_amcatnloFXFX: 
+^DYto2L_M-(100to200|200to500|500to700|700to800|800to1000|1000to1500|1500to2000|2000to3000)_amcatnloFXFX:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^DYto2L_(0J|1J|2J)_MLL_(200_400|400_800|800_1400|1400_2300|2300_3500|3500_4500|4500_6000|6000_Inf)_amcatnloFXFX: 
+^DYto2L_(0J|1J|2J)_MLL_(200_400|400_800|800_1400|1400_2300|2300_3500|3500_4500|4500_6000|6000_Inf)_amcatnloFXFX:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -401,6 +401,32 @@ VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
+
+^.*HHto2B2V.*$:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+^GluGluto(Radion|BulkGraviton)toHHto2B2V:
+  - Run3_2023
+  - Run3_2023BPix
+
+^GluGlutoHHto2B2V.*_kl-[^2].*$:
+  - Run3_2023
+  - Run3_2023BPix
+
+^VBFHHto2B2V.*$:
+  - Run3_2023
+  - Run3_2023BPix
+
+^VBFHHto2B2V(to2L2Nu|)_CV-m1p83_C2V-3p57_C3-m3p39:
+  - Run3_2022
+
+GluGlutoHHto2B2V_kl-2p45_kt-1p00_c2-0p00:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023BPix
 
 # TTX
 TTZToQQ:
