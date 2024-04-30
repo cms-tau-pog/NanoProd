@@ -69,7 +69,7 @@ skim_failed:
 
 
 selection: "
-  auto ele_base_sel = Electron_pt > 5 && abs(Electron_eta) < 2.5;
+  auto ele_base_sel = Electron_pt > 5 && (abs(Electron_eta) < 2.5 || abs(Electron_eta+Electron_deltaEtaSC) < 2.5);
   auto ele_mvaIso_sel = Electron_mvaIso_WP90;
   auto ele_mvaNoIso_sel = Electron_mvaNoIso_WP90;
   auto ele_pfIso_sel = Electron_pfRelIso03_all < 0.5 || Electron_miniPFRelIso_all < 0.5;
@@ -99,5 +99,5 @@ selection: "
   if(n_electrons + n_muons < 1) return false;
   float lep_pt = n_electrons > 0 ? Electron_pt[ele_sel][0] : Muon_pt[muon_sel][0];
   float HT = Sum(Jet_pt);
-  return nJet >= 4 && (lep_pt > 20 || HT > 280);
+  return nJet >= 4 && (lep_pt > 20 || HT > 200);
   "
