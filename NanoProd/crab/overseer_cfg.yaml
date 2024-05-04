@@ -27,6 +27,7 @@ allowNonValid: False
 dryrun: False
 maxRecoveryCount: 4
 updateInterval: 60
+maxNumberOfActiveCrabTasks: 100
 localProcessing:
   lawTask: ProdTask
   workflow: htcondor
