@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function run_cmd {
+run_cmd() {
   "$@"
   RESULT=$?
   if (( $RESULT != 0 )); then
@@ -70,7 +70,7 @@ install_cmssw() {
     local env_cmd_args="--command-to-run"
   fi
   if ! [ -f "$this_dir/soft/$CMSSW_VER/.installed" ]; then
-    run_cmd $env_cmd $env_cmd_args /usr/bin/env -i HOME=$HOME bash "$this_file" install_cmssw $scram_arch $cmssw_version $target_os_version
+    run_cmd $env_cmd $env_cmd_args /usr/bin/env -i HOME=$HOME bash "$this_file" install_cmssw $scram_arch $cmssw_version
   fi
 }
 
@@ -93,16 +93,14 @@ action() {
   local os_prefix=$(get_os_prefix $os_version)
   local node_os=$os_prefix$os_version
 
-  local default_cmssw_ver=CMSSW_14_0_5
-  #local target_os_version=7
+  local default_cmssw_ver=CMSSW_14_0_6_patch1
   local target_os_version=8
-  #local target_os_version=9
   local target_os_prefix=$(get_os_prefix $target_os_version)
   local target_os_gt_prefix=$(get_os_prefix $target_os_version 1)
   local target_os=$target_os_prefix$target_os_version
   export DEFAULT_CMSSW_BASE="$ANALYSIS_PATH/soft/$default_cmssw_ver"
 
-  run_cmd install_cmssw ${target_os_gt_prefix}${target_os_version}_amd64_gcc11 $default_cmssw_ver $node_os $target_os
+  run_cmd install_cmssw ${target_os_gt_prefix}${target_os_version}_amd64_gcc12 $default_cmssw_ver $node_os $target_os
 
   if [ ! -z $ZSH_VERSION ]; then
     autoload bashcompinit

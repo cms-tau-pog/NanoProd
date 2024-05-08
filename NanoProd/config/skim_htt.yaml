@@ -60,6 +60,7 @@ skim_failed:
   invert_sel: true
   column_filters:
     - drop ^.*$
+    - keep run
     - keep genWeight
     - keep ^Pileup_(nPU|nTrueInt)$
     - keep ^(n|)LHE.*$

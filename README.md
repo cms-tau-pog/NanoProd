@@ -24,6 +24,7 @@ Production should be run on the server that have the crab stageout area mounted 
    ```sh
    source $PWD/env.sh
    voms-proxy-init -voms cms -rfc -valid 192:00
+   cmsEnv crab createmyproxy --days=30
    ```
 
 1. Check that task configurations for the given era are consistent and that all datasets are present and valid (replace path to `yaml`s accordingly):
