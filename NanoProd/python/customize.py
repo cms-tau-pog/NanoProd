@@ -56,35 +56,22 @@ def customizeTaus(process):
   process.tauTable.variables.flightLengthZ = Var("flightLength().z()", float, doc="flight length z", precision=10)
   process.tauTable.variables.flightLengthSig = Var("flightLengthSig()", float, doc="flight length significance", precision=10)
 
-  process.tauTable.variables.dzErr = Var("?leadChargedHadrCand.isNonnull() && leadChargedHadrCand.hasTrackDetails()?leadChargedHadrCand.dzError(): 0/0.", float, doc="dz error", precision=10)
+  process.tauTable.variables.dzErr = Var("?leadChargedHadrCand.isNonnull() && leadChargedHadrCand.hasTrackDetails()?leadChargedHadrCand.dzError(): 0/0.", float, doc="dz error", precision=10, lazyEval=True)
   process.tauTable.variables.leadTkNormChi2 = Var("leadingTrackNormChi2()", float, doc="normalized chi2 of the leading track", precision=10)
   process.tauTable.variables.leadChCandEtaAtEcalEntrance = Var("etaAtEcalEntranceLeadChargedCand", float, doc="eta of the leading charged candidate at the entrance of the ECAL", precision=10)
-
-  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTimeLifeInfoToTaus
-  addTimeLifeInfoToTaus(process)
 
   return process
 
 def customizePV(process):
   from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addExtendVertexInfo
   addExtendVertexInfo(process)
+
   #for backward compatibility (different table name, chi2 instead of normChi2)
   #process.refittedPV.useEleKfTracks = False
-  process.pvbsTable.name = "RefitPV"
-  process.pvbsTable.variables.chi2 = Var("chi2()", float, doc = "chi2", precision = 8)
-  process.pvbsTable.variables = cms.PSet(
-    process.pvbsTable.variables,
-    valid = Var("isValid()", bool, doc = "PV fit is valid")
-  )
+  #process.pvbsTable.variables.chi2 = Var("chi2()", float, doc = "chi2", precision = 8)
 
-  return process
-
-def customizeLeptons(process):
-  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTimeLifeInfoToElectrons, addTimeLifeInfoToMuons
-  addTimeLifeInfoToElectrons(process)
-  #process.electronTimeLifeInfoTable.selection = 'pt > 22'# nanoAOD default: >15
-  addTimeLifeInfoToMuons(process)
-  #process.muonTimeLifeInfoTable.selection = 'pt > 17'# nanoAOD default: >15
+  process.pvbsTable.variables.ndof = Var("ndof()", float, doc = "number of degrees of freedom", precision = 8)
+  process.pvbsTable.variables.valid = Var("isValid()", bool, doc = "PV fit is valid")
 
   return process
 
@@ -98,6 +85,9 @@ def customize(process):
   #customize stored objects
   process = customizeGenParticles(process)
   process = customizeTaus(process)
-  process = customizeLeptons(process)
+
+  from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTrackVarsToTimeLifeInfo
+  process = addTrackVarsToTimeLifeInfo(process)
+
   process = customizePV(process)
   return process

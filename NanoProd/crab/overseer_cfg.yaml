@@ -2,7 +2,7 @@ cmsswPython: RunKit/nanoProdWrapper.py
 params:
   customise: NanoProd/NanoProd/customize.customize
   outputs:
-    - file: nanoHTT.root
+    - file: nano.root
       crabOutput: TODO #T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1_prod/Run2_2016
       finalOutput: TODO #T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1/Run2_2016
       skimCfg: skim_htt.yaml
