@@ -40,12 +40,16 @@ def customizeTaus(process):
     deepTauCuts.append(cut)
   deepTauCut = "(tauID('decayModeFindingNewDMs') > 0.5 && (" + " || ".join(deepTauCuts) + "))"
   cuts = []
-  for vs, score in [ ("e", 0.05), ("mu", 0.05), ("jet", 0.05) ]:
-    cuts.append(f"isTauIDAvailable('byPNetVSjetraw')")
-    cuts.append(f"tauID('byPNetVS{vs}raw') > {score}")
-  pnetCut = "(" + " && ".join(cuts) + ")"
+  for vs, score in [ ("jet", 0.05) ]: # [ ("e", 0.05), ("mu", 0.05), ("jet", 0.05) ]:
+    cuts.append(f"tauID('byUTagCHSVS{vs}raw') > {score}")
+  utagCHSCut = "(" + " && ".join(cuts) + ")"
 
-  process.finalTaus.cut = f"pt > 18 && ( {deepTauCut} || {pnetCut} )"
+  cuts = []
+  for vs, score in [ ("jet", 0.05) ]: # [ ("e", 0.05), ("mu", 0.05), ("jet", 0.05) ]:
+    cuts.append(f"tauID('byUTagPUPPIVS{vs}raw') > {score}")
+  utagPUPPICut = "(" + " && ".join(cuts) + ")"
+
+  process.finalTaus.cut = f"pt > 18 && ( {deepTauCut} || {utagCHSCut} || {utagPUPPICut} )"
 
   process.tauTable.variables.dxyErr = Var("dxy_error", float, doc="dxy error", precision=10)
   process.tauTable.variables.ip3d = Var("ip3d", float, doc="3D impact parameter", precision=10)
