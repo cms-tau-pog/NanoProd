@@ -4,3 +4,4 @@
 <use name="RecoVertex/AdaptiveVertexFit"/>
 <use name="RecoVertex/VertexPrimitives"/>
 <use name="TrackingTools/TransientTrack"/>
+<use name="tauolapp"/>
