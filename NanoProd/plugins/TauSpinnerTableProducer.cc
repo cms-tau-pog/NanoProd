@@ -42,7 +42,7 @@ public:
 private:
   void initialize();
 
-  reco::GenParticle getBoson(const edm::View<reco::GenParticle> &parts, bool &foundBoson) const;
+  void getBosons(edm::RefVector<edm::View<reco::GenParticle>> &bosons, const edm::View<reco::GenParticle> &parts) const;
   reco::GenParticleRef getLastCopy(const reco::GenParticleRef &part) const;
   void getTaus(reco::GenParticleRefVector &taus, const reco::GenParticle &boson) const;
   void getTauDaughters(reco::GenParticleRefVector &tau_daughters, unsigned &type, const reco::GenParticle &tau) const;
@@ -116,22 +116,21 @@ TauSpinnerTableProducer::TauSpinnerTableProducer(const edm::ParameterSet &config
   produces<nanoaod::FlatTable>();
 }
 
-reco::GenParticle TauSpinnerTableProducer::getBoson(const edm::View<reco::GenParticle> &parts, bool &foundBoson) const {
-  reco::GenParticle boson;
-  foundBoson = false;
+void TauSpinnerTableProducer::getBosons(edm::RefVector<edm::View<reco::GenParticle>> &bosons,
+                                        const edm::View<reco::GenParticle> &parts) const {
+  unsigned idx = 0;
   for (auto part : parts) {
     if (std::abs(part.pdgId()) == bosonPdgId_ && part.isLastCopy()) {
-      boson = part;
-      foundBoson = true;
-      break;
+      edm::Ref<edm::View<reco::GenParticle>> partRef(&parts, idx);
+      bosons.push_back(partRef);
     }
+    ++idx;
   }
-  return boson;
 }
 
 reco::GenParticleRef TauSpinnerTableProducer::getLastCopy(const reco::GenParticleRef &part) const {
   reco::GenParticleRef last_copy(part);
-  if (part->statusFlags().isLastCopy())
+  if (part->statusFlags().isLastCopy() && part->statusFlags().fromHardProcess())
     return last_copy;
   for (const auto &daughter : part->daughterRefVector()) {
     if (daughter->pdgId() == part->pdgId()) {
@@ -182,16 +181,16 @@ void TauSpinnerTableProducer::produce(edm::Event &event, const edm::EventSetup &
   wtTable->setDoc("TauSpinner weights");
 
   // Search for boson
-  bool foundBoson = false;
-  reco::GenParticle boson = getBoson(genParts, foundBoson);
-  if (!foundBoson) {  //boson not found, produce empty table (expected for non HTT sample)
+  edm::RefVector<edm::View<reco::GenParticle>> bosons;
+  getBosons(bosons, genParts);
+  if (bosons.size() != 1) {  //no boson found or more than one found, produce empty table (expected for non HTT sample)
     event.put(std::move(wtTable));
     return;
   }
 
   // Search dor taus from boson decay
   reco::GenParticleRefVector taus;
-  getTaus(taus, boson);
+  getTaus(taus, *bosons[0]);
   if (taus.size() != 2) {  //boson does not decay to tau pair, produce empty table (expected for non HTT sample)
     event.put(std::move(wtTable));
     return;
@@ -206,7 +205,7 @@ void TauSpinnerTableProducer::produce(edm::Event &event, const edm::EventSetup &
   getTauDaughters(tau2_daughters, type2, *taus[1]);
 
   //convert particles to TauSpinner format
-  TauSpinner::SimpleParticle simple_boson = convertToSimplePart(boson);
+  TauSpinner::SimpleParticle simple_boson = convertToSimplePart(*bosons[0]);
   TauSpinner::SimpleParticle simple_tau1 = convertToSimplePart(*taus[0]);
   TauSpinner::SimpleParticle simple_tau2 = convertToSimplePart(*taus[1]);
   std::vector<TauSpinner::SimpleParticle> simple_tau1_daughters;
