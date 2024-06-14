@@ -91,14 +91,14 @@ def addSpinnerWeights(process):
     "TauSpinnerTableProducer",
     branch   = cms.string("TauSpinner"),
     input    = cms.InputTag("prunedGenParticles"),
-    #theta    = cms.string("0,0.25,0.5,-0.25,0.375"),
     theta    = cms.vdouble(0,0.25,0.5,-0.25,0.375),
-    pdfSet   = cms.string("NNPDF30_nlo_as_0118"),
+    pdfSet   = cms.string("NNPDF31_nnlo_hessian_pdfas"),
     cmsE     = era_dependent_settings.cmsE #center of mass energy in GeV
   )
   process.globalTablesMCTask.add(process.tauSpinnerWeightTable)
 
   return process
+
 
 def customize(process):
   #customize printout frequency
