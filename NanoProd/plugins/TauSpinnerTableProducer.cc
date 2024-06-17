@@ -7,10 +7,11 @@
 */
 
 #include "FWCore/Framework/interface/one/EDProducer.h"
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/Concurrency/interface/SharedResourceNames.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "DataFormats/Common/interface/View.h"
 #include "DataFormats/HepMCCandidate/interface/GenParticle.h"
 #include "DataFormats/NanoAOD/interface/FlatTable.h"
@@ -18,11 +19,6 @@
 #include "Tauola/Tauola.h"
 #include "TauSpinner/SimpleParticle.h"
 #include "TauSpinner/tau_reweight_lib.h"
-
-namespace {
-  //const std::set<int> tauProdsIds{22, 111, 211, 221, 223, 321, 130, 310, 311, 321, 323, 11, 12, 13, 14, 16};//FIXME
-  const std::set<int> tauProdsIds{22, 111, 211, 321, 130, 310, 11, 12, 13, 14, 16};
-}  // namespace
 
 class TauSpinnerTableProducer : public edm::one::EDProducer<edm::one::SharedResources> {
 public:
@@ -35,7 +31,7 @@ private:
   void getBosons(edm::RefVector<edm::View<reco::GenParticle>> &bosons, const edm::View<reco::GenParticle> &parts) const;
   static reco::GenParticleRef getLastCopy(const reco::GenParticleRef &part);
   static void getTaus(reco::GenParticleRefVector &taus, const reco::GenParticle &boson);
-  static void getTauDaughters(reco::GenParticleRefVector &tau_daughters, const reco::GenParticle &tau);
+  static bool getTauDaughters(reco::GenParticleRefVector &tau_daughters, const reco::GenParticle &tau);
   TauSpinner::SimpleParticle convertToSimplePart(const reco::GenParticle &input_part) const {
     return TauSpinner::SimpleParticle(
         input_part.px(), input_part.py(), input_part.pz(), input_part.energy(), input_part.pdgId());
@@ -80,6 +76,7 @@ private:
   const int nonSM2_;
   const int nonSMN_;
   const double cmsE_;
+  const double default_weight_;
 };
 
 TauSpinnerTableProducer::TauSpinnerTableProducer(const edm::ParameterSet &config)
@@ -92,7 +89,8 @@ TauSpinnerTableProducer::TauSpinnerTableProducer(const edm::ParameterSet &config
       ipol_(0),
       nonSM2_(0),
       nonSMN_(0),
-      cmsE_(config.getParameter<double>("cmsE"))  //cms energy in GeV, 13000.0
+      cmsE_(config.getParameter<double>("cmsE")),  //cms energy in GeV, 13000.0
+      default_weight_(0)  //default weight stored in case of presence of a tau decay unsupported by TauSpinner
 {
   printModuleInfo(config);
 
@@ -132,14 +130,25 @@ void TauSpinnerTableProducer::getTaus(reco::GenParticleRefVector &taus, const re
   }
 }
 
-void TauSpinnerTableProducer::getTauDaughters(reco::GenParticleRefVector &tau_daughters, const reco::GenParticle &tau) {
+bool TauSpinnerTableProducer::getTauDaughters(reco::GenParticleRefVector &tau_daughters, const reco::GenParticle &tau) {
+  static const std::set<int> directTauProducts = {11, 12, 13, 14, 16, 22};
+  static const std::set<int> finalHadrons = {111, 130, 211, 310, 311, 321};
+  static const std::set<int> intermediateHadrons = {221, 223, 323};
   for (auto daughterRef : tau.daughterRefVector()) {
-    if (tauProdsIds.find(std::abs(daughterRef->pdgId())) == tauProdsIds.end())
-      getTauDaughters(tau_daughters, *daughterRef);
-    //throw std::runtime_error("Unknown tau decay product, pdgId = " + std::to_string(daughterRef->pdgId()));//FIXME
-    else
+    const int daughter_pdgId = std::abs(daughterRef->pdgId());
+    if ((std::abs(tau.pdgId()) == 15 && directTauProducts.count(daughter_pdgId)) ||
+        finalHadrons.count(daughter_pdgId)) {
       tau_daughters.push_back(daughterRef);
+    } else if (intermediateHadrons.count(daughter_pdgId)) {
+      if (!getTauDaughters(tau_daughters, *daughterRef))
+        return false;
+    } else {
+      edm::LogWarning("TauSpinnerTableProducer::getTauDaughters")
+          << "Unsupported decay with " << daughter_pdgId << " being daughter of " << std::abs(tau.pdgId()) << "\n";
+      return false;
+    }
   }
+  return true;
 }
 
 void TauSpinnerTableProducer::beginJob() {
@@ -178,10 +187,11 @@ void TauSpinnerTableProducer::produce(edm::Event &event, const edm::EventSetup &
   TauSpinner::SimpleParticle simple_boson = convertToSimplePart(*bosons[0]);
   std::array<TauSpinner::SimpleParticle, 2> simple_taus;
   std::array<std::vector<TauSpinner::SimpleParticle>, 2> simple_tau_daughters;
+  bool supportedDecays = true;
   for (size_t tau_idx = 0; tau_idx < 2; ++tau_idx) {
     simple_taus[tau_idx] = convertToSimplePart(*taus[tau_idx]);
     reco::GenParticleRefVector tau_daughters;
-    getTauDaughters(tau_daughters, *taus[tau_idx]);
+    supportedDecays &= getTauDaughters(tau_daughters, *taus[tau_idx]);
     for (const auto &daughterRef : tau_daughters)
       simple_tau_daughters[tau_idx].push_back(convertToSimplePart(*daughterRef));
   }
@@ -196,8 +206,11 @@ void TauSpinnerTableProducer::produce(edm::Event &event, const edm::EventSetup &
                                      -sin(2 * M_PI * theta.second));
     for (size_t i = 0; i < weights.size(); ++i) {
       Tauolapp::Tauola::setNewCurrents(i);
-      weights[i] = TauSpinner::calculateWeightFromParticlesH(
-          simple_boson, simple_taus[0], simple_taus[1], simple_tau_daughters[0], simple_tau_daughters[1]);
+      weights[i] =
+          supportedDecays
+              ? TauSpinner::calculateWeightFromParticlesH(
+                    simple_boson, simple_taus[0], simple_taus[1], simple_tau_daughters[0], simple_tau_daughters[1])
+              : default_weight_;
     }
     // Nominal weights for setNewCurrents(0)
     wtTable->addColumnValue<double>(
