@@ -90,7 +90,7 @@ TauSpinnerTableProducer::TauSpinnerTableProducer(const edm::ParameterSet &config
       nonSM2_(0),
       nonSMN_(0),
       cmsE_(config.getParameter<double>("cmsE")),  //cms energy in GeV, 13000.0
-      default_weight_(0)  //default weight stored in case of presence of a tau decay unsupported by TauSpinner
+      default_weight_(1)  //default weight stored in case of presence of a tau decay unsupported by TauSpinner
 {
   printModuleInfo(config);
 
