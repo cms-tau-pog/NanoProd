@@ -2,23 +2,22 @@ config:
   params:
     sampleType: data
     era: Run2_2016
-    storeFailed: False
     customise: NanoProd/NanoProd/customize.customizeEmbedding
-    PFNSprefix: root://cmsxrootd-kit.gridka.de/
+    inputPFNSprefix: root://cmsdcache-kit-disk.gridka.de:1094/
   inputDBS: phys03
 
-Embed_MuTau_Run2017F: /EmbeddingRun2016_F/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_MuTau_Run2017G: /EmbeddingRun2016_G/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_MuTau_Run2017H: /EmbeddingRun2016_H/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2016F: /EmbeddingRun2016_F/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2016G: /EmbeddingRun2016_G/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_MuTau_Run2016H: /EmbeddingRun2016_H/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
 
-Embed_ElTau_Run2017F: /EmbeddingRun2016_F/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_ElTau_Run2017G: /EmbeddingRun2016_G/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_ElTau_Run2017H: /EmbeddingRun2016_H/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2016F: /EmbeddingRun2016_F/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2016G: /EmbeddingRun2016_G/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElTau_Run2016H: /EmbeddingRun2016_H/ElTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
 
-Embed_TauTau_Run2017F: /EmbeddingRun2016_F/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_TauTau_Run2017G: /EmbeddingRun2016_G/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_TauTau_Run2017H: /EmbeddingRun2016_H/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2016F: /EmbeddingRun2016_F/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2016G: /EmbeddingRun2016_G/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_TauTau_Run2016H: /EmbeddingRun2016_H/TauTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
 
-Embed_ElMu_Run2017F: /EmbeddingRun2016_F/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_ElMu_Run2017G: /EmbeddingRun2016_G/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
-Embed_ElMu_Run2017H: /EmbeddingRun2016_H/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2016F: /EmbeddingRun2016_F/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2016G: /EmbeddingRun2016_G/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
+Embed_ElMu_Run2016H: /EmbeddingRun2016_H/ElMuFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER

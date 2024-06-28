@@ -2,9 +2,8 @@ config:
   params:
     sampleType: data
     era: Run2_2017
-    storeFailed: False
     customise: NanoProd/NanoProd/customize.customizeEmbedding
-    PFNSprefix: root://cmsxrootd-kit.gridka.de/
+    inputPFNSprefix: root://cmsdcache-kit-disk.gridka.de:1094/
   inputDBS: phys03
 
 Embed_MuTau_Run2017B: /EmbeddingRun2017B/MuTauFinalState-inputDoubleMu_106X_ULegacy_miniAOD-v1/USER
