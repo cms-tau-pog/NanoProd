@@ -8,4 +8,3 @@ common:
   config_files:
   - $ANALYSIS_PATH/NanoProd/config/skim_htt.yaml
   - $ANALYSIS_PATH/NanoProd/python/customize.py
-Run3_2022EE: {}
