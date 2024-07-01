@@ -1,6 +1,13 @@
 import FWCore.ParameterSet.Config as cms
 from PhysicsTools.NanoAOD.common_cff import Var, CandVars
 from RecoTauTag.RecoTau.tauIdWPsDefs import WORKING_POINTS_v2p5
+from PhysicsTools.NanoAOD.nano_eras_cff import *
+
+# settings which can depend on (nanoAOD) era
+era_dependent_settings = cms.PSet(
+  cmsE = cms.double(13600.0), #center of mass energy in GeV (Run3 default)
+)
+(~run3_common).toModify(era_dependent_settings, cmsE = 13000.0)
 
 def customizeGenParticles(process):
   def pdgOR(pdgs):
@@ -79,6 +86,20 @@ def customizePV(process):
 
   return process
 
+def addSpinnerWeights(process):
+  process.tauSpinnerWeightTable = cms.EDProducer(
+    "TauSpinnerTableProducer",
+    branch   = cms.string("TauSpinner"),
+    input    = cms.InputTag("prunedGenParticles"),
+    theta    = cms.vdouble(0,0.25,0.5,-0.25,0.375),
+    pdfSet   = cms.string("NNPDF31_nnlo_hessian_pdfas"),
+    cmsE     = era_dependent_settings.cmsE #center of mass energy in GeV
+  )
+  process.globalTablesMCTask.add(process.tauSpinnerWeightTable)
+
+  return process
+
+
 def customize(process):
   #customize printout frequency
   maxEvts = process.maxEvents.input.value()
@@ -94,4 +115,7 @@ def customize(process):
   process = addTrackVarsToTimeLifeInfo(process)
 
   process = customizePV(process)
+
+  process = addSpinnerWeights(process)
+
   return process
