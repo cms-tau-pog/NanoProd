@@ -72,12 +72,6 @@ ZHToTauTau_M125:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluHToWWTo2L2Nu_M125:
-  - Run3_2023
-  - Run3_2023BPix
-VBFHToWWTo2L2Nu_M125:
-  - Run3_2023
-  - Run3_2023BPix
 ^(HWplusJ|HWminusJ|HZJ)_HToWW_M125:
   - Run3_2022
   - Run3_2022EE
@@ -110,12 +104,6 @@ ttHToTauTau_M125:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-ST_t-channel_antitop_4f_InclusiveDecays:
-  - Run3_2023
-  - Run3_2023BPix
-ST_t-channel_top_4f_InclusiveDecays:
-  - Run3_2023
-  - Run3_2023BPix
 ST_s-channel_4f_leptonDecays:
   - Run3_2022
   - Run3_2022EE
@@ -141,8 +129,6 @@ ST_tW_antitop_LNu2Q:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-  - Run3_2023
-  - Run3_2023BPix
 
 # Triboson
 ^(WWW_4F|WWZ_4F|WZZ|ZZZ)_ext1:
@@ -169,9 +155,6 @@ ST_tW_antitop_LNu2Q:
   - Run3_2023BPix
 
 # W
-WtoLNu_amcatnloFXFX:
-  - Run3_2023
-  - Run3_2023BPix
 WtoLNu_madgraphMLM_ext1:
   - Run2_2016
   - Run2_2016_HIPM
@@ -250,9 +233,6 @@ DYto2L_M-50_madgraphMLM_ext1:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
 ^DYto2(E|Mu|Tau)_MLL-.*_powheg:
   - Run2_2016
   - Run2_2016_HIPM
@@ -305,7 +285,6 @@ TT_ext1:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-
 ^GluGlutoHHto2B2Tau_kl:
   - Run2_2016
   - Run2_2016_HIPM
@@ -317,8 +296,6 @@ TT_ext1:
   - Run2_2017
   - Run2_2018
 
-GluGlutoHHto2B2Tau_kl-0p00_kt-1p00_c2-0p00:
-  - Run3_2022EE
 GluGlutoHHto2B2Tau_kl-0p00_kt-1p00_c2-1p00:
   - Run3_2022EE
 GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-0p10:
@@ -330,8 +307,6 @@ GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-3p00:
 GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-m2p00:
   - Run3_2022EE
 GluGlutoHHto2B2Tau_kl-2p45_kt-1p00_c2-0p00:
-  - Run3_2022EE
-GluGlutoHHto2B2Tau_kl-5p00_kt-1p00_c2-0p00:
   - Run3_2022EE
 
 VBFHHto2B2Tau_CV-1_C2V-1_C3-1:
@@ -415,11 +390,6 @@ VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
 
 ^VBFHHto2B2V(to2L2Nu|)_CV-m1p83_C2V-3p57_C3-m3p39:
   - Run3_2022
-
-GluGlutoHHto2B2V_kl-2p45_kt-1p00_c2-0p00:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023BPix
 
 # TTX
 TTZToQQ:
