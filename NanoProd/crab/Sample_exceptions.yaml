@@ -36,8 +36,6 @@ GluGluHToTauTau_M125_amcatnloFXFX:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-  - Run3_2022
-  - Run3_2023BPix
 ZHToTauTau_M125_ext1:
   - Run2_2016
   - Run3_2022
@@ -49,7 +47,7 @@ GluGluHToTauTau_M125:
   - Run3_2023
 VBFHToTauTau_M125:
   - Run3_2022EE
-  - Run3_2023
+
 ^(ZH_Hbb_Zqq|ZH_Hbb_Zll)_ext1:
   - Run2_2016
   - Run2_2016_HIPM
@@ -185,7 +183,6 @@ WtoLNu_MLNu-0to120_HT-800To1500_madgraph:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-  - Run3_2023
 WGToLNuG:
   - Run3_2022
   - Run3_2022EE
@@ -201,6 +198,13 @@ WGToLNuG:
 DYto2L_M-50_madgraphMLM_ext1:
   - Run2_2016
   - Run2_2016_HIPM
+  - Run3_2023
+  - Run3_2023BPix
+DYto2L_M-50_amcatnloFXFX_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
   - Run3_2023
   - Run3_2023BPix
 ^DYto2L_M-50_PTLL-(0to50|50to100|100to250|250to400|400to650|650toInf)_amcatnloFXFX:
