@@ -99,6 +99,49 @@ def addSpinnerWeights(process):
 
   return process
 
+def addIPCovToLeptons(process,lepton='all'):
+  numToXYZ = {0:'x',1:'y',2:'z'}
+  if (lepton == 'e' or lepton == 'all') and hasattr(process,'electronTimeLifeInfoTable'):
+    tag = cms.InputTag('electronTimeLifeInfos')
+    varPSet = process.electronTimeLifeInfoTable.externalTypedVariables
+    for i in range(0,3):
+      for j in range(i,3):
+        setattr(varPSet,'IP_cov'+str(j)+str(i),cms.PSet(
+          doc = cms.string('IP covariance element ('+str(j)+','+str(i)+')'),
+          expr = cms.string('ipCovariance.c'+numToXYZ[j]+numToXYZ[i]+'()'),
+          lazyEval = cms.untracked.bool(False),
+          precision = cms.int32(10),
+          src = tag,
+          type = cms.string('float')
+        ))
+  if (lepton == 'mu' or lepton == 'all') and hasattr(process,'muonTimeLifeInfoTable'):
+    tag = cms.InputTag('muonTimeLifeInfos')
+    varPSet = process.muonTimeLifeInfoTable.externalTypedVariables
+    for i in range(0,3):
+      for j in range(i,3):
+        setattr(varPSet,'IP_cov'+str(j)+str(i),cms.PSet(
+          doc = cms.string('IP covariance element ('+str(j)+','+str(i)+')'),
+          expr = cms.string('ipCovariance.c'+numToXYZ[j]+numToXYZ[i]+'()'),
+          lazyEval = cms.untracked.bool(False),
+          precision = cms.int32(10),
+          src = tag,
+          type = cms.string('float')
+        ))
+  if (lepton == 'tau' or lepton == 'all') and hasattr(process,'tauTimeLifeInfoTable'):
+    tag = cms.InputTag('tauTimeLifeInfos')
+    varPSet = process.tauTimeLifeInfoTable.externalTypedVariables
+    for i in range(0,3):
+      for j in range(i,3):
+        setattr(varPSet,'IP_cov'+str(j)+str(i),cms.PSet(
+          doc = cms.string('IP covariance element ('+str(j)+','+str(i)+')'),
+          expr = cms.string('ipCovariance.c'+numToXYZ[j]+numToXYZ[i]+'()'),
+          lazyEval = cms.untracked.bool(False),
+          precision = cms.int32(10),
+          src = tag,
+          type = cms.string('float')
+        ))
+
+  return process
 
 def customize(process):
   #customize printout frequency
@@ -113,6 +156,7 @@ def customize(process):
 
   from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTrackVarsToTimeLifeInfo
   process = addTrackVarsToTimeLifeInfo(process)
+  process = addIPCovToLeptons(process)
 
   process = customizePV(process)
 
