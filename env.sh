@@ -43,6 +43,7 @@ do_install_cmssw() {
     run_cmd scramv1 project CMSSW $CMSSW_VER
     run_cmd cd $CMSSW_VER/src
     run_cmd eval `scramv1 runtime -sh`
+    run_cmd install_cmssw_addons $CMSSW_VER
     run_cmd mkdir NanoProd
     run_cmd ln -s "$this_dir/NanoProd" NanoProd/NanoProd
     run_cmd scram b -j8
@@ -71,6 +72,17 @@ install_cmssw() {
   fi
   if ! [ -f "$this_dir/soft/$CMSSW_VER/.installed" ]; then
     run_cmd $env_cmd $env_cmd_args /usr/bin/env -i HOME=$HOME bash "$this_file" install_cmssw $scram_arch $cmssw_version
+  fi
+}
+
+install_cmssw_addons() {
+  #install CMSSW updates not in official releases
+  #TODO: Consider to add more sophisticated version matching
+  local CMSSW_VER=$1
+  if [ "X$CMSSW_VER" = "XCMSSW_14_0_6_patch1" ]; then
+      run_cmd echo "installing addons for "$CMSSW_VER
+      run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_tau-pog_BoostedDeepTau
+      run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/BoostedDeepTau_v2/BoostedDeepTauId/boosteddeepTau_RunIIv2p0_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/BoostedDeepTauId/
   fi
 }
 
