@@ -48,12 +48,12 @@ def customizeTaus(process):
   deepTauCut = "(tauID('decayModeFindingNewDMs') > 0.5 && (" + " || ".join(deepTauCuts) + "))"
   cuts = []
   for vs, score in [ ("jet", 0.05) ]: # [ ("e", 0.05), ("mu", 0.05), ("jet", 0.05) ]:
-    cuts.append(f"tauID('byUTagCHSVS{vs}raw') > {score}")
+    cuts.append(f"(?isTauIDAvailable('byUTagCHSVS{vs}raw')?tauID('byUTagCHSVS{vs}raw'):-1) > {score}")
   utagCHSCut = "(" + " && ".join(cuts) + ")"
 
   cuts = []
   for vs, score in [ ("jet", 0.05) ]: # [ ("e", 0.05), ("mu", 0.05), ("jet", 0.05) ]:
-    cuts.append(f"tauID('byUTagPUPPIVS{vs}raw') > {score}")
+    cuts.append(f"(?isTauIDAvailable('byUTagPUPPIVS{vs}raw')?tauID('byUTagPUPPIVS{vs}raw'):-1) > {score}")
   utagPUPPICut = "(" + " && ".join(cuts) + ")"
 
   process.finalTaus.cut = f"pt > 18 && ( {deepTauCut} || {utagCHSCut} || {utagPUPPICut} )"
