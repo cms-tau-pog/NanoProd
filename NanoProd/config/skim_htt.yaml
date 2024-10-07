@@ -41,7 +41,20 @@ skim:
     - drop Tau_puCorr
     - drop Tau_chargedIso
     - drop Tau_neutralIso
-    - drop ^(n|)boostedTau(_.*|)$
+    - drop boostedTau_chargedIso
+    - drop boostedTau_neutralIso
+    - drop boostedTau_photonsOutsideSignalCone
+    - drop boostedTau_puCorr
+    - drop boostedTau_rawIsodR03
+    - drop boostedTau_idAntiEle2018
+    - drop boostedTau_rawAntiEle2018
+    - drop boostedTau_rawAntiEleCat2018
+    - drop boostedTau_idMVAnewDM2017v2
+    - drop boostedTau_idMVAoldDM2017v2
+    - drop boostedTau_idMVAoldDMdR032017v2
+    - drop boostedTau_rawMVAnewDM2017v2
+    - drop boostedTau_rawMVAoldDM2017v2
+    - drop boostedTau_rawMVAoldDMdR032017v2
     - drop ^(n|)OtherPV(_.*|)$
     - drop ^(n|)Photon(_.*|)$
     - drop ^(n|)LowPtElectron(_.*|)$
@@ -97,6 +110,12 @@ selection: "
   auto fatJet_sel = FatJet_particleNet_XteVsQCD > 0.05 || FatJet_particleNet_XtmVsQCD > 0.05 || FatJet_particleNet_XttVsQCD > 0.05;
   int n_fatJet = FatJet_pt[fatJet_sel].size();
   if(n_fatJet >= 1 || nFatJet >= 2) return true;
+
+  auto boostedtau_base_sel = boostedTau_pt > 18 && abs(boostedTau_eta) < 2.5;
+  auto boostedtau_deepTau_sel = boostedTau_rawBoostedDeepTauRunIIv2p0VSjet > 0.72 && boostedTau_rawBoostedDeepTauRunIIv2p0VSe > 0.1 && boostedTau_rawBoostedDeepTauRunIIv2p0VSmu > 0.003;
+  auto boostedtau_sel = boostedtau_base_sel && boostedtau_deepTau_sel;
+  int n_boostedtaus = boostedTau_pt[boostedtau_sel].size();
+  if(n_boostedtaus >=2 || (n_boostedtaus >=1 && (n_electrons + n_muons)>=1) ) return true; //MB: It will be better to check pairs with 0.1<dR<0.8
 
   if(n_electrons + n_muons < 1) return false;
   float lep_pt = n_electrons > 0 ? Electron_pt[ele_sel][0] : Muon_pt[muon_sel][0];
