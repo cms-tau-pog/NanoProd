@@ -115,7 +115,52 @@ selection: "
   auto boostedtau_deepTau_sel = boostedTau_rawBoostedDeepTauRunIIv2p0VSjet > 0.72 && boostedTau_rawBoostedDeepTauRunIIv2p0VSe > 0.1 && boostedTau_rawBoostedDeepTauRunIIv2p0VSmu > 0.003;
   auto boostedtau_sel = boostedtau_base_sel && boostedtau_deepTau_sel;
   int n_boostedtaus = boostedTau_pt[boostedtau_sel].size();
-  if(n_boostedtaus >=2 || (n_boostedtaus >=1 && (n_electrons + n_muons)>=1) ) return true; //MB: It will be better to check pairs with 0.1<dR<0.8
+  int n_boosted_pairs = 0;
+  float maxR2 = 0.8*0.8;
+  float minR2 = 0.1*0.1;
+  auto eta_sel_tau = boostedTau_eta[boostedtau_sel];
+  auto phi_sel_tau = boostedTau_phi[boostedtau_sel];
+  if(n_boostedtaus >= 2) {
+    for(size_t i=0; i<n_boostedtaus-1; i++) {
+      for(size_t j=i+1; j<n_boostedtaus; j++) {
+        float deta = eta_sel_tau[i]-eta_sel_tau[j];
+        float dphi = phi_sel_tau[i]-phi_sel_tau[j];
+        while(dphi >= 2.*M_PI) dphi -= 2.*M_PI;
+        while(dphi < 0) dphi += 2.*M_PI;
+        float dr2 = deta*deta + dphi*dphi;
+        if(dr2>minR2 && dr2<maxR2) n_boosted_pairs += 1;
+      }
+    }
+  }
+  if(n_boosted_pairs == 0 && n_boostedtaus >= 1 && n_muons >= 1) {
+    auto eta_sel_mu = Muon_eta[muon_sel];
+    auto phi_sel_mu = Muon_phi[muon_sel];
+    for(size_t i=0; i<n_muons; i++) {
+      for(size_t j=0; j<n_boostedtaus; j++) {
+        float deta = eta_sel_mu[i]-eta_sel_tau[j];
+        float dphi = phi_sel_mu[i]-phi_sel_tau[j];
+        while(dphi >= 2.*M_PI) dphi -= 2.*M_PI;
+        while(dphi < 0) dphi += 2.*M_PI;
+        float dr2 = deta*deta + dphi*dphi;
+        if(dr2>minR2 && dr2<maxR2) n_boosted_pairs += 1;
+      }
+    }
+  }
+  if(n_boosted_pairs == 0 && n_boostedtaus >= 1 && n_electrons >= 1) {
+    auto eta_sel_e = Electron_eta[ele_sel];
+    auto phi_sel_e = Electron_phi[ele_sel];
+    for(size_t i=0; i<n_electrons; i++) {
+      for(size_t j=0; j<n_boostedtaus; j++) {
+        float deta = eta_sel_e[i]-eta_sel_tau[j];
+        float dphi = phi_sel_e[i]-phi_sel_tau[j];
+        while(dphi >= 2.*M_PI) dphi -= 2.*M_PI;
+        while(dphi < 0) dphi += 2.*M_PI;
+        float dr2 = deta*deta + dphi*dphi;
+        if(dr2>minR2 && dr2<maxR2) n_boosted_pairs += 1;
+      }
+    }
+  }
+  if(n_boosted_pairs >=1) return true;
 
   if(n_electrons + n_muons < 1) return false;
   float lep_pt = n_electrons > 0 ? Electron_pt[ele_sel][0] : Muon_pt[muon_sel][0];
