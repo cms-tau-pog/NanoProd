@@ -117,7 +117,7 @@ selection: "
   int n_boostedtaus = boostedTau_pt[boostedtau_sel].size();
   int n_boosted_pairs = 0;
   float maxR2 = 0.8*0.8;
-  float minR2 = 0.1*0.1;
+  float minR2 = 0.01*0.01;
 auto has_boosted_pair = [&](const RVecF& eta1, const RVecF& phi1, const RVecF& eta2, const RVecF& phi2,
                             bool is_same) {
   const size_t i_max = is_same ? eta1.size() - 1 : eta1.size();
