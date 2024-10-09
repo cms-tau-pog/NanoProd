@@ -99,6 +99,24 @@ def addSpinnerWeights(process):
 
   return process
 
+def addIPCovToLeptons(process,lepton='all'):
+  xyz = [ 'x', 'y', 'z' ]
+  inputs = [ ('e', 'electron'), ('mu', 'muon'), ('tau', 'tau') ]
+  for input_obj, input_col in inputs:
+    if (lepton == input_obj or lepton == 'all') and hasattr(process, f'{input_col}TimeLifeInfoTable'):
+      tag = cms.InputTag(f'{input_col}TimeLifeInfos')
+      varPSet = getattr(process, f'{input_col}TimeLifeInfoTable').externalTypedVariables
+      for i in range(len(xyz)):
+        for j in range(i, len(xyz)):
+            setattr(varPSet, f'IP_cov{j}{i}', cms.PSet(
+              doc = cms.string(f'IP covariance element ({j}, {i})'),
+              expr = cms.string(f'ipCovariance.c{xyz[j]}{xyz[i]}()'),
+              lazyEval = cms.untracked.bool(False),
+              precision = cms.int32(10),
+              src = tag,
+              type = cms.string('float')
+            ))
+  return process
 
 def customize(process):
   #customize printout frequency
@@ -113,6 +131,7 @@ def customize(process):
 
   from PhysicsTools.NanoAOD.leptonTimeLifeInfo_common_cff import addTrackVarsToTimeLifeInfo
   process = addTrackVarsToTimeLifeInfo(process)
+  process = addIPCovToLeptons(process)
 
   process = customizePV(process)
 
