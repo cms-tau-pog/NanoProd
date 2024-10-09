@@ -100,47 +100,22 @@ def addSpinnerWeights(process):
   return process
 
 def addIPCovToLeptons(process,lepton='all'):
-  numToXYZ = {0:'x',1:'y',2:'z'}
-  if (lepton == 'e' or lepton == 'all') and hasattr(process,'electronTimeLifeInfoTable'):
-    tag = cms.InputTag('electronTimeLifeInfos')
-    varPSet = process.electronTimeLifeInfoTable.externalTypedVariables
-    for i in range(0,3):
-      for j in range(i,3):
-        setattr(varPSet,'IP_cov'+str(j)+str(i),cms.PSet(
-          doc = cms.string('IP covariance element ('+str(j)+','+str(i)+')'),
-          expr = cms.string('ipCovariance.c'+numToXYZ[j]+numToXYZ[i]+'()'),
-          lazyEval = cms.untracked.bool(False),
-          precision = cms.int32(10),
-          src = tag,
-          type = cms.string('float')
-        ))
-  if (lepton == 'mu' or lepton == 'all') and hasattr(process,'muonTimeLifeInfoTable'):
-    tag = cms.InputTag('muonTimeLifeInfos')
-    varPSet = process.muonTimeLifeInfoTable.externalTypedVariables
-    for i in range(0,3):
-      for j in range(i,3):
-        setattr(varPSet,'IP_cov'+str(j)+str(i),cms.PSet(
-          doc = cms.string('IP covariance element ('+str(j)+','+str(i)+')'),
-          expr = cms.string('ipCovariance.c'+numToXYZ[j]+numToXYZ[i]+'()'),
-          lazyEval = cms.untracked.bool(False),
-          precision = cms.int32(10),
-          src = tag,
-          type = cms.string('float')
-        ))
-  if (lepton == 'tau' or lepton == 'all') and hasattr(process,'tauTimeLifeInfoTable'):
-    tag = cms.InputTag('tauTimeLifeInfos')
-    varPSet = process.tauTimeLifeInfoTable.externalTypedVariables
-    for i in range(0,3):
-      for j in range(i,3):
-        setattr(varPSet,'IP_cov'+str(j)+str(i),cms.PSet(
-          doc = cms.string('IP covariance element ('+str(j)+','+str(i)+')'),
-          expr = cms.string('ipCovariance.c'+numToXYZ[j]+numToXYZ[i]+'()'),
-          lazyEval = cms.untracked.bool(False),
-          precision = cms.int32(10),
-          src = tag,
-          type = cms.string('float')
-        ))
-
+  xyz = [ 'x', 'y', 'z' ]
+  inputs = [ ('e', 'electron'), ('mu', 'muon'), ('tau', 'tau') ]
+  for input_obj, input_col in inputs:
+    if (lepton == input_obj or lepton == 'all') and hasattr(process, f'{input_col}TimeLifeInfoTable'):
+      tag = cms.InputTag(f'{input_col}TimeLifeInfos')
+      varPSet = getattr(process, f'{input_col}TimeLifeInfoTable').externalTypedVariables
+      for i in range(len(xyz)):
+        for j in range(i, len(xyz)):
+            setattr(varPSet, f'IP_cov{j}{i}', cms.PSet(
+              doc = cms.string(f'IP covariance element ({j}, {i})'),
+              expr = cms.string(f'ipCovariance.c{xyz[j]}{xyz[i]}()'),
+              lazyEval = cms.untracked.bool(False),
+              precision = cms.int32(10),
+              src = tag,
+              type = cms.string('float')
+            ))
   return process
 
 def customize(process):
