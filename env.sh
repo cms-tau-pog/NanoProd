@@ -50,6 +50,7 @@ do_install_cmssw() {
     local subsub_ver=`echo $CMSSW_VER | cut -d'_' -f 4`
     if [[ $master_ver == "14"  && $sub_ver == "0" ]]; then
       run_cmd echo "=> Installing addons for CMSSW_"${master_ver}"_"$sub_ver
+      run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_NanoProd_Addon_Powheg
       run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_tau-pog_BoostedDeepTau
       run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/BoostedDeepTau_v2/BoostedDeepTauId/boosteddeepTau_RunIIv2p0_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/BoostedDeepTauId/
     fi
@@ -104,7 +105,7 @@ action() {
   local os_prefix=$(get_os_prefix $os_version)
   local node_os=$os_prefix$os_version
 
-  local default_cmssw_ver=CMSSW_14_0_6_patch1
+  local default_cmssw_ver=CMSSW_14_0_17
   local target_os_version=8
   local target_os_prefix=$(get_os_prefix $target_os_version)
   local target_os_gt_prefix=$(get_os_prefix $target_os_version 1)
