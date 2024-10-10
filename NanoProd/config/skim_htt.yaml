@@ -118,31 +118,31 @@ selection: "
   int n_boosted_pairs = 0;
   float maxR2 = 0.8*0.8;
   float minR2 = 0.01*0.01;
-auto has_boosted_pair = [&](const RVecF& eta1, const RVecF& phi1, const RVecF& eta2, const RVecF& phi2,
-                            bool is_same) {
-  const size_t i_max = is_same ? eta1.size() - 1 : eta1.size();
-  for(size_t i = 0; i < i_max; ++i) {
-    size_t j = is_same ? i + 1 : 0;
-    for(; j < eta2.size(); ++j) {
-      float deta = eta1[i]-eta2[j];
-      float dphi = TVector2::Phi_mpi_pi(phi1[i]-phi2[j]);
-      float dr2 = deta*deta + dphi*dphi;
-      if( dr2 > minR2 && dr2 < maxR2)
-        return true;
+  auto has_boosted_pair = [&](const ROOT::RVecF& eta1, const ROOT::RVecF& phi1, const ROOT::RVecF& eta2, const ROOT::RVecF& phi2,
+                              bool is_same) {
+    const size_t i_max = is_same ? eta1.size() - 1 : eta1.size();
+    for(size_t i = 0; i < i_max; ++i) {
+      size_t j = is_same ? i + 1 : 0;
+      for(; j < eta2.size(); ++j) {
+        float deta = eta1[i]-eta2[j];
+        float dphi = TVector2::Phi_mpi_pi(phi1[i]-phi2[j]);
+        float dr2 = deta*deta + dphi*dphi;
+        if(dr2 > minR2 && dr2 < maxR2)
+          return true;
+      }
     }
-  }
-  return false;
-};
+    return false;
+  };
 
-if(n_boostedtaus >= 2 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
-                                          boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel], true))
-  return true;
-if(n_boostedtaus >= 1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
-                                          Muon_eta[boostedtau_sel], Muon_phi[boostedtau_sel], false))
-  return true;
-if(n_boostedtaus >= 1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
-                                          Electron_eta[boostedtau_sel], Electron_phi[boostedtau_sel], false))
-  return true;
+  if(n_boostedtaus >= 2 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
+                                            boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel], true))
+    return true;
+  if(n_boostedtaus >= 1 && n_muons >=1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
+                                                           Muon_eta[muon_sel], Muon_phi[muon_sel], false))
+    return true;
+  if(n_boostedtaus >= 1 && n_electrons >=1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
+                                                               Electron_eta[ele_sel], Electron_phi[ele_sel], false))
+    return true;
 
   if(n_electrons + n_muons < 1) return false;
   float lep_pt = n_electrons > 0 ? Electron_pt[ele_sel][0] : Muon_pt[muon_sel][0];
