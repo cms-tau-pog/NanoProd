@@ -312,6 +312,14 @@ GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-m2p00:
   - Run3_2022EE
 GluGlutoHHto2B2Tau_kl-2p45_kt-1p00_c2-0p00:
   - Run3_2022EE
+GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-0p00_LHEweights:
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+GluGlutoHHto2B2Tau_kl-2p45_kt-1p00_c2-0p00_LHEweights:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
 
 VBFHHto2B2Tau_CV-1_C2V-1_C3-1:
   - Run3_2022EE
@@ -346,14 +354,7 @@ VBFHHto2B2Tau_CV-m1p60_C2V-2p72_C3-m1p36:
 VBFHHto2B2Tau_CV-m2p12_C2V-3p87_C3-m5p96:
   - Run3_2023
   - Run3_2023BPix
-VBFHHto2B2Tau_CV_1_C2V_0_C3_1:
-  - Run3_2023
-  - Run3_2023BPix
-VBFHHto2B2Tau_CV_1_C2V_1_C3_1:
-  - Run3_2023
-  - Run3_2023BPix
 VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
-  - Run3_2022
   - Run3_2023
   - Run3_2023BPix
 
@@ -384,16 +385,13 @@ VBFHHto2B2Tau_CV-m1p83_C2V-3p57_C3-m3p39:
   - Run3_2023
   - Run3_2023BPix
 
-^GluGlutoHHto2B2V.*_kl-[^2].*$:
+^VBFHHto2B2V_CV-.*$:
   - Run3_2023
   - Run3_2023BPix
 
-^VBFHHto2B2V.*$:
+^VBFHHto2B2Vto2L2Nu_CV-.*:
   - Run3_2023
   - Run3_2023BPix
-
-^VBFHHto2B2V(to2L2Nu|)_CV-m1p83_C2V-3p57_C3-m3p39:
-  - Run3_2022
 
 # TTX
 TTZToQQ:
@@ -496,14 +494,11 @@ QCD_HT800to1000_MLM:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-  - Run3_2023
 QCD_HT1000to1200_MLM:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-  - Run3_2022EE
-  - Run3_2023
 ^QCD_PT-(15to20|20to30|30to50|50to80|80to120|120to170|170to300|300to470|470to600|600to800|800to1000)_MuEnrichedPt5:
   - Run2_2016
   - Run2_2016_HIPM
@@ -519,27 +514,12 @@ QCD_PT_3200:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-QCD_HT1000To1200_MLM:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-  - Run3_2022
-  - Run3_2023BPix
 QCD_PT-300_EMEnriched:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
   - Run3_2022
-QCD_HT800to10000_MLM:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023BPix
 QCD_PT_600:
   - Run2_2016
   - Run2_2016_HIPM
