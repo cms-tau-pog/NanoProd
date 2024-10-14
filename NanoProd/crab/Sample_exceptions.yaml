@@ -316,10 +316,6 @@ GluGlutoHHto2B2Tau_kl-1p00_kt-1p00_c2-0p00_LHEweights:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGlutoHHto2B2Tau_kl-2p45_kt-1p00_c2-0p00_LHEweights:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
 
 VBFHHto2B2Tau_CV-1_C2V-1_C3-1:
   - Run3_2022EE
