@@ -6,32 +6,16 @@ if ! [ -d "$ANALYSIS_PATH" ]; then
 fi
 cd $ANALYSIS_PATH
 
-echo "Checking Run2_2016 consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17(_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2016[FGH]-UL2016_MiniAODv2-v[1-9]/MINIAOD' NanoProd/crab/Run2_2016/*.yaml
+for era in Run2_2016 Run2_2016_HIPM Run2_2017 Run2_2018 Run3_2022 Run3_2022EE Run3_2023 Run3_2023BPix; do
+  echo "Checking $era consistency..."
+  python RunKit/checkTasksConsistency.py --era $era --dataset-name-masks NanoProd/crab/dataset_name_masks.yaml NanoProd/crab/$era/*.yaml
+done
 
-echo "Checking Run2_2016_HIPM consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11(_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2016(B-ver2_|[C-F]-)HIPM_UL2016_MiniAODv2-v[1-9]/MINIAOD' NanoProd/crab/Run2_2016_HIPM/*.yaml
 
-echo "Checking Run2_2017 consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9(_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2017[B-F]-UL2017_MiniAODv2-v[1-9]/MINIAOD' NanoProd/crab/Run2_2017/*.yaml
-
-echo "Checking Run2_2018 consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1(_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2018[A-D]-UL2018_MiniAODv2_GT36-v[1-9]/MINIAOD' NanoProd/crab/Run2_2018/*.yaml
-
-echo "Checking Run3_2022 consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5(_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2022[CD]-22Sep2023-v[1-9]/MINIAOD' NanoProd/crab/Run3_2022/*.yaml
-
-echo "Checking Run3_2022EE consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/Run3Summer22EEMiniAODv4-(forPOG_|)130X_mcRun3_2022_realistic_postEE_v6(_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2022[EFG]-22Sep2023-v[1-9]/MINIAOD' NanoProd/crab/Run3_2022EE/*.yaml
-
-echo "Checking Run3_2023 consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/Run3Summer23MiniAODv4-(tsg_|)130X_mcRun3_2023_realistic_v1[45](_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2023C-22Sep2023_v[1-9]-v[1-9]/MINIAOD' NanoProd/crab/Run3_2023/*.yaml
-
-echo "Checking Run3_2023BPix consistency..."
-python RunKit/checkTasksConsistency.py --dataset-name-mask-mc '^/.*/Run3Summer23BPixMiniAODv4-(tsg_|)130X_mcRun3_2023_realistic_postBPix_v[26](_ext[1-9]|)-v[1-9]/MINIAODSIM' --dataset-name-mask-data '^/.*/Run2023D-22Sep2023_v[1-9]-v[1-9]/MINIAOD' NanoProd/crab/Run3_2023BPix/*.yaml
-
+# --show-only-missing-with-candidates \
 echo "Checking cross-era consistency..."
-python RunKit/checkTasksConsistency.py --exceptions NanoProd/crab/Sample_exceptions.yaml \
+python RunKit/checkTasksConsistency.py --cross-era --dataset-name-masks NanoProd/crab/dataset_name_masks.yaml \
+  --exceptions NanoProd/crab/Sample_exceptions.yaml \
   --name-matching='-:_' \
   --name-matching='_13(p6|)TeV_:_TeV_' \
   --name-matching='DYJetsToLL_M_(.*)_madgraphMLM_:DYto2L_4Jets_MLL_\1_madgraphMLM_' \
@@ -52,8 +36,13 @@ python RunKit/checkTasksConsistency.py --exceptions NanoProd/crab/Sample_excepti
   --name-matching='ST_t_channel_antitop_4f_InclusiveDecays_:TbarBQ_t_channel_4FS_' \
   --name-matching='_PSWeights:' \
   --name-matching='_M_125:_M125' \
+  --name-matching='GluGluHToTauTauPlusTwoJetsUncorDecay:GluGluHJJto2TauUncorrelatedDecay' \
   --name-matching='UncorrelatedDecay_Filtered:UncorrelatedDecay' \
   --name-matching='UncorrelatedDecay_M125(.*)_minnlo:UncorrelatedDecay_M125\1' \
+  --name-matching='_CP_odd_:_CPodd_' \
+  --name-matching='_amcatnlopowheg_:_powheg_' \
+  --name-matching='uncorrelateddecay_mm_:uncorrelateddecay_cp_mix_' \
+  --name-matching='uncorrelateddecay_sm_:uncorrelateddecay_cp_even_' \
   --name-matching='TuneCP5:CP5' \
   --name-matching='ToTauTau:to2Tau' \
   --name-matching='_jhugen[0-9]+:' \
@@ -80,4 +69,4 @@ python RunKit/checkTasksConsistency.py --exceptions NanoProd/crab/Sample_excepti
   --name-matching='HTobb:Hto2b' \
   --name-matching='ZToQQ:Zto2Q' \
   --name-matching='ZToLL:Zto2L' \
-  --cross-era NanoProd/crab/Run*_20*
+  NanoProd/crab/Run*_20*
