@@ -24,6 +24,7 @@ maxMemory: 2500
 numCores: 1
 inputDBS: global
 allowNonValid: False
+autoIgnoreCorrupt: True
 dryrun: False
 maxRecoveryCount: 4
 updateInterval: 60
@@ -35,7 +36,7 @@ localProcessing:
   requirements: TARGET.OpSysAndVer =?= "AlmaLinux9"
   maxParallelJobs: 1000
   maxRuntime: 24 # hours
-targetOutputFileSize: 2048 # MiB
+targetOutputFileSize: 1024 # MiB
 renewKerberosTicket: True
 htmlReport: TODO #T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_v1/Run2_2016
 whitelistFinalRecovery:
