@@ -5,6 +5,9 @@ skim:
     - Runs
   sel_ref: selection
   column_filters:
+    - drop Electron_photonIdx
+    - drop ^Jet_.*UParT.*$
+    - drop ^Tau_.*UParT.*$
     - drop Tau_idDecayModeOldDMs
     - drop Tau_idAntiEleDeadECal
     - drop Tau_photonsOutsideSignalCone
@@ -34,7 +37,6 @@ skim:
     - drop ^(n|)GenProton(_.*|)$
     - drop ^(n|)Proton(_.*|)$
     - drop ^(n|)PPSLocalTrack(_.*|)$
-    - drop ^L1_.*$
 
 skim_failed:
   input_tree: Events
@@ -44,6 +46,8 @@ skim_failed:
   column_filters:
     - drop ^.*$
     - keep run
+    - keep luminosityBlock
+    - keep event
     - keep genWeight
     - keep ^Pileup_(nPU|nTrueInt)$
     - keep ^(n|)LHE.*$
@@ -68,8 +72,7 @@ selection: "
   auto tau_deepTau_v2p1_sel = Tau_rawDeepTau2017v2p1VSmu > 0.05 && Tau_idDeepTau2017v2p1VSjet > 0 && Tau_idDeepTau2017v2p1VSe > 0;
   auto tau_deepTau_v2p5_sel = Tau_rawDeepTau2018v2p5VSmu > 0.05 && Tau_idDeepTau2018v2p5VSjet > 0 && Tau_idDeepTau2018v2p5VSe > 0;
   auto tau_pnet_sel = Tau_rawPNetVSjet > 0.05 && Tau_rawPNetVSe > 0.05 && Tau_rawPNetVSmu > 0.05;
-  auto tau_upart_sel = Tau_rawUParTVSjet > 0.05 && Tau_rawUParTVSe > 0.05 && Tau_rawUParTVSmu > 0.05;
-  auto tau_sel = tau_base_sel && (tau_deepTau_v2p1_sel || tau_deepTau_v2p5_sel || tau_pnet_sel || tau_upart_sel);
+  auto tau_sel = tau_base_sel && (tau_deepTau_v2p1_sel || tau_deepTau_v2p5_sel || tau_pnet_sel);
 
   int n_electrons = Electron_pt[ele_sel].size();
   int n_muons = Muon_pt[muon_sel].size();
@@ -88,7 +91,8 @@ selection: "
   int n_boosted_pairs = 0;
   float maxR2 = 0.8*0.8;
   float minR2 = 0.01*0.01;
-  auto has_boosted_pair = [&](const ROOT::RVecF& eta1, const ROOT::RVecF& phi1, const ROOT::RVecF& eta2, const ROOT::RVecF& phi2,
+  auto has_boosted_pair = [&](const ROOT::RVecF& eta1, const ROOT::RVecF& phi1,
+                              const ROOT::RVecF& eta2, const ROOT::RVecF& phi2,
                               bool is_same) {
     const size_t i_max = is_same ? eta1.size() - 1 : eta1.size();
     for(size_t i = 0; i < i_max; ++i) {
@@ -107,10 +111,10 @@ selection: "
   if(n_boostedtaus >= 2 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
                                             boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel], true))
     return true;
-  if(n_boostedtaus >= 1 && n_muons >=1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
+  if(n_boostedtaus >= 1 && n_muons >= 1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
                                                            Muon_eta[muon_sel], Muon_phi[muon_sel], false))
     return true;
-  if(n_boostedtaus >= 1 && n_electrons >=1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
+  if(n_boostedtaus >= 1 && n_electrons >= 1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
                                                                Electron_eta[ele_sel], Electron_phi[ele_sel], false))
     return true;
 
