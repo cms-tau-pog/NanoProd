@@ -20,6 +20,8 @@
 #include "TauSpinner/SimpleParticle.h"
 #include "TauSpinner/tau_reweight_lib.h"
 
+#include <atomic>
+
 class TauSpinnerTableProducer : public edm::one::EDProducer<edm::one::SharedResources> {
 public:
   explicit TauSpinnerTableProducer(const edm::ParameterSet &);
@@ -77,6 +79,9 @@ private:
   const int nonSMN_;
   const double cmsE_;
   const double default_weight_;
+
+  std::atomic<unsigned int> nWarnings{0};
+  static const unsigned int nMaxWarnings = 10;
 };
 
 TauSpinnerTableProducer::TauSpinnerTableProducer(const edm::ParameterSet &config)
@@ -171,6 +176,18 @@ void TauSpinnerTableProducer::produce(edm::Event &event, const edm::EventSetup &
   edm::RefVector<edm::View<reco::GenParticle>> bosons;
   getBosons(bosons, genParts);
   if (bosons.size() != 1) {  //no boson found or more than one found, produce empty table (expected for non HTT sample)
+    if(++nWarnings < nMaxWarnings)
+      edm::LogWarning("TauSpinnerTableProducer::produce")
+	<< "Current event has "<< bosons.size() << " Higgs bosons while there must be exactly one; table with default weights is produced.\n";
+    // Fill table with default values
+    for (const auto &theta : theta_vec_) {
+      wtTable->addColumnValue<double>("weight_cp_" + theta.first,
+				      default_weight_,
+				      "Dummy TauSpinner weight for theta_CP = " + theta.first);
+      wtTable->addColumnValue<double>("weight_cp_" + theta.first + "_alt",
+				      default_weight_,
+				      "Dummy TauSpinner weight for theta_CP = " + theta.first+ " (alternative hadronic currents)");
+    }
     event.put(std::move(wtTable));
     return;
   }
@@ -179,6 +196,18 @@ void TauSpinnerTableProducer::produce(edm::Event &event, const edm::EventSetup &
   reco::GenParticleRefVector taus;
   getTaus(taus, *bosons[0]);
   if (taus.size() != 2) {  //boson does not decay to tau pair, produce empty table (expected for non HTT sample)
+    if(++nWarnings < nMaxWarnings)
+      edm::LogWarning("TauSpinnerTableProducer::produce")
+	<< "Current event has "<< taus.size() << " taus from boson decay while there must be exactly one pair; table with default weights is produced.\n";
+    // Fill table with default values
+    for (const auto &theta : theta_vec_) {
+      wtTable->addColumnValue<double>("weight_cp_" + theta.first,
+				      default_weight_,
+				      "Dummy TauSpinner weight for theta_CP = " + theta.first);
+      wtTable->addColumnValue<double>("weight_cp_" + theta.first + "_alt",
+				      default_weight_,
+				      "Dummy TauSpinner weight for theta_CP = " + theta.first+ " (alternative hadronic currents)");
+    }
     event.put(std::move(wtTable));
     return;
   }
