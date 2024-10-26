@@ -33,7 +33,7 @@ def customizeGenParticles(process):
 
 def customizeTaus(process):
   deepTauCuts = []
-  for deep_tau_ver in [ "2017v2p1", "2018v2p5" ]:
+  for deep_tau_ver in [ "2017v2p1", "2018v2p5", "2018v2p5noDA" ]:
     cuts = []
     e_VVVLoose = WORKING_POINTS_v2p5["e"]["VVVLoose"]
     mu_VVLoose = 0.05

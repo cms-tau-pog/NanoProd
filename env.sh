@@ -53,6 +53,8 @@ do_install_cmssw() {
       run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_NanoProd_Addon_Powheg
       run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_tau-pog_BoostedDeepTau
       run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/BoostedDeepTau_v2/BoostedDeepTauId/boosteddeepTau_RunIIv2p0_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/BoostedDeepTauId/
+      run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_tau-pog_DeepTauNoDA
+      run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/deepTau_v2p5_noDomainAdaptation/DeepTauId/deepTau_2018v2p5_noDomainAdaptation_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/DeepTauId/
     fi
 
     run_cmd mkdir NanoProd
