@@ -409,12 +409,11 @@ VBFHHto2B2Tau_CV_1_C2V_1_C3_1_v2:
   - Run3_2023
   - Run3_2023BPix
 
-
 # TTX
 TTZToQQ:
   - Run3_2023
   - Run3_2023BPix
-^TT(WJetsToLNu|WJetsToQQ|WZ|ZToLLNuNu_M_10|ZToBB|ZToLL_M_1to10|ZToNuNu|ZToQQ_Dilept|GJets|Gamma|T|4b|GG|ZZTo4b|ZZToNon4b|ZHTo4b|ZHToNon4b):
+^TT(WJetsToLNu|WJetsToQQ|ZToLLNuNu_M_10|ZToBB|ZToLL_M_1to10|ZToNuNu|ZToQQ_Dilept|GJets|Gamma|T|4b|GG|ZZTo4b|ZZToNon4b|ZHTo4b|ZHToNon4b):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -428,6 +427,8 @@ TTGJets_ext1:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
+TTWZ:
+  - Run3_2022
 
 # nmssm
 ^NMSSM:
@@ -545,7 +546,6 @@ QCD_PT_600:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
-
 
 # BSM Higgs
 ^GluGluHto2Tau_M.*_2HDM:
