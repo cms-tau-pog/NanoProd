@@ -310,6 +310,14 @@ TT_ext1:
   - Run3_2023
   - Run3_2023BPix
 
+# singleHiggs:
+
+^.*Hto2Mu.*$:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
 # Dihiggs
 ^GluGlutoHHto2B2Tau_node:
   - Run3_2022
