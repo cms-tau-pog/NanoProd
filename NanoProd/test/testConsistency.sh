@@ -35,6 +35,8 @@ python RunKit/checkTasksConsistency.py --cross-era --dataset-name-masks NanoProd
   --name-matching='ST_t_channel_top_4f_InclusiveDecays_:TBbarQ_t_channel_4FS_' \
   --name-matching='ST_t_channel_antitop_4f_InclusiveDecays_:TbarBQ_t_channel_4FS_' \
   --name-matching='_PSWeights:' \
+  --name-matching='_withDipoleRecoil:' \
+  --name-matching='_minlo:' \
   --name-matching='_M_125:_M125' \
   --name-matching='GluGluHToTauTauPlusTwoJetsUncorDecay:GluGluHJJto2TauUncorrelatedDecay' \
   --name-matching='UncorrelatedDecay_Filtered:UncorrelatedDecay' \
