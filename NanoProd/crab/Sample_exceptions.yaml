@@ -559,3 +559,17 @@ QCD_PT_600:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
+^BBHto2Tau_M(?!.*_ext1).*:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^BBHto2Tau_M.*_ext1:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+  - Run3_2022
+  - Run3_2023
+  - Run3_2023BPix
+
