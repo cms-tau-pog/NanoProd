@@ -57,7 +57,6 @@ do_install_cmssw() {
       run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/deepTau_v2p5_noDomainAdaptation/DeepTauId/deepTau_2018v2p5_noDomainAdaptation_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/DeepTauId/
       run_cmd git cms-merge-topic -u rkansal47:CMSSW_14_0_X_GloParT23
       wget https://coli.web.cern.ch/coli/tmp/.240120-181907_ak8_stage2/model.onnx -O $CMSSW_BASE/src/RecoBTag/ONNXRuntime/data/ParticleTransformerAK8/GlobalMD/V02/model.onnx
-      # git clone https://github.com/cms-data/RecoBTag-Combined $CMSSW_BASE/src/RecoBTag/Combined/data
     fi
 
     run_cmd mkdir NanoProd
