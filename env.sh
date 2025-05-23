@@ -99,6 +99,7 @@ action() {
 
   export ANALYSIS_PATH="$this_dir"
   export ANALYSIS_DATA_PATH="$ANALYSIS_PATH/data"
+  export ANALYSIS_BIN_PATH="$ANALYSIS_PATH/soft/bin"
   export X509_USER_PROXY="$ANALYSIS_DATA_PATH/voms.proxy"
 
   run_cmd mkdir -p "$ANALYSIS_DATA_PATH"
@@ -116,6 +117,12 @@ action() {
 
   run_cmd install_cmssw ${target_os_gt_prefix}${target_os_version}_amd64_gcc12 $default_cmssw_ver $node_os $target_os
 
+  if [ ! -f "$ANALYSIS_BIN_PATH/.installed" ]; then
+    run_cmd mkdir -p "$ANALYSIS_BIN_PATH"
+    run_cmd ln -s /usr/bin/java "$ANALYSIS_BIN_PATH/java"
+    run_cmd touch "$ANALYSIS_BIN_PATH/.installed"
+  fi
+
   if [ ! -z $ZSH_VERSION ]; then
     autoload bashcompinit
     bashcompinit
@@ -125,7 +132,12 @@ action() {
 
   source "$( law completion )" ""
 
+  local current_args=( "$@" )
+  set --
   source /cvmfs/cms.cern.ch/rucio/setup-py3.sh &> /dev/null
+  set -- "${current_args[@]}"
+
+  export PATH="$ANALYSIS_BIN_PATH:$PATH"
 
   if [[ $node_os == $target_os ]]; then
     export CMSSW_SINGULARITY=""
