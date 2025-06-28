@@ -3,8 +3,6 @@ config:
     sampleType: mc
     era: Run3_2023BPix
 
-DYJetsToLL_M_50_madgraphMLM: /DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8/Run3Summer23BPixMiniAODv4-Pilot_130X_mcRun3_2023_realistic_postBPix_v2-v3/MINIAODSIM
-
 DYto2L_M_10to50_madgraphMLM: /DYto2L-4Jets_MLL-10to50_TuneCP5_13p6TeV_madgraphMLM-pythia8/Run3Summer23BPixMiniAODv4-130X_mcRun3_2023_realistic_postBPix_v2-v3/MINIAODSIM
 DYto2L_M_50_madgraphMLM: /DYto2L-4Jets_MLL-50_TuneCP5_13p6TeV_madgraphMLM-pythia8/Run3Summer23BPixMiniAODv4-130X_mcRun3_2023_realistic_postBPix_v2-v3/MINIAODSIM
 DYto2L_M_50_1J_madgraphMLM: /DYto2L-4Jets_MLL-50_1J_TuneCP5_13p6TeV_madgraphMLM-pythia8/Run3Summer23BPixMiniAODv4-130X_mcRun3_2023_realistic_postBPix_v2-v3/MINIAODSIM
