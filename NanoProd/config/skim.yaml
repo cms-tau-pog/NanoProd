@@ -62,12 +62,12 @@ selection: "
     std::swap(lep_pt[0], lep_pt[1]);
   float max_lep_pt = lep_pt.empty() ? 0 : *std::max_element(lep_pt.begin(), lep_pt.end());
 
-  if(n_electrons == 2) return lep_pt[0] > 20 && lep_pt[1] > 10;
-  else if(n_muons == 2) return lep_pt[0] > 15 && lep_pt[1] > 5;
+  if(n_electrons == 2) return (lep_pt[0] > 20 && lep_pt[1] > 10) || lep_pt[1] > 25;
+  else if(n_muons == 2) return lep_pt[0] > 15;
   else if(n_taus == 2) return (lep_pt[0] > 30 && lep_pt[1] > 30) || lep_pt[0] > 150;
-  else if(n_electrons == 1 && n_muons == 1) return (lep_pt[0] > 20 && lep_pt[1] > 5) || (lep_pt[0] > 5 && lep_pt[1] > 20);
+  else if(n_electrons == 1 && n_muons == 1) return lep_pt[0] > 20 || lep_pt[1] > 20;
   else if(n_electrons == 1 && n_taus == 1) return lep_pt[0] > 20;
-  else if(n_muons == 1 && n_taus == 1) return lep_pt[0] > 20;
+  else if(n_muons == 1 && n_taus == 1) return lep_pt[0] > 18;
 
   float HT = Sum(Jet_pt);
   // High-HT selection
@@ -80,12 +80,11 @@ selection: "
     if(max_lep_pt > 18 && (has_met || HT > 200)) return true;
   }
 
-  // VBF selection
+  // di-lepton VBF selection
   using LorentzVectorM = ROOT::Math::LorentzVector<ROOT::Math::PtEtaPhiM4D<double>>;
   ROOT::VecOps::RVec<LorentzVectorM> Jet_p4(nJet);
-  for(int i = 0; i < nJet; ++i) {
+  for(int i = 0; i < nJet; ++i)
     Jet_p4[i] = LorentzVectorM(Jet_pt[i], Jet_eta[i], Jet_phi[i], Jet_mass[i]);
-  }
 
   double max_m_jj = 0;
   for(int i = 0; i < nJet; ++i) {
@@ -96,7 +95,7 @@ selection: "
       }
     }
   }
-  if(max_m_jj > 400) return true;
+  if(n_leptons >= 2 && max_m_jj > 400) return true;
 
   // Boosted selection
   if(nFatJet > 0) return true;
