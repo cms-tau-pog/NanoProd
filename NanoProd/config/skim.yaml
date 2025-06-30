@@ -4,39 +4,6 @@ skim:
     - LuminosityBlocks
     - Runs
   sel_ref: selection
-  column_filters:
-    - drop Electron_photonIdx
-    - drop ^Jet_.*UParT.*$
-    - drop ^Tau_.*UParT.*$
-    - drop Tau_idDecayModeOldDMs
-    - drop Tau_idAntiEleDeadECal
-    - drop Tau_photonsOutsideSignalCone
-    - drop Tau_puCorr
-    - drop Tau_chargedIso
-    - drop Tau_neutralIso
-    - drop boostedTau_chargedIso
-    - drop boostedTau_neutralIso
-    - drop boostedTau_photonsOutsideSignalCone
-    - drop boostedTau_puCorr
-    - drop boostedTau_rawIsodR03
-    - drop boostedTau_idAntiEle2018
-    - drop boostedTau_rawAntiEle2018
-    - drop boostedTau_rawAntiEleCat2018
-    - drop boostedTau_idMVAnewDM2017v2
-    - drop boostedTau_idMVAoldDM2017v2
-    - drop boostedTau_idMVAoldDMdR032017v2
-    - drop boostedTau_rawMVAnewDM2017v2
-    - drop boostedTau_rawMVAoldDM2017v2
-    - drop boostedTau_rawMVAoldDMdR032017v2
-    - drop ^(n|)OtherPV(_.*|)$
-    - drop ^(n|)Photon(_.*|)$
-    - drop ^(n|)LowPtElectron(_.*|)$
-    - drop ^(n|)SoftActivityJet(.*|)$
-    - drop ^(n|)IsoTrack(_.*|)$
-    - drop ^(n|)GenIsolatedPhoton(_.*|)$
-    - drop ^(n|)GenProton(_.*|)$
-    - drop ^(n|)Proton(_.*|)$
-    - drop ^(n|)PPSLocalTrack(_.*|)$
 
 skim_failed:
   input_tree: Events
@@ -79,13 +46,62 @@ selection: "
   int n_electrons = Electron_pt[ele_sel].size();
   int n_muons = Muon_pt[muon_sel].size();
   int n_taus = Tau_pt[tau_sel].size();
-  int n_met = std::max({PFMET_pt, DeepMETResolutionTune_pt, DeepMETResponseTune_pt, PuppiMET_pt}) > 100;
-  if(n_electrons + n_muons + n_taus + n_met >= 2) return true;
+  int n_light_leptons = n_electrons + n_muons;
+  int n_leptons = n_electrons + n_muons + n_taus;
 
-  auto fatJet_sel = FatJet_particleNet_XteVsQCD > 0.05 || FatJet_particleNet_XtmVsQCD > 0.05 || FatJet_particleNet_XttVsQCD > 0.05;
-  int n_fatJet = FatJet_pt[fatJet_sel].size();
-  if(n_fatJet >= 1 || nFatJet >= 2) return true;
+  // Accept multi-lepton events
+  if (n_leptons >= 3) return true;
 
+  // Di-lepton selection
+  std::vector<float> lep_pt;
+  for(auto pt : Electron_pt[ele_sel]) lep_pt.push_back(pt);
+  for(auto pt : Muon_pt[muon_sel]) lep_pt.push_back(pt);
+  for(auto pt : Tau_pt[tau_sel]) lep_pt.push_back(pt);
+
+  if((n_electrons == 2 || n_muons == 2 || n_taus == 2) && lep_pt.at(0) < lep_pt.at(1))
+    std::swap(lep_pt[0], lep_pt[1]);
+  float max_lep_pt = lep_pt.empty() ? 0 : *std::max_element(lep_pt.begin(), lep_pt.end());
+
+  if(n_electrons == 2) return lep_pt[0] > 20 && lep_pt[1] > 10;
+  else if(n_muons == 2) return lep_pt[0] > 15 && lep_pt[1] > 5;
+  else if(n_taus == 2) return (lep_pt[0] > 30 && lep_pt[1] > 30) || lep_pt[0] > 150;
+  else if(n_electrons == 1 && n_muons == 1) return (lep_pt[0] > 20 && lep_pt[1] > 5) || (lep_pt[0] > 5 && lep_pt[1] > 20);
+  else if(n_electrons == 1 && n_taus == 1) return lep_pt[0] > 20;
+  else if(n_muons == 1 && n_taus == 1) return lep_pt[0] > 20;
+
+  float HT = Sum(Jet_pt);
+  // High-HT selection
+  if(HT > 400) return true;
+
+  // lepton + MET or lepton + multi-jet selection
+  if(n_leptons > 0) {
+    static constexpr int met_cut = 100;
+    bool has_met = PFMET_pt > met_cut || DeepMETResolutionTune_pt > met_cut || DeepMETResponseTune_pt > met_cut || PuppiMET_pt > met_cut;
+    if(max_lep_pt > 18 && (has_met || HT > 200)) return true;
+  }
+
+  // VBF selection
+  using LorentzVectorM = ROOT::Math::LorentzVector<ROOT::Math::PtEtaPhiM4D<double>>;
+  ROOT::VecOps::RVec<LorentzVectorM> Jet_p4(nJet);
+  for(int i = 0; i < nJet; ++i) {
+    Jet_p4[i] = LorentzVectorM(Jet_pt[i], Jet_eta[i], Jet_phi[i], Jet_mass[i]);
+  }
+
+  double max_m_jj = 0;
+  for(int i = 0; i < nJet; ++i) {
+    for(int j = i + 1; j < nJet; ++j) {
+      double m_jj = (Jet_p4[i] + Jet_p4[j]).mass();
+      if(m_jj > max_m_jj) {
+        max_m_jj = m_jj;
+      }
+    }
+  }
+  if(max_m_jj > 400) return true;
+
+  // Boosted selection
+  if(nFatJet > 0) return true;
+
+  // Boosted taus selection (in case the seeding AK8 jet did not pass the nanoAOD selection)
   auto boostedtau_base_sel = boostedTau_pt > 18 && abs(boostedTau_eta) < 2.5;
   auto boostedtau_deepTau_sel = boostedTau_rawBoostedDeepTauRunIIv2p0VSjet > 0.72 && boostedTau_rawBoostedDeepTauRunIIv2p0VSe > 0.1 && boostedTau_rawBoostedDeepTauRunIIv2p0VSmu > 0.003;
   auto boostedtau_sel = boostedtau_base_sel && boostedtau_deepTau_sel;
@@ -120,8 +136,6 @@ selection: "
                                                                Electron_eta[ele_sel], Electron_phi[ele_sel], false))
     return true;
 
-  if(n_electrons + n_muons < 1) return false;
-  float lep_pt = n_electrons > 0 ? Electron_pt[ele_sel][0] : Muon_pt[muon_sel][0];
-  float HT = Sum(Jet_pt);
-  return nJet >= 4 && (lep_pt > 20 || HT > 200);
+  // No selection criteria matched
+  return false;
   "
