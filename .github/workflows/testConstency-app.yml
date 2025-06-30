@@ -27,4 +27,5 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Check config consistency
       run: |
+        export ANALYSIS_PATH=$(pwd)
         ./NanoProd/test/testConsistency.sh
