@@ -21,28 +21,28 @@
   - Run2_2018
 
 # Higgs_CP
-^GluGluHTo2Tau_UncorrelatedDecay_(Un|)Filtered:
+^GluGluHto2Tau_UncorrelatedDecay_(Un|)Filtered:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
 
 # Higgs
-GluGluHToTauTau_M125_amcatnloFXFX:
+GluGluHtoTauTau_M125_amcatnloFXFX:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-ZHToTauTau_M125_ext1:
+ZHtoTauTau_M125_ext1:
   - Run2_2016
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluHToTauTau_M125:
+GluGluHtoTauTau_M125:
   - Run3_2022EE
   - Run3_2023
-VBFHToTauTau_M125:
+VBFHtoTauTau_M125:
   - Run3_2022EE
 
 ^(ZH_Hbb_Zqq|ZH_Hbb_Zll)_ext1:
@@ -57,43 +57,43 @@ GluGluHtoZZto2L2Q:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^(Wplus|Wminus)HToTauTau_M125:
+^(Wplus|Wminus)HtoTauTau_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-ZHToTauTau_M125:
+ZHtoTauTau_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^(HWplusJ|HWminusJ|HZJ)_HToWW_M125:
+^(HWplusJ|HWminusJ|HZJ)_HtoWW_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluZH_HToWW_ZTo2L_M125:
+GluGluZH_HtoWW_Zto2L_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluZH_HToWW_ZTo2L_M125_ext1:
+GluGluZH_HtoWW_Zto2L_M125_ext1:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-ttHToTauTau_M125:
+ttHtoTauTau_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
 
-GluGluHToBB_M125:
+GluGluHtoBB_M125:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-VBFHToBB_M125:
+VBFHtoBB_M125:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
@@ -166,17 +166,17 @@ ST_s_channel_4f_hadronicDecays:
   - Run3_2023BPix
 
 # Z
-^Zto2Nu_HT_(400To800|800To1500|1500To2500):
+^Zto2Nu_HT_(400to800|800to1500|1500to2500):
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^Zto2Nu_HT_(400To600|600To800|800To1200|1200To2500):
+^Zto2Nu_HT_(400to600|600to800|800to1200|1200to2500):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^EWK_(ZTo2L|ZTo2Nu):
+^EWK_(Zto2L|Zto2Nu):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -190,7 +190,7 @@ WtoLNu_madgraphMLM_ext1:
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-^WtoLNu_HT_(70To100|100To200|200To400|400To600|600To800|800To1200|1200To2500|2500ToInf):
+^WtoLNu_HT_(70to100|100to200|200to400|400to600|600to800|800to1200|1200to2500|2500toInf):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -205,30 +205,30 @@ WtoLNu_madgraphMLM_ext1:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^WtoLNu_HT_(400To600|600To800|800To1200|1200To2500|2500ToInf)_madgraph_ext1:
+^WtoLNu_HT_(400to600|600to800|800to1200|1200to2500|2500toInf)_madgraph_ext1:
   - Run2_2016
   - Run2_2017
   - Run2_2018
-WtoLNu_HT_70To100_madgraph_ext1:
+WtoLNu_HT_70to100_madgraph_ext1:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2018
-^WtoLNu_MLNu_0to120_HT_(40To100|100To400|400To800|1500To2500)_madgraph:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-WtoLNu_MLNu_0to120_HT_800To1500_madgraph:
+^WtoLNu_MLNu_0to120_HT_(40to100|100to400|400to800|1500to2500)_madgraph:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-WGToLNuG:
+WtoLNu_MLNu_0to120_HT_800to1500_madgraph:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+WGtoLNuG:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^EWK_(WplusToLNu|WminusToLNu):
+^EWK_(WplustoLNu|WminustoLNu):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -413,10 +413,10 @@ VBFHHto2B2Tau_CV_1_C2V_1_C3_1_v2:
   - Run3_2023BPix
 
 # TTX
-TTZToQQ:
+TTZtoQQ:
   - Run3_2023
   - Run3_2023BPix
-^TT(WJetsToLNu|WJetsToQQ|ZToLLNuNu_M_10|ZToBB|ZToLL_M_1to10|ZToNuNu|ZToQQ_Dilept|GJets|Gamma|T|4b|GG|ZZTo4b|ZZToNon4b|ZHTo4b|ZHToNon4b):
+^TT(WJetstoLNu|WJetstoQQ|ZtoLLNuNu_M_10|ZtoBB|ZtoLL_M_1to10|ZtoNuNu|ZtoQQ_Dilept|GJets|Gamma|T|4b|GG|ZZto4b|ZZtoNon4b|ZHto4b|ZHtoNon4b):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -432,25 +432,6 @@ TTGJets_ext1:
   - Run2_2017
 TTWZ:
   - Run3_2022
-
-# nmssm
-^NMSSM:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-NMSSM_XToYHTo2Tau2B_MX_2500_MY_500:
-  - Run2_2016
-NMSSM_XToYHTo2Tau2B_MX_700_MY_150:
-  - Run2_2016
-NMSSM_XToYHTo2Tau2B_MX_2400_MY_1300:
-  - Run2_2016_HIPM
-NMSSM_XToYHTo2Tau2B_MX_2800_MY_60:
-  - Run2_2016_HIPM
-NMSSM_XToYHTo2Tau2B_MX_2800_MY_70:
-  - Run2_2016_HIPM
-NMSSM_XToYHTo2Tau2B_MX_2800_MY_90:
-  - Run2_2016_HIPM
 
 # QCD:
 QCD_PT_20_MuEnrichedPt15:
@@ -483,7 +464,7 @@ QCD_PT_3200toInf:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^QCD_PT_(15To20|20To30|30To50|50To80|80To120|120To170|170To300|300To470|470To600|600To800|800To1000)_MuEnrichedPt5:
+^QCD_PT_(15to20|20to30|30to50|50to80|80to120|120to170|170to300|300to470|470to600|600to800|800to1000)_MuEnrichedPt5:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -569,8 +550,18 @@ QCD_PT_600:
   - Run3_2022
   - Run3_2023
   - Run3_2023BPix
+
 # YH resonant samples
-^XtoYH.*:
+^XtoYHto2Tau2B_(MX_2500_MY_500|MX_700_MY_150)$:
+  - Run2_2016
+^XtoYHto2Tau2B_(MX_2400_MY_1300|MX_2800_MY_60|MX_2800_MY_70|MX_2800_MY_90)$:
+  - Run2_2016_HIPM
+^XtoYHto(2W2B|2Z2B|2B2W|2B2Tau).*:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^XtoYHto2Tau2B_(MX_[0-9]+_MY_(95|200|3000|3500))$:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017

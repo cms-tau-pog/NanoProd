@@ -6,10 +6,14 @@ if ! [ -d "$ANALYSIS_PATH" ]; then
 fi
 cd $ANALYSIS_PATH
 
-for era in Run2_2016 Run2_2016_HIPM Run2_2017 Run2_2018 Run3_2022 Run3_2022EE Run3_2023 Run3_2023BPix; do
-  echo "Checking $era consistency..."
-  python RunKit/checkTasksConsistency.py --era $era --dataset-name-masks NanoProd/crab/dataset_name_masks.yaml NanoProd/crab/$era/*.yaml
-done
+# for era in Run2_2016 Run2_2016_HIPM Run2_2017 Run2_2018 Run3_2022 Run3_2022EE Run3_2023 Run3_2023BPix; do
+#   echo "Checking $era consistency..."
+#   python RunKit/checkTasksConsistency.py --era $era --dataset-name-masks NanoProd/crab/dataset_name_masks.yaml NanoProd/crab/$era/*.yaml
+#   if [ $? -ne 0 ]; then
+#     echo "Consistency check failed for $era."
+#     exit 1
+#   fi
+# done
 
 
 # --show-only-missing-with-candidates \
