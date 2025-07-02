@@ -1,15 +1,12 @@
-skim:
+skim_base:
   input_tree: Events
   other_trees:
     - LuminosityBlocks
     - Runs
-  sel_ref: selection
 
-skim_failed:
+skim_base_failed:
   input_tree: Events
   output_tree: EventsNotSelected
-  sel_ref: selection
-  invert_sel: true
   column_filters:
     - drop ^.*$
     - keep run
@@ -22,119 +19,38 @@ skim_failed:
     - drop ^GenPart_v[xyz]$
     - keep ^HTXS_.*$
 
+skim:
+  base: skim_base
+  processing_module:
+    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    function: skim
 
-selection: "
-  auto ele_base_sel = Electron_pt > 5 && (abs(Electron_eta) < 2.5 || abs(Electron_eta+Electron_deltaEtaSC) < 2.5);
-  auto ele_isoId_sel = Electron_mvaIso_WP90;
-  auto ele_noIsoId_sel = Electron_mvaNoIso_WP90 || Electron_cutBased >= 2;
-  auto ele_highPtId_sel = Electron_pt > 35 && Electron_cutBased_HEEP;
-  auto ele_pfIso_sel = Electron_pfRelIso03_all < 0.5 || Electron_miniPFRelIso_all < 0.5;
-  auto ele_sel = ele_base_sel && (ele_isoId_sel || (ele_noIsoId_sel && ele_pfIso_sel) || ele_highPtId_sel);
+skim_failed:
+  base: skim_base_failed
+  processing_module:
+    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    function: skim_failed
 
-  auto muon_base_sel = Muon_pt > 5 && abs(Muon_eta) < 2.4;
-  auto muon_id_sel = Muon_tightId || Muon_mediumId || Muon_mediumPromptId || Muon_highPtId || Muon_mvaMuID_WP >= 1 || Muon_miniIsoId >= 2;
-  auto muon_iso_sel = Muon_pfRelIso04_all < 0.5 || Muon_pfRelIso03_all < 0.5 || Muon_tkRelIso < 0.5 || Muon_miniPFRelIso_all < 0.5;
-  auto muon_sel = muon_base_sel && muon_id_sel && muon_iso_sel;
+skim_ee:
+  base: skim_base
+  processing_module:
+    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    function: skim_ee
 
-  auto tau_base_sel = Tau_pt > 18 && abs(Tau_eta) < 2.5;
-  auto tau_deepTau_v2p1_sel = Tau_rawDeepTau2017v2p1VSmu > 0.05 && Tau_idDeepTau2017v2p1VSjet > 0 && Tau_idDeepTau2017v2p1VSe > 0;
-  auto tau_deepTau_v2p5_sel = Tau_rawDeepTau2018v2p5VSmu > 0.05 && Tau_idDeepTau2018v2p5VSjet > 0 && Tau_idDeepTau2018v2p5VSe > 0;
-  auto tau_deepTau_v2p5noDA_sel = Tau_rawDeepTau2018v2p5noDAVSmu > 0.05 && Tau_idDeepTau2018v2p5noDAVSjet > 0 && Tau_idDeepTau2018v2p5noDAVSe > 0;
-  auto tau_pnet_sel = Tau_rawPNetVSjet > 0.05 && Tau_rawPNetVSe > 0.05 && Tau_rawPNetVSmu > 0.05;
-  auto tau_sel = tau_base_sel && (tau_deepTau_v2p1_sel || tau_deepTau_v2p5_sel || tau_deepTau_v2p5noDA_sel || tau_pnet_sel);
+skim_ee_failed:
+  base: skim_base_failed
+  processing_module:
+    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    function: skim_ee_failed
 
-  int n_electrons = Electron_pt[ele_sel].size();
-  int n_muons = Muon_pt[muon_sel].size();
-  int n_taus = Tau_pt[tau_sel].size();
-  int n_light_leptons = n_electrons + n_muons;
-  int n_leptons = n_electrons + n_muons + n_taus;
+skim_mumu:
+  base: skim_base
+  processing_module:
+    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    function: skim_mumu
 
-  // Accept multi-lepton events
-  if (n_leptons >= 3) return true;
-
-  // Di-lepton selection
-  std::vector<float> lep_pt;
-  for(auto pt : Electron_pt[ele_sel]) lep_pt.push_back(pt);
-  for(auto pt : Muon_pt[muon_sel]) lep_pt.push_back(pt);
-  for(auto pt : Tau_pt[tau_sel]) lep_pt.push_back(pt);
-
-  if((n_electrons == 2 || n_muons == 2 || n_taus == 2) && lep_pt.at(0) < lep_pt.at(1))
-    std::swap(lep_pt[0], lep_pt[1]);
-  float max_lep_pt = lep_pt.empty() ? 0 : *std::max_element(lep_pt.begin(), lep_pt.end());
-
-  if(n_electrons == 2) return (lep_pt[0] > 20 && lep_pt[1] > 10) || lep_pt[1] > 25;
-  else if(n_muons == 2) return lep_pt[0] > 15;
-  else if(n_taus == 2) return (lep_pt[0] > 30 && lep_pt[1] > 30) || lep_pt[0] > 150;
-  else if(n_electrons == 1 && n_muons == 1) return lep_pt[0] > 20 || lep_pt[1] > 20;
-  else if(n_electrons == 1 && n_taus == 1) return lep_pt[0] > 20;
-  else if(n_muons == 1 && n_taus == 1) return lep_pt[0] > 18;
-
-  float HT = Sum(Jet_pt);
-  // High-HT selection
-  if(HT > 400) return true;
-
-  // lepton + MET or lepton + multi-jet selection
-  if(n_leptons > 0) {
-    static constexpr int met_cut = 100;
-    bool has_met = PFMET_pt > met_cut || DeepMETResolutionTune_pt > met_cut || DeepMETResponseTune_pt > met_cut || PuppiMET_pt > met_cut;
-    if(max_lep_pt > 18 && (has_met || HT > 200)) return true;
-  }
-
-  // di-lepton VBF selection
-  using LorentzVectorM = ROOT::Math::LorentzVector<ROOT::Math::PtEtaPhiM4D<double>>;
-  ROOT::VecOps::RVec<LorentzVectorM> Jet_p4(nJet);
-  for(int i = 0; i < nJet; ++i)
-    Jet_p4[i] = LorentzVectorM(Jet_pt[i], Jet_eta[i], Jet_phi[i], Jet_mass[i]);
-
-  double max_m_jj = 0;
-  for(int i = 0; i < nJet; ++i) {
-    for(int j = i + 1; j < nJet; ++j) {
-      double m_jj = (Jet_p4[i] + Jet_p4[j]).mass();
-      if(m_jj > max_m_jj) {
-        max_m_jj = m_jj;
-      }
-    }
-  }
-  if(n_leptons >= 2 && max_m_jj > 400) return true;
-
-  // Boosted selection
-  if(nFatJet > 0) return true;
-
-  // Boosted taus selection (in case the seeding AK8 jet did not pass the nanoAOD selection)
-  auto boostedtau_base_sel = boostedTau_pt > 18 && abs(boostedTau_eta) < 2.5;
-  auto boostedtau_deepTau_sel = boostedTau_rawBoostedDeepTauRunIIv2p0VSjet > 0.72 && boostedTau_rawBoostedDeepTauRunIIv2p0VSe > 0.1 && boostedTau_rawBoostedDeepTauRunIIv2p0VSmu > 0.003;
-  auto boostedtau_sel = boostedtau_base_sel && boostedtau_deepTau_sel;
-  int n_boostedtaus = boostedTau_pt[boostedtau_sel].size();
-  int n_boosted_pairs = 0;
-  float maxR2 = 0.8*0.8;
-  float minR2 = 0.01*0.01;
-  auto has_boosted_pair = [&](const ROOT::RVecF& eta1, const ROOT::RVecF& phi1,
-                              const ROOT::RVecF& eta2, const ROOT::RVecF& phi2,
-                              bool is_same) {
-    const size_t i_max = is_same ? eta1.size() - 1 : eta1.size();
-    for(size_t i = 0; i < i_max; ++i) {
-      size_t j = is_same ? i + 1 : 0;
-      for(; j < eta2.size(); ++j) {
-        float deta = eta1[i]-eta2[j];
-        float dphi = TVector2::Phi_mpi_pi(phi1[i]-phi2[j]);
-        float dr2 = deta*deta + dphi*dphi;
-        if(dr2 > minR2 && dr2 < maxR2)
-          return true;
-      }
-    }
-    return false;
-  };
-
-  if(n_boostedtaus >= 2 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
-                                            boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel], true))
-    return true;
-  if(n_boostedtaus >= 1 && n_muons >= 1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
-                                                           Muon_eta[muon_sel], Muon_phi[muon_sel], false))
-    return true;
-  if(n_boostedtaus >= 1 && n_electrons >= 1 && has_boosted_pair(boostedTau_eta[boostedtau_sel], boostedTau_phi[boostedtau_sel],
-                                                               Electron_eta[ele_sel], Electron_phi[ele_sel], false))
-    return true;
-
-  // No selection criteria matched
-  return false;
-  "
+skim_mumu_failed:
+  base: skim_base_failed
+  processing_module:
+    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    function: skim_mumu_failed

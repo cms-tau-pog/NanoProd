@@ -9,10 +9,7 @@
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-^(WWtoLNu2Q|WWto4Q)_amcatnloFXFX:
-  - Run3_2023
-  - Run3_2023BPix
-^(WZto2L2Q|ZZto2Nu2Q|ZZto4Q)_amcatnloFXFX:
+^(WW|WZ|ZZ)to.*_amcatnloFXFX:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -241,8 +238,6 @@ WGToLNuG:
 DYto2L_M_50_madgraphMLM_ext1:
   - Run2_2016
   - Run2_2016_HIPM
-  - Run3_2022 # exlcuding DY LO for HLepRare skim 2025_v1
-  - Run3_2022EE # exlcuding DY LO for HLepRare skim 2025_v1
   - Run3_2023
   - Run3_2023BPix
 DYto2L_M_50_amcatnloFXFX_ext1:
@@ -572,12 +567,5 @@ QCD_PT_600:
   - Run2_2017
   - Run2_2018
   - Run3_2022
-  - Run3_2023
-  - Run3_2023BPix
-
-# exlcuding DY LO for HLepRare skim 2025_v1
-^DYto.*_madgraphMLM$:
-  - Run3_2022
-  - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
