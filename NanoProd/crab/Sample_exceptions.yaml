@@ -280,11 +280,12 @@ DYto2L_M_50_amcatnloFXFX_ext1:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^DYto2(E|Mu|Tau)_MLL_.*_powheg:
+^DYto2(E|Mu|Tau)_MLL_.*_(powheg|amcatnloFXFX):
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
+
 
 # TT
 ^(TTto2L2Nu|TTtoLNu2Q|TTto4Q)_ext1:
