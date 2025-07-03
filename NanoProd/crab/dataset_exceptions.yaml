@@ -1,4 +1,4 @@
-# Diboson
+# VV
 ^(WWto4Q|WWtoLNu2Q|WZto2L2Q|WZtoLNu2Q|ZZto2Nu2Q|ZZto2L2Q).*_ext1:
   - Run3_2023
   - Run3_2023BPix
@@ -28,98 +28,104 @@
   - Run2_2018
 
 # Higgs
-GluGluHtoTauTau_M125_amcatnloFXFX:
+GluGluHto2Tau_M125_amcatnloFXFX:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-ZHtoTauTau_M125_ext1:
+ZHto2Tau_M125_ext1:
   - Run2_2016
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluHtoTauTau_M125:
+GluGluHto2Tau_M125:
   - Run3_2022EE
   - Run3_2023
-VBFHtoTauTau_M125:
+VBFHto2Tau_M125:
   - Run3_2022EE
 
-^(ZH_Hbb_Zqq|ZH_Hbb_Zll)_ext1:
+^.*Hto2Mu.*$:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
+^(ZH_Hto2B_Zto2Q|ZH_Hto2B_Zto2L)_ext1:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
   - Run3_2023
   - Run3_2023BPix
-GluGluHtoZZto2L2Q:
+GluGluHto2Zto2L2Q:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^(Wplus|Wminus)HtoTauTau_M125:
+^(Wplus|Wminus)Hto2Tau_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-ZHtoTauTau_M125:
+ZHto2Tau_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^(HWplusJ|HWminusJ|HZJ)_HtoWW_M125:
+^(HWplusJ|HWminusJ|HZJ)_Hto2W_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluZH_HtoWW_Zto2L_M125:
+GluGluZH_Hto2W_Zto2L_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-GluGluZH_HtoWW_Zto2L_M125_ext1:
+GluGluZH_Hto2W_Zto2L_M125_ext1:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-ttHtoTauTau_M125:
+TTHto2Tau_M125:
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
 
-GluGluHtoBB_M125:
+GluGluHto2B_M125:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-VBFHtoBB_M125:
+VBFHto2B_M125:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^WminusH_Hbb_(Wqq|Wlnu)(_ext1|):
+^WminusH_Hto2B_(Wto2Q|WtoLNu)(_ext1|):
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^WplusH_Hbb_(Wqq|Wlnu)(_ext1|):
+^WplusH_Hto2B_(Wto2Q|WtoLNu)(_ext1|):
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^ggZH_Hbb_(Zll|Zqq)(_ext1|):
+^ggZH_Hto2B_(Zto2L|Zto2Q)(_ext1|):
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
-^WminusH_Hbb_(Wqq|Wlnu)_ext1:
+^WminusH_Hto2B_(Wto2Q|WtoLNu)_ext1:
   - Run3_2023
   - Run3_2023BPix
-^WplusH_Hbb_(Wqq|Wlnu)_ext1:
+^WplusH_Hto2B_(Wto2Q|WtoLNu)_ext1:
   - Run3_2023
   - Run3_2023BPix
-^ggZH_Hbb_(Zll|Zqq)_ext1:
+^ggZH_Hto2B_(Zto2L|Zto2Q)_ext1:
   - Run3_2023
   - Run3_2023BPix
 
@@ -307,15 +313,7 @@ TT_ext1:
   - Run3_2023
   - Run3_2023BPix
 
-# singleHiggs:
-
-^.*Hto2Mu.*$:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-
-# Dihiggs
+# HH
 ^GluGlutoHHto2B2Tau_node:
   - Run3_2022
   - Run3_2022EE
@@ -365,11 +363,7 @@ GluGlutoHHto2B2Tau_kl_1p00_kt_1p00_c2_0p00_LHEweights:
   - Run3_2023
   - Run3_2023BPix
 
-VBFHHto2B2Tau_CV_1_C2V_1_C3_2:
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
-VBFHHto2B2Tau_CV_1_C2V_2_C3_1:
+^VBFHHto2B2Tau_(CV_1_C2V_1_C3_2|CV_1_C2V_2_C3_1)$:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
@@ -413,10 +407,10 @@ VBFHHto2B2Tau_CV_1_C2V_1_C3_1_v2:
   - Run3_2023BPix
 
 # TTX
-TTZtoQQ:
+TTZ_Zto2Q:
   - Run3_2023
   - Run3_2023BPix
-^TT(WJetstoLNu|WJetstoQQ|ZtoLLNuNu_M_10|ZtoBB|ZtoLL_M_1to10|ZtoNuNu|ZtoQQ_Dilept|GJets|Gamma|T|4b|GG|ZZto4b|ZZtoNon4b|ZHto4b|ZHtoNon4b):
+^TT(WJetstoLNu|WJetsto2Q|Zto2L2Nu_M_10|Zto2B|Zto2L_M_1to10|Zto2Nu|Zto2Q_Dilept|GJets|Gamma|T|4b|GG|ZZto4B|ZZtoNon4B|ZHto4B|ZHtoNon4B):
   - Run3_2022
   - Run3_2022EE
   - Run3_2023
@@ -464,11 +458,6 @@ QCD_PT_3200toInf:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
-^QCD_PT_(15to20|20to30|30to50|50to80|80to120|120to170|170to300|300to470|470to600|600to800|800to1000)_MuEnrichedPt5:
-  - Run3_2022
-  - Run3_2022EE
-  - Run3_2023
-  - Run3_2023BPix
 QCD_PT_15to20_EMEnriched:
   - Run3_2022
   - Run3_2022EE
@@ -497,11 +486,6 @@ QCD_HT800to1000_MLM:
   - Run2_2017
   - Run2_2018
 QCD_HT1000to1200_MLM:
-  - Run2_2016
-  - Run2_2016_HIPM
-  - Run2_2017
-  - Run2_2018
-^QCD_PT_(15to20|20to30|30to50|50to80|80to120|120to170|170to300|300to470|470to600|600to800|800to1000)_MuEnrichedPt5:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
@@ -566,6 +550,12 @@ QCD_PT_600:
   - Run2_2016_HIPM
   - Run2_2017
   - Run2_2018
+^XtoYHto2Tau2B_((MX_[0-9]+_MY_(250|700|900|1100|1300|2200|2400|2500|2800))|(MX_(240|280|320|360|450|750|850|950|1100|1300|1500|1700|1900|2200|2400|2600|2800)+_MY_[0-9]+))$:
+  - Run3_2022
+  - Run3_2022EE
+  - Run3_2023
+  - Run3_2023BPix
+
 ^XtoYHto2Z2Bto2L2J2B_(MX_1000_MY_200|MX_1000_MY_300|MX_1000_MY_500|MX_1200_MY_1000|MX_1400_MY_500|MX_1400_MY_800|MX_1600_MY_1400|MX_1600_MY_200|MX_1600_MY_600|MX_1800_MY_1600|MX_1800_MY_300|MX_1800_MY_600|MX_2000_MY_1800|MX_2000_MY_200|MX_2000_MY_300|MX_2000_MY_400|MX_2000_MY_600|MX_2500_MY_1200|MX_2500_MY_1800|MX_2500_MY_400|MX_2500_MY_500|MX_3000_MY_1400|MX_3000_MY_1800|MX_3000_MY_300|MX_3000_MY_600|MX_3000_MY_800|MX_3500_MY_1200|MX_3500_MY_1400|MX_3500_MY_1600|MX_3500_MY_1800|MX_3500_MY_200|MX_3500_MY_300|MX_3500_MY_400|MX_3500_MY_500|MX_4000_MY_1200|MX_4000_MY_1600|MX_4000_MY_2000|MX_4000_MY_200|MX_4000_MY_300|MX_4000_MY_3500|MX_4000_MY_500|MX_4000_MY_800|MX_400_MY_200|MX_500_MY_300|MX_600_MY_200|MX_600_MY_400|MX_650_MY_200|MX_650_MY_300|MX_650_MY_400|MX_700_MY_200|MX_700_MY_500|MX_800_MY_300|MX_800_MY_500|MX_900_MY_200|MX_900_MY_300|MX_900_MY_600)$:
   - Run3_2023
   - Run3_2023BPix
@@ -573,5 +563,5 @@ QCD_PT_600:
   - Run3_2023BPix
 ^XtoYHto2Z2Bto2L2J2B_(MX_1200_MY_200|MX_1200_MY_300|MX_1200_MY_500|MX_1400_MY_300|MX_1400_MY_400|MX_1600_MY_1200|MX_1600_MY_300|MX_1600_MY_800|MX_1800_MY_1400|MX_1800_MY_800|MX_2000_MY_1400|MX_2000_MY_1600|MX_2000_MY_800|MX_2500_MY_2000|MX_2500_MY_200|MX_2500_MY_300|MX_2500_MY_600|MX_3500_MY_2600|MX_4000_MY_1800|MX_4000_MY_2600|MX_500_MY_200|MX_550_MY_200|MX_600_MY_300|MX_800_MY_400|MX_900_MY_400|MX_3500_MY_3000|MX_4000_MY_3000)$:
   - Run3_2023
-^XtoYHto2B2Wto2B2Q1L1Nu_(MX_4000_MY_1400):
+^XtoYHto2B2Wto2B2Q1L1Nu_(MX_4000_MY_1400)$:
   - Run3_2023
