@@ -391,6 +391,17 @@ VBFHHto2B2Tau_CV_1_C2V_1_C3_1_v2:
   - Run3_2023
   - Run3_2023BPix
 
+# HHH
+^HHH:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^HHHto(4B2Glu.*|(4B2Tau|6B)_(c3_0_d4_99|c3_0_d4_minus1|c3_1_d4_0|c3_1_d4_2|c3_2_d4_minus1|c3_4_d4_9|c3_19_d4_19|c3_minus1_d4_0|c3_minus1_d4_minus1|c3_minus1p5_d4_minus0p5))$:
+  - Run3_2023
+  - Run3_2023BPix
+
+
 # TTX
 TTZ_Zto2Q:
   - Run3_2023
