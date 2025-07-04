@@ -1,0 +1,105 @@
+allowed_name_pattern: ^[A-Za-z0-9_]+$
+known_name_variants:
+  To: to
+  toTauTau: to2Tau
+  toWW: to2W
+  toZZ: to2Z
+  toQQ: to2Q
+  to(BB|bb|2b): to2B
+  to[Nn]on(BB|bb|2b): toNon2B
+  to4b: to4B
+  to[Nn]on4b: toNon4B
+  toLL: to2L
+  toNuNu: to2Nu
+  ttH: TTH
+
+name_matchings:
+  - [ '-', '_' ]
+  - [ '_13(p6|)TeV_', '_TeV_' ]
+  - [ 'DYJetsToLL_M_(.*)_madgraphMLM_', 'DYto2L_4Jets_MLL_\1_madgraphMLM_' ]
+  - [ 'DYJetsToLL_([012])J_(.*)_amcatnloFXFX_', 'DYto2L_2Jets_MLL_50_\1J_\2_amcatnloFXFX_' ]
+  - [ 'DYJetsToLL_M_(50|10to50)_(.*)_amcatnloFXFX_', 'DYto2L_2Jets_MLL_\1_\2_amcatnloFXFX_' ]
+  - [ 'DY([1-4])JetsToLL_M_50_MatchEWPDG20_(.*)_madgraphMLM_', 'DYto2L_4Jets_MLL_50_\1J_\2_madgraphMLM_' ]
+  - [ 'DYJetsToTauTauToMuTauh_', 'DYto2TautoMuTauh_' ]
+  - [ 'ZJetsToNuNu', 'Zto2Nu_4Jets' ]
+  - [ '_HT_([0-9]+)ToInf_', '_HT_\1_' ]
+  - [ 'WToTauNu(.*)_tauola', 'WtoNuTau\1' ]
+  - [ 'WJetsToLNu_(.*)_amcatnloFXFX_', 'WtoLNu_2Jets_\1_amcatnloFXFX_' ]
+  - [ 'W([1-4])JetsToLNu_(.*)_madgraphMLM_', 'WtoLNu_4Jets_\1J_\2_madgraphMLM_' ]
+  - [ 'WJetsToLNu_(.*)_madgraphMLM_', 'WtoLNu_4Jets_\1_madgraphMLM_' ]
+  - [ 'TTToSemiLeptonic', 'TTtoLNu2Q' ]
+  - [ 'TTToHadronic', 'TTto4Q' ]
+  - [ 'WWW(.*)_madspin', 'WWW\1' ]
+  - [ 'ST_t_channel_top_4f_InclusiveDecays_', 'TBbarQ_t_channel_4FS_' ]
+  - [ 'ST_t_channel_antitop_4f_InclusiveDecays_', 'TbarBQ_t_channel_4FS_' ]
+  - [ '_PSWeights', '' ]
+  - [ '_withDipoleRecoil', '' ]
+  - [ '_minlo', '' ]
+  - [ '_M_125', '_M125' ]
+  - [ 'GluGluHToTauTauPlusTwoJetsUncorDecay', 'GluGluHJJto2TauUncorrelatedDecay' ]
+  - [ 'UncorrelatedDecay_Filtered', 'UncorrelatedDecay' ]
+  - [ 'UncorrelatedDecay_M125(.*)_minnlo', 'UncorrelatedDecay_M125\1' ]
+  - [ '_CP_odd_', '_CPodd_' ]
+  - [ '_amcatnlopowheg_', '_powheg_' ]
+  - [ 'uncorrelateddecay_mm_', 'uncorrelateddecay_cp_mix_' ]
+  - [ 'uncorrelateddecay_sm_', 'uncorrelateddecay_cp_even_' ]
+  - [ 'TuneCP5', 'CP5' ]
+  - [ 'ToTauTau', 'to2Tau' ]
+  - [ '_jhugen[0-9]+', '' ]
+  - [ '_ext[1-9]$', '' ]
+  - [ '_madspin_', '_' ]
+  - [ '_amcatnloFXFX_', '_amcatnlo_' ]
+  - [ '_cp5_narrow_', '_narrow_cp5_' ]
+  - [ '_tev_cp5_', '_cp5_tev_' ]
+  - [ 'ZZTo2Nu2Q', 'ZZTo2Q2Nu' ]
+  - [ '([WZ])ZTo2Q2L_mllmin4p0_', '\1Zto2L2Q_1Jets_' ]
+  - [ 'WZTo3LNu_mllmin4p0_(.*)_powheg_', 'WZto3LNu_\1_powheg_' ]
+  - [ 'WZTo3LNu_cp5_(.*)_amcatnlo_', 'WZto3LNu_1Jets_cp5_\1_amcatnlo_' ]
+  - [ 'WZTo1L1Nu2Q_4f_', 'WZtoLNu2Q_1Jets_' ]
+  - [ 'WWTo4Q_4f_', 'WWto4Q_1Jets_4fs_' ]
+  - [ 'WWTo1L1Nu2Q_4f_', 'WWtoLNu2Q_1Jets_4fs_' ]
+  - [ 'ZJetsToQQ_', 'Zto2Q_4Jets_' ]
+  - [ '([WZ])Z(.*)_[45]f(s|)_', '\1Z\2_' ]
+  - [ 'WZTo1L3Nu_', 'WZtoL3Nu_1Jets_' ]
+  - [ 'TTZToQQ_', 'TTZ_ZtoQQ_1Jets_' ]
+  - [ '^QCD_HT', 'QCD_4Jets_HT_' ]
+  - [ 'qcd_4jets_ht_2000toinf_', 'qcd_4jets_ht_2000_' ]
+  - [ '^ttHTo(non|)bb_', 'TTHto\g<1>2B_' ]
+  - [ 'HToWW', 'Hto2W' ]
+  - [ 'HTobb', 'Hto2b' ]
+  - [ 'ZToQQ', 'Zto2Q' ]
+  - [ 'ZToLL', 'Zto2L' ]
+
+full_name_masks:
+  Run2_2016:
+    mc: ^/(.*)/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17(_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2016[FGH]-UL2016_MiniAODv2-v[1-9]/MINIAOD
+    mc_das: /{}/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17*/MINIAODSIM
+  Run2_2016_HIPM:
+    mc: ^/(.*)/RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11(_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2016(B-ver2_|[C-F]-)HIPM_UL2016_MiniAODv2-v[1-9]/MINIAOD
+    mc_das: /{}/RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11*/MINIAODSIM
+  Run2_2017:
+    mc: ^/(.*)/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9(_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2017[B-F]-UL2017_MiniAODv2-v[1-9]/MINIAOD
+    mc_das: /{}/RunIISummer20UL17MiniAODv2-106X_mc2017_realistic_v9*/MINIAODSIM
+  Run2_2018:
+    mc: ^/(.*)/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1(_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2018[A-D]-UL2018_MiniAODv2_GT36-v[1-9]/MINIAOD
+    mc_das: /{}/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1*/MINIAODSIM
+  Run3_2022:
+    mc: ^/(.*)/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5(_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2022[CD]-22Sep2023-v[1-9]/MINIAOD
+    mc_das: /{}/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5*/MINIAODSIM
+  Run3_2022EE:
+    mc: ^/(.*)/Run3Summer22EEMiniAODv4-(forPOG_|)130X_mcRun3_2022_realistic_postEE_v6(_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2022[EFG]-22Sep2023-v[1-9]/MINIAOD
+    mc_das: /{}/Run3Summer22EEMiniAODv4-*130X_mcRun3_2022_realistic_postEE_v6*/MINIAODSIM
+  Run3_2023:
+    mc: ^/(.*)/Run3Summer23MiniAODv4-(tsg_|)130X_mcRun3_2023_realistic_v1[45](_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2023C-22Sep2023_v[1-9]-v[1-9]/MINIAOD
+    mc_das: /{}/Run3Summer23MiniAODv4-*130X_mcRun3_2023_realistic_v1*/MINIAODSIM
+  Run3_2023BPix:
+    mc: ^/(.*)/Run3Summer23BPixMiniAODv4-(tsg_|)130X_mcRun3_2023_realistic_postBPix_v[26](_ext[1-9]|)-v[1-9]/MINIAODSIM
+    data: ^/(.*)/Run2023D-22Sep2023_v[1-9]-v[1-9]/MINIAOD
+    mc_das: /{}/Run3Summer23BPixMiniAODv4-*130X_mcRun3_2023_realistic_postBPix_v*/MINIAODSIM
