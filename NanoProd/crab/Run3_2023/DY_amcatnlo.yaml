@@ -1,0 +1,41 @@
+config:
+  params:
+    sampleType: mc
+    era: Run3_2023
+    outputs:
+      - file: nanoEE.root
+        crabOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/skim_2025_v1_prod/Run3_2023
+        finalOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1/Run3_2023
+        skimCfg: skim.yaml
+        skimSetup: skim_ee
+        skimSetupFailed: skim_ee_failed
+      - file: nanoMuMu.root
+        crabOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/skim_2025_v1_prod/Run3_2023
+        finalOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1/Run3_2023
+        skimCfg: skim.yaml
+        skimSetup: skim_mumu
+        skimSetupFailed: skim_mumu_failed
+      - file: nanoTauTau.root
+        crabOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/skim_2025_v1_prod/Run3_2023
+        finalOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1/Run3_2023
+        skimCfg: skim.yaml
+        skimSetup: skim_tautau
+        skimSetupFailed: skim_tautau_failed
+
+DYto2L_M_10to50_amcatnloFXFX: /DYto2L-2Jets_MLL-10to50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14_ext1-v3/MINIAODSIM
+DYto2L_M_50_amcatnloFXFX: /DYto2L-2Jets_MLL-50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+
+DYto2L_M_50_0J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_0J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v3/MINIAODSIM
+DYto2L_M_50_1J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_1J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v3/MINIAODSIM
+DYto2L_M_50_2J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_2J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v3/MINIAODSIM
+
+DYto2L_M_50_PTLL_100to200_1J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-100to200_1J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_100to200_2J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-100to200_2J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_200to400_1J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-200to400_1J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_200to400_2J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-200to400_2J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_400to600_1J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-400to600_1J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_400to600_2J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-400to600_2J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_40to100_1J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-40to100_1J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_40to100_2J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-40to100_2J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_600_1J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-600_1J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM
+DYto2L_M_50_PTLL_600_2J_amcatnloFXFX: /DYto2L-2Jets_MLL-50_PTLL-600_2J_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer23MiniAODv4-130X_mcRun3_2023_realistic_v14-v1/MINIAODSIM

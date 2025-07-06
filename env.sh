@@ -50,11 +50,20 @@ do_install_cmssw() {
     local subsub_ver=`echo $CMSSW_VER | cut -d'_' -f 4`
     if [[ $master_ver == "14"  && $sub_ver == "0" ]]; then
       run_cmd echo "=> Installing addons for CMSSW_"${master_ver}"_"$sub_ver
-      run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_NanoProd_Addon_Powheg
-      run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_tau-pog_BoostedDeepTau
+      run_cmd git cms-merge-topic kandrosov:CMSSW_14_0_X_HLepRare_skim_2025_v1_debug
+      run_cmd git cms-addpkg RecoBTag/Combined
+      run_cmd git cms-addpkg RecoJets/JetProducers
       run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/BoostedDeepTau_v2/BoostedDeepTauId/boosteddeepTau_RunIIv2p0_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/BoostedDeepTauId/
-      run_cmd git cms-merge-topic -u cms-tau-pog:CMSSW_14_0_X_tau-pog_DeepTauNoDA
       run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/deepTau_v2p5_noDomainAdaptation/DeepTauId/deepTau_2018v2p5_noDomainAdaptation_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/DeepTauId/
+      run_cmd wget https://github.com/kandrosov/RecoBTag-Combined/raw/refs/heads/GloParT_V02/GlobalParticleTransformerAK8/PUPPI/V02/model.onnx -P RecoBTag/Combined/data/GlobalParticleTransformerAK8/PUPPI/V02/
+      run_cmd wget https://github.com/kandrosov/RecoBTag-Combined/raw/refs/heads/GloParT_V02/GlobalParticleTransformerAK8/PUPPI/V02/preprocess.json -P RecoBTag/Combined/data/GlobalParticleTransformerAK8/PUPPI/V02/
+      run_cmd wget https://github.com/kandrosov/RecoBTag-Combined/raw/refs/heads/GloParT_V02/GlobalParticleTransformerAK8/PUPPI/V02/preprocess_corr.json -P RecoBTag/Combined/data/GlobalParticleTransformerAK8/PUPPI/V02/
+      run_cmd mkdir -p RecoJets/JetProducers/data
+      local data_dir=/cvmfs/cms.cern.ch/el8_amd64_gcc12/cms/data-RecoJets-JetProducers/V05-15-00/RecoJets/JetProducers/data/
+      run_cmd cp $data_dir/pileupJetId_133X_Winter24_Eta0p0To2p5_puppiV18_BDT.weights.xml.gz RecoJets/JetProducers/data/
+      run_cmd cp $data_dir/pileupJetId_133X_Winter24_Eta2p5To2p75_puppiV18_BDT.weights.xml.gz RecoJets/JetProducers/data/
+      run_cmd cp $data_dir/pileupJetId_133X_Winter24_Eta2p75To3p0_puppiV18_BDT.weights.xml.gz RecoJets/JetProducers/data/
+      run_cmd cp $data_dir/pileupJetId_133X_Winter24_Eta3p0To5p0_puppiV18_BDT.weights.xml.gz RecoJets/JetProducers/data/
     fi
 
     run_cmd mkdir NanoProd
@@ -108,7 +117,7 @@ action() {
   local os_prefix=$(get_os_prefix $os_version)
   local node_os=$os_prefix$os_version
 
-  local default_cmssw_ver=CMSSW_14_0_18
+  local default_cmssw_ver=CMSSW_14_0_21
   local target_os_version=8
   local target_os_prefix=$(get_os_prefix $target_os_version)
   local target_os_gt_prefix=$(get_os_prefix $target_os_version 1)

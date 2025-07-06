@@ -1,0 +1,56 @@
+skim_base:
+  input_tree: Events
+  other_trees:
+    - LuminosityBlocks
+    - Runs
+
+skim_base_failed:
+  input_tree: Events
+  output_tree: EventsNotSelected
+  column_filters:
+    - drop ^.*$
+    - keep run
+    - keep luminosityBlock
+    - keep event
+    - keep genWeight
+    - keep ^Pileup_(nPU|nTrueInt)$
+    - keep ^(n|)LHE.*$
+    - keep ^(n|)GenPart(_.*|)$
+    - drop ^GenPart_v[xyz]$
+    - keep ^HTXS_.*$
+
+skim:
+  base: skim_base
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim
+
+skim_failed:
+  base: skim_base_failed
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim_failed
+
+skim_ee:
+  base: skim_base
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim_ee
+
+skim_ee_failed:
+  base: skim_base_failed
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim_ee_failed
+
+skim_mumu:
+  base: skim_base
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim_mumu
+
+skim_mumu_failed:
+  base: skim_base_failed
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim_mumu_failed
