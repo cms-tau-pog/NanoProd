@@ -101,7 +101,7 @@ selection = """
   const auto pass_boosted_dR = [&](const LorentzVectorM& a_p4, const LorentzVectorM& b_p4) {
     static constexpr float maxR2 = 0.8*0.8;
     static constexpr float minR2 = 0.01*0.01;
-    const float dr2 = ROOT::Math::VectorUtil::DeltaR2(a_p4[i], b_p4[j]);
+    const float dr2 = ROOT::Math::VectorUtil::DeltaR2(a_p4, b_p4);
     return dr2 > minR2 && dr2 < maxR2;
   };
 

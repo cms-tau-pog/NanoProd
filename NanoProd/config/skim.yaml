@@ -22,35 +22,35 @@ skim_base_failed:
 skim:
   base: skim_base
   processing_module:
-    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    file: [ "../python/skim.py", "./skim.py" ]
     function: skim
 
 skim_failed:
   base: skim_base_failed
   processing_module:
-    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    file: [ "../python/skim.py", "./skim.py" ]
     function: skim_failed
 
 skim_ee:
   base: skim_base
   processing_module:
-    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    file: [ "../python/skim.py", "./skim.py" ]
     function: skim_ee
 
 skim_ee_failed:
   base: skim_base_failed
   processing_module:
-    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    file: [ "../python/skim.py", "./skim.py" ]
     function: skim_ee_failed
 
 skim_mumu:
   base: skim_base
   processing_module:
-    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    file: [ "../python/skim.py", "./skim.py" ]
     function: skim_mumu
 
 skim_mumu_failed:
   base: skim_base_failed
   processing_module:
-    file: [ "NanoProd/python/skim.py", "skim.py" ]
+    file: [ "../python/skim.py", "./skim.py" ]
     function: skim_mumu_failed
