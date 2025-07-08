@@ -60,3 +60,15 @@ skim_mumu_failed:
   processing_module:
     file: [ "../python/skim.py", "./skim.py" ]
     function: skim_mumu_failed
+
+skim_tautau:
+  base: skim_base
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim_tautau
+
+skim_tautau_failed:
+  base: skim_base_failed
+  processing_module:
+    file: [ "../python/skim.py", "./skim.py" ]
+    function: skim_tautau_failed

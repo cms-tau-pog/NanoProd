@@ -1,10 +1,22 @@
 common:
   task_files:
   - $ANALYSIS_PATH/NanoProd/crab/$ERA/*.yaml
-  info: T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_2024_v2
-  storage: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2024_v2
-  prod_report_file: prodReport_nano.json
-  title: "HLepRare nano skim 2024 v2"
+  files_to_ignore:
+    - DY_madgraph.yaml
+    - W_madgraph.yaml
+  info: T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_2025_v1
+  storage: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1
+  prod_flavours:
+    - task_name_pattern: "^DY.*amcatnloFXFX.*$"
+      flavours:
+        EE: prodReport_nanoEE.json
+        MuMu: prodReport_nanoMuMu.json
+        TauTau: prodReport_nanoTauTau.json
+    - task_name_pattern: "^.*$"
+      flavours:
+        nano: prodReport_nano.json
+  title: "HLepRare nano skim 2025 v1"
   config_files:
-  - $ANALYSIS_PATH/NanoProd/config/skim_htt.yaml
+  - $ANALYSIS_PATH/NanoProd/config/skim.yaml
+  - $ANALYSIS_PATH/NanoProd/python/skim.py
   - $ANALYSIS_PATH/NanoProd/python/customize.py
