@@ -22,11 +22,12 @@ def customizeGenParticles(process):
     '+keep statusFlags().isFirstCopy() && ' + leptons,
     'keep+ statusFlags().isLastCopy() && ' + important_particles,
     '+keep statusFlags().isFirstCopy() && ' + important_particles,
+    'keep status == 3 || (status > 20 && status < 30)', # keep matrix element summary
   ]
 
   for coord in [ 'x', 'y', 'z']:
     setattr(process.genParticleTable.variables, 'v'+ coord,
-            Var(f'vertex().{coord}', float, precision=10,
+            Var(f'vertex().{coord}', float, precision=8,
                 doc=f'{coord} coordinate of the gen particle production vertex'))
 
   return process
@@ -46,6 +47,7 @@ def customizeTaus(process):
     cut = "(" + " && ".join(cuts) + ")"
     deepTauCuts.append(cut)
   deepTauCut = "(tauID('decayModeFindingNewDMs') > 0.5 && (" + " || ".join(deepTauCuts) + "))"
+
   cuts = []
   for vs, score in [ ("jet", 0.05) ]: # [ ("e", 0.05), ("mu", 0.05), ("jet", 0.05) ]:
     cuts.append(f"(?isTauIDAvailable('byUTagCHSVS{vs}raw')?tauID('byUTagCHSVS{vs}raw'):-1) > {score}")
@@ -163,7 +165,7 @@ def addPFCands(process, allPF = False, addAK4=False, addAK8=False):
     process.customConstituentsExtTable = cms.EDProducer("SimplePATCandidateFlatTableProducer",
                                                         src = candInput,
                                                         cut = cms.string(""), #we should not filter after pruning
-                                                        name = cms.string("PFCands"),
+                                                        name = cms.string("PFCand"),
                                                         doc = cms.string("interesting particles from AK4 and AK8 jets"),
                                                         singleton = cms.bool(False), # the number of entries is variable
                                                         extension = cms.bool(False), # this is the extension table for the AK8 constituents
@@ -204,9 +206,9 @@ def addPFCands(process, allPF = False, addAK4=False, addAK8=False):
                                                         candidates = candInput,
                                                         jets = cms.InputTag("finalJetsAK8"),
                                                         jet_radius = cms.double(0.8),
-                                                        name = cms.string("FatJetPFCands"),
-                                                        idx_name = cms.string("pFCandsIdx"),
-                                                        nameSV = cms.string("FatJetSVs"),
+                                                        name = cms.string("FatJetPFCand"),
+                                                        idx_name = cms.string("pFCandIdx"),
+                                                        nameSV = cms.string("FatJetSV"),
                                                         idx_nameSV = cms.string("sVIdx"),
                                                         **kwargs,
                                                         )
@@ -214,9 +216,9 @@ def addPFCands(process, allPF = False, addAK4=False, addAK8=False):
                                                         candidates = candInput,
                                                         jets = cms.InputTag("finalJetsPuppi"), # was finalJets before
                                                         jet_radius = cms.double(0.4),
-                                                        name = cms.string("JetPFCands"),
-                                                        idx_name = cms.string("pFCandsIdx"),
-                                                        nameSV = cms.string("JetSVs"),
+                                                        name = cms.string("JetPFCand"),
+                                                        idx_name = cms.string("pFCandIdx"),
+                                                        nameSV = cms.string("JetSV"),
                                                         idx_nameSV = cms.string("sVIdx"),
                                                         **kwargs,
                                                         )

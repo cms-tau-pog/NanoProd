@@ -50,7 +50,7 @@ do_install_cmssw() {
     local subsub_ver=`echo $CMSSW_VER | cut -d'_' -f 4`
     if [[ $master_ver == "14"  && $sub_ver == "0" ]]; then
       run_cmd echo "=> Installing addons for CMSSW_"${master_ver}"_"$sub_ver
-      run_cmd git cms-merge-topic kandrosov:CMSSW_14_0_X_HLepRare_skim_2025_v1_debug
+      run_cmd git cms-merge-topic cms-tau-pog:CMSSW_14_0_X_HLepRare_skim_2025_v1
       run_cmd git cms-addpkg RecoBTag/Combined
       run_cmd git cms-addpkg RecoJets/JetProducers
       run_cmd wget https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles/raw/refs/heads/BoostedDeepTau_v2/BoostedDeepTauId/boosteddeepTau_RunIIv2p0_{core,inner,outer}.pb -P RecoTauTag/TrainingFiles/data/BoostedDeepTauId/

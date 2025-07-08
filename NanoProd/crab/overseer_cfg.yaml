@@ -5,7 +5,7 @@ params:
     - file: nano.root
       crabOutput: TODO #T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1_prod/Run2_2016
       finalOutput: TODO #T2_CH_CERN:/store/group/phys_tau/kandroso/htt_skim_v1/Run2_2016
-      skimCfg: skim_htt.yaml
+      skimCfg: skim.yaml
       skimSetup: skim
       skimSetupFailed: skim_failed
   maxEvents: -1
@@ -18,24 +18,25 @@ filesToTransfer:
   - RunKit/skim_tree.py
   - RunKit/run_tools.py
   - RunKit/grid_tools.py
-  - NanoProd/config/skim_htt.yaml
+  - NanoProd/config/skim.yaml
+  - NanoProd/python/skim.py
   - NanoProd/python/customize.py
-maxMemory: 2500
-numCores: 1
+maxMemory: 4000 # MiB. Default was 2500 MiB, but we need more memory to run all new taggers.
+numCores: 2
 inputDBS: global
 allowNonValid: False
 autoIgnoreCorrupt: True
 dryrun: False
 maxRecoveryCount: 4
 updateInterval: 60
-maxNumberOfActiveCrabTasks: 100
+maxNumberOfActiveCrabTasks: 200
 localProcessing:
   lawTask: ProdTask
   workflow: htcondor
   bootstrap: bootstrap.sh
   requirements: TARGET.OpSysAndVer =?= "AlmaLinux9"
   maxParallelJobs: 1000
-  maxRuntime: 24 # hours
+  maxRuntime: 96 # hours
 targetOutputFileSize: 1024 # MiB
 renewKerberosTicket: True
 htmlReport: TODO #T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_v1/Run2_2016

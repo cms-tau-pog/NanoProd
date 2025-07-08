@@ -3,6 +3,11 @@ skim_base:
   other_trees:
     - LuminosityBlocks
     - Runs
+  column_filters:
+    - drop ^JetSV_.*$
+    - keep ^JetSV_(jetIdx|sVIdx)$
+    - drop ^JetPFCand_.*$
+    - keep ^JetPFCand_(jetIdx|pFCandIdx)$
 
 skim_base_failed:
   input_tree: Events
@@ -18,6 +23,7 @@ skim_base_failed:
     - keep ^(n|)GenPart(_.*|)$
     - drop ^GenPart_v[xyz]$
     - keep ^HTXS_.*$
+    - keep ^Generator_.*$
 
 skim:
   base: skim_base
