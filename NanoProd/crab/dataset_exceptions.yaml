@@ -20,6 +20,12 @@
   - Run2_2017
   - Run2_2018
 
+^GluGlutoContinto2Zto*:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+
 # Higgs_CP
 ^GluGluHto2Tau_UncorrelatedDecay_(Un|)Filtered:
   - Run2_2016
@@ -172,6 +178,11 @@ VBFHto2B_M125:
   - Run3_2022EE
   - Run3_2023
   - Run3_2023BPix
+^EWK_2L2J_madgraph_herwig:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
 
 # W
 WtoLNu_madgraphMLM_ext1:
@@ -269,6 +280,11 @@ DYto2L_M_50_amcatnloFXFX_ext1:
   - Run2_2017
   - Run2_2018
 ^DYto2(E|Mu|Tau)_MLL_.*_powheg:
+  - Run2_2016
+  - Run2_2016_HIPM
+  - Run2_2017
+  - Run2_2018
+^DYto2(E|Mu|Tau)_MLL_.*_amcatnloFXFX:
   - Run2_2016
   - Run2_2016_HIPM
   - Run2_2017
