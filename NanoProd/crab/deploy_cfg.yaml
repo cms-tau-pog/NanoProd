@@ -7,7 +7,7 @@ common:
   info: T3_CH_CERNBOX:/store/user/kandroso/www/HLepRare/skim_2025_v1
   storage: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1
   prod_flavours:
-    - task_name_pattern: "^DY.*amcatnloFXFX.*$"
+    - task_name_pattern: "^DYto2L.*amcatnloFXFX.*$"
       flavours:
         EE: prodReport_nanoEE.json
         MuMu: prodReport_nanoMuMu.json
