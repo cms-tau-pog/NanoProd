@@ -26,6 +26,13 @@
   - Run2_2017
   - Run2_2018
 
+^GluGlutoContinto2Zto(2E2Mu|2E2Tau|2Mu2Nu|4E|4Mu|4Tau)$:
+  - Run3_2022
+
+GluGlutoContinto2Zto2Mu2Tau:
+  - Run3_2022
+  - Run3_2023
+
 # Higgs_CP
 ^GluGluHto2Tau_UncorrelatedDecay_(Un|)Filtered:
   - Run2_2016
