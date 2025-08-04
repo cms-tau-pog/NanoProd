@@ -18,18 +18,24 @@ filesToTransfer:
   - RunKit/skim_tree.py
   - RunKit/run_tools.py
   - RunKit/grid_tools.py
+  - RunKit/haddnano.py
   - NanoProd/config/skim.yaml
   - NanoProd/python/skim.py
   - NanoProd/python/customize.py
 maxMemory: 4000 # MiB. Default was 2500 MiB, but we need more memory to run all new taggers.
-numCores: 2
+numCores: 1
 inputDBS: global
 allowNonValid: False
 autoIgnoreCorrupt: True
 dryrun: False
 maxRecoveryCount: 4
 updateInterval: 60
-maxNumberOfActiveCrabTasks: 200
+maxNumberOfActiveCrabTasks: 500
+forceLocalThreshold: 500 # if number of files to process drops below this threshold, switching to local processing
+storageUsageLimits:
+  - path: TODO # T2_CH_CERN:/store/group/phys_tau/kandroso/skim_2025_v1_prod
+    limit: 5 # TiB
+maxFilesInActiveTasks: 100000
 localProcessing:
   lawTask: ProdTask
   workflow: htcondor
