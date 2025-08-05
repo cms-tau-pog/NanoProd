@@ -29,6 +29,14 @@ VBFHHto2B2Tau_CV_m2p12_C2V_3p87_C3_m5p96: /VBFHHto2B2Tau_CV-m2p12_C2V-3p87_C3-m5
 VBFHHto2B2Tau_CV_1_C2V_0_C3_1: /VBFHHto2B2Tau_CV_1_C2V_0_C3_1_TuneCP5_13p6TeV_madgraph-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v2/MINIAODSIM
 VBFHHto2B2Tau_CV_1_C2V_1_C3_1_v2: /VBFHHto2B2Tau_CV_1_C2V_1_C3_1_TuneCP5_13p6TeV_madgraph-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v2/MINIAODSIM
 
+# Private VBFHHto2B2Tau with fixed tau decays
+VBFHHto2B2Tau_CV_1_C2V_1_C3_1_privateProd: davs://dcache-cms-webdav-wan.desy.de:2880/pnfs/desy.de/cms/tier2/store/user/mrieger/hbt_private_vbf_mc/vbf_22pre_cv1.0_c2v1.0_kl1.0
+VBFHHto2B2Tau_CV_1_C2V_0_C3_1_privateProd: davs://dcache-cms-webdav-wan.desy.de:2880/pnfs/desy.de/cms/tier2/store/user/mrieger/hbt_private_vbf_mc/vbf_22pre_cv1.0_c2v0.0_kl1.0
+VBFHHto2B2Tau_CV_m0p962_C2V_0p959_C3_m1p43_privateProd: davs://dcache-cms-webdav-wan.desy.de:2880/pnfs/desy.de/cms/tier2/store/user/mrieger/hbt_private_vbf_mc/vbf_22pre_cv-0.962_c2v0.959_kl-1.43
+VBFHHto2B2Tau_CV_m1p83_C2V_3p57_C3_m3p39_privateProd: davs://dcache-cms-webdav-wan.desy.de:2880/pnfs/desy.de/cms/tier2/store/user/mrieger/hbt_private_vbf_mc/vbf_22pre_cv-1.83_c2v3.57_kl-3.39
+VBFHHto2B2Tau_CV_m1p21_C2V_1p94_C3_m0p94_privateProd: davs://dcache-cms-webdav-wan.desy.de:2880/pnfs/desy.de/cms/tier2/store/user/mrieger/hbt_private_vbf_mc/vbf_22pre_cv-1.21_c2v1.94_kl-0.94
+VBFHHto2B2Tau_CV_m1p60_C2V_2p72_C3_m1p36_privateProd: davs://dcache-cms-webdav-wan.desy.de:2880/pnfs/desy.de/cms/tier2/store/user/mrieger/hbt_private_vbf_mc/vbf_22pre_cv-1.6_c2v2.72_kl-1.36
+
 GluGlutoHHto2B2V_kl_1p00_kt_1p00_c2_0p00: /GluGlutoHHto2B2V_kl-1p00_kt-1p00_c2-0p00_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v3/MINIAODSIM
 GluGlutoHHto2B2Vto2L2Nu_kl_1p00_kt_1p00_c2_0p00: /GluGlutoHHto2B2Vto2L2Nu_kl-1p00_kt-1p00_c2-0p00_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v1/MINIAODSIM
 GluGlutoHHto2B2Vto2L2Nu_kl_2p45_kt_1p00_c2_0p00: /GluGlutoHHto2B2Vto2L2Nu_kl-2p45_kt-1p00_c2-0p00_LHEweights_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22MiniAODv4-130X_mcRun3_2022_realistic_v5-v2/MINIAODSIM
