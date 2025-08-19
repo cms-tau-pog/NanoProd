@@ -4,19 +4,19 @@ config:
     era: Run3_2023BPix
     outputs:
       - file: nanoEE.root
-        crabOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/skim_2025_v1_prod/Run3_2023BPix
+        crabOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1_prod/Run3_2023BPix
         finalOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1/Run3_2023BPix
         skimCfg: skim.yaml
         skimSetup: skim_ee
         skimSetupFailed: skim_ee_failed
       - file: nanoMuMu.root
-        crabOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/skim_2025_v1_prod/Run3_2023BPix
+        crabOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1_prod/Run3_2023BPix
         finalOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1/Run3_2023BPix
         skimCfg: skim.yaml
         skimSetup: skim_mumu
         skimSetupFailed: skim_mumu_failed
       - file: nanoTauTau.root
-        crabOutput: T2_CH_CERN:/store/group/phys_tau/kandroso/skim_2025_v1_prod/Run3_2023BPix
+        crabOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1_prod/Run3_2023BPix
         finalOutput: T2_CH_CERN:/store/group/phys_higgs/HLepRare/skim_2025_v1/Run3_2023BPix
         skimCfg: skim.yaml
         skimSetup: skim_tautau
